@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.BattleViews.BattleList.BattleListMainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.BattleViews.BattleList"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="350">
+
+    <Grid Background="{StaticResource DarkApplicationbackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Text="Fight" Foreground="{StaticResource BackrgoundBrush}"/>
+
+        <Line X1="25" Y1="75" Y2="75" X2="325" StrokeThickness="2" Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource BackrgoundBrush}"></Line>
+
+        <ScrollViewer Grid.Row="1" Margin="0, 10, 0, 0">
+            <StackPanel>
+                <local:BattleListView x:Name="wildBattle" x:FieldModifier="public"/>
+                <local:BattleListView x:Name="pvpBattle" x:FieldModifier="public"/>
+            </StackPanel>
+        </ScrollViewer>
+        
+        
+    </Grid>
+</UserControl>

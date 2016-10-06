@@ -1,0 +1,103 @@
+﻿<UserControl x:Name="userControl"
+    x:Class="NestedWorld.UI.MapInformationVIew"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:Map="using:Windows.UI.Xaml.Controls.Maps"
+    >
+
+
+    <RelativePanel Grid.Row="1" Background="{StaticResource BackrgoundBrush}">
+        <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <RelativePanel x:Name="RootPanel">
+                <Map:MapControl x:Name="mapControl" MapServiceToken="{StaticResource maptoken}"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
+                <StackPanel x:Name="InformationBlock"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{StaticResource BackrgoundBrush}">
+                    <TextBlock x:Name="PlaceName" />
+                    <TextBlock x:Name="PlaceNameTwo"/>
+                </StackPanel>
+            </RelativePanel>
+            <Button Grid.Column="2" Click="Button_Click" x:Name="buttonToRight" Height="200" Foreground="{StaticResource ForgroundBrush}" >
+                <Button.Background>
+                    <SolidColorBrush Color="#FFEEEEEE"/>
+                </Button.Background>
+                <Path Data="M1.4200482,0L17.351001,16.046996 1.4980513,31.996001 0.078979631,30.585997 14.531046,16.046019 0,1.4089964z" Fill="{StaticResource ForgroundBrush}" Stroke="{StaticResource ForgroundBrush}"/>
+            </Button>
+            <Button Grid.Column="0" Click="Button_Click" x:Name="buttonToLeft" Height="200" Foreground="{StaticResource ForgroundBrush}" >
+                <Button.Background>
+                    <SolidColorBrush Color="#FFEEEEEE"/>
+                </Button.Background>
+
+                <Path Data="M1.4200482,0L17.351001,16.046996 1.4980513,31.996001 0.078979631,30.585997 14.531046,16.046019 0,1.4089964z" Fill="{StaticResource ForgroundBrush}" Stroke="{StaticResource ForgroundBrush}" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="180"/>
+                    </Path.RenderTransform>
+                </Path>
+            </Button>
+        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1080" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootPanel.(Grid.Column)" Value="0"/>
+                        <Setter Target="RootPanel.(Grid.ColumnSpan)" Value="3"/>
+                        <Setter Target="buttonToRight.Visibility" Value="Collapsed"/>
+                        <Setter Target="buttonToLeft.Visibility" Value="Collapsed"/>
+
+                        <Setter Target="InformationBlock.Width" Value="360"/>
+                        <Setter Target="InformationBlock.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
+                        <Setter Target="InformationBlock.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignRightWith)" Value="InformationBlock"/>
+                    </VisualState.Setters>
+                </VisualState>
+             
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootPanel.(Grid.Column)" Value="1"/>
+                        <Setter Target="RootPanel.(Grid.ColumnSpan)" Value="1"/>
+                        <Setter Target="buttonToRight.Visibility" Value="Visible"/>
+                        <Setter Target="buttonToLeft.Visibility" Value="Visible"/>
+                        <Setter Target="InformationBlock.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="InformationBlock.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootPanel.(Grid.Column)" Value="1"/>
+                        <Setter Target="RootPanel.(Grid.ColumnSpan)" Value="1"/>
+                        <Setter Target="buttonToRight.Visibility" Value="Visible"/>
+                        <Setter Target="buttonToLeft.Visibility" Value="Visible"/>
+                        <Setter Target="InformationBlock.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="InformationBlock.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="mapControl.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </RelativePanel>
+
+    <!--FlipView>
+       RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True"
+    </-->
+</UserControl>

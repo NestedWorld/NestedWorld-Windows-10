@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sprites>
+  <Sprite name="fireattack" folder="Attack" file="final.png" imagenumber="11" height="150" width="150"/>
+  <Sprite name="airattack" folder="Attack" file="finalAir.png" imagenumber="12" height="150" width="150"/>
+  <Sprite name="electAttack" folder="Attack" file="finalElec.png" imagenumber="6" height="150" width="260"/>
+  <Sprite name="heal" folder="Effect" file="finalHeal.png" imagenumber="6" height="150" width="150"/>
+  <Sprite name="def" folder="Attack" file="def.png" imagenumber="5" height="250" width="250"/>
+  <Sprite name="attack" folder="Attack" file="attack.png" imagenumber="5" height="250" width="250"/>
+</Sprites>

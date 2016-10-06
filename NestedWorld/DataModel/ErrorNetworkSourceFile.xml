@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Error Name="Unknow Error" Content="Unknow Error"/>
+  <Error Name="Ok" Content="Ok"/>
+  <Error Name="User Already Exist" Content="This Username is alraedy exist, choose another one.">
+    <Lang ID="fr-FR" Name="Utilisateur Deja Existant" Content="Ce nom d'utilisateur existe deja, choisiser un autre s'il vous plais."/>
+    <Lang ID="es-MX" Name="Usario ya existe" Content="Este nombre de usuario es ya existe, elige otro."/>
+  </Error>
+  <Error Name="No Internet Connection" Content="No Internet Connection, please check your internet connection"/>
+  <Error Name="Bad Password" Content="Bad Password"/>
+
+</Root>

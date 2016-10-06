@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="NestedWorld.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource BleuTwoBrush}">
+            <TextBlock Text="Settings" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Foreground="{StaticResource BackrgoundBrush}">
+
+
+            </TextBlock>
+        </Grid>
+        <Pivot Grid.Row="1">
+            <PivotItem x:Name="pivotItem" Header="General">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel Margin="0, 10, 5, 5">
+
+                            <ToggleSwitch Header="Sound" OffContent="Off" OnContent="On" IsOn="True"/>
+                            <ToggleSwitch Header="Notifications" Margin="0, 10" OffContent="Off" OnContent="On" IsOn="True"/>
+                            <ToggleSwitch Header="Location" Margin="0, 10" OffContent="Off" OnContent="On" IsOn="True"/>
+                            <Slider Header="Default zoom" Margin="0, 10, 20, 0" Minimum="10" Maximum="20"/>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+
+            <PivotItem Header="Contact">
+                <StackPanel Margin="0, 10">
+                    <TextBlock Text="some contact" Foreground="Black"/>
+                    <Button Content="Visit nestedworld.com"/>
+                </StackPanel>
+            </PivotItem>
+
+            <PivotItem Header="About">
+                <StackPanel Margin="0, 10">
+                    <TextBlock Text="Nested World, Windows 10 app" FontSize="20"/>
+                    <TextBlock x:Name="buildnumber" Text="Build "/>
+                    <TextBlock Margin="0, 10" Text="This app is an UWP app, create by Thomas Caron for the Epitech Inovation Poject (EIP) Nested World." TextWrapping="Wrap"/>
+
+                    <TextBlock Text="Nested World Staff" FontSize="20"/>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Thomas Caron, Windows 10 app" Margin="5"/>
+                        <TextBlock Text="Aude Lejuez, Serveur" Margin="5"/>
+                        <TextBlock Text="Guillaume Hervie, Serveur" Margin="5"/>
+                        <TextBlock Text="Florian Faisant, Android App" Margin="5"/>
+                        <TextBlock Text="Jean-Antoine Dupont, iOS App" Margin="5"/>
+                        <TextBlock Text="Quentin Journee, Web site" Margin="5"/>
+                        <TextBlock Text="Jerome Tesson, Web site" Margin="5"/>
+                        <TextBlock Text="Thomas Hannot, Console game" Margin="5"/>
+                        <TextBlock Text="Tom Dumont" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+            </PivotItem>
+
+        </Pivot>
+    </Grid>
+</Page>

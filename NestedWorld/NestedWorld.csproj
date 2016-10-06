@@ -1,0 +1,1043 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DC76C179-A704-44FC-BCCB-763D162CC901}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NestedWorld</RootNamespace>
+    <AssemblyName>NestedWorld</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>NestedWorld_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Attack\attack.png" />
+    <Content Include="Assets\Attack\def.png" />
+    <Content Include="Assets\Attack\final.png" />
+    <Content Include="Assets\Attack\finalAir.png" />
+    <Content Include="Assets\Attack\finalElec.png" />
+    <Content Include="Assets\Effect\finalHeal.png" />
+    <Content Include="Assets\icon\1240x600.png" />
+    <Content Include="Assets\icon\142x142.png" />
+    <Content Include="Assets\icon\24x24.png" />
+    <Content Include="Assets\icon\300x300.png" />
+    <Content Include="Assets\icon\50x50.png" />
+    <Content Include="Assets\icon\620x300.png" />
+    <Content Include="Assets\icon\71x71.png" />
+    <Content Include="Assets\icon\71x71.scale-100.png" />
+    <Content Include="Assets\icon\71x71.scale-200.png" />
+    <Content Include="Assets\icon\88x88.png" />
+    <Content Include="Assets\loader_2.gif" />
+    <Content Include="Assets\background.png" />
+    <Content Include="Assets\default_monster.png" />
+    <Content Include="Assets\loader.gif" />
+    <Content Include="Assets\Monster_min.png" />
+    <Content Include="Assets\Map\position.png" />
+    <Content Include="Assets\NestedWorldLogo.png" />
+    <Content Include="Assets\none_monster.png" />
+    <Content Include="Assets\Place_DefautlImage.png" />
+    <Content Include="Assets\profilDefault.png" />
+    <Content Include="Assets\Shop\alliesexchange.png" />
+    <Content Include="Assets\Shop\worldechange.jpg" />
+    <Content Include="Assets\user_defaultImage.png" />
+    <Content Include="DataModel\AttackSourceFile.xml" />
+    <Content Include="DataModel\EffectSourceFile.xml" />
+    <Content Include="DataModel\ErrorNetworkSourceFile.xml" />
+    <Content Include="DataModel\ShopData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\DataBase\DataBase.cs" />
+    <Compile Include="Classes\DataBase\MonsterDataBase.cs" />
+    <Compile Include="Classes\DesignUtilities\Resources.cs" />
+    <Compile Include="Classes\DesignUtilities\Sprite.cs" />
+    <Compile Include="Classes\DesignUtilities\SpriteDictionnary.cs" />
+    <Compile Include="Classes\ElementsGame\Attack\AttackList.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Battle.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\BattleList.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\BattleRouter.cs" />
+    <Compile Include="Classes\ElementsGame\Chat\Channel.cs" />
+    <Compile Include="Classes\ElementsGame\Chat\ChatCore.cs" />
+    <Compile Include="Classes\ElementsGame\Chat\MessageContentPresenter.cs" />
+    <Compile Include="Classes\Core.cs" />
+    <Compile Include="Classes\DesignUtilities\CircularPresentorItem.cs" />
+    <Compile Include="Classes\DesignUtilities\CirularPresentor.cs" />
+    <Compile Include="Classes\ElementsGame\Attack\Attack.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\BattleController.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Patern.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Paterns\AttackPatern.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Paterns\AttackSpePatern.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Paterns\DefenceSpePatern.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Paterns\DefencePatern.cs" />
+    <Compile Include="Classes\ElementsGame\Battle\Paterns\UseToolsPatern.cs" />
+    <Compile Include="Classes\ElementsGame\Maps\Place.cs" />
+    <Compile Include="Classes\ElementsGame\Maps\Region.cs" />
+    <Compile Include="Classes\ElementsGame\Notification\MessageReceiveNotification.cs" />
+    <Compile Include="Classes\ElementsGame\Notification\NotificationBase.cs" />
+    <Compile Include="Classes\ElementsGame\Player\UserInfo.cs" />
+    <Compile Include="Classes\ElementsGame\Maps\Area.cs" />
+    <Compile Include="Classes\ElementsGame\Maps\AreaList.cs" />
+    <Compile Include="Classes\ElementsGame\Maps\MapController.cs" />
+    <Compile Include="Classes\ElementsGame\Monsters\Monster.cs" />
+    <Compile Include="Classes\ElementsGame\Monsters\MonsterList.cs" />
+    <Compile Include="Classes\ElementsGame\Shop\Shop.cs" />
+    <Compile Include="Classes\ElementsGame\TypeEnum.cs" />
+    <Compile Include="Classes\ElementsGame\Users\User.cs" />
+    <Compile Include="Classes\ElementsGame\Users\UserList.cs" />
+    <Compile Include="Classes\ElementsGame\Users\UserEnum.cs" />
+    <Compile Include="Classes\Exception\InvalideMapKeyException.cs" />
+    <Compile Include="Classes\Network\AmazonPostingImage.cs" />
+    <Compile Include="Classes\Network\ImageDownload.cs" />
+    <Compile Include="Classes\Network\Network.cs" />
+    <Compile Include="Classes\Network\Request\Attacks\AttacksGet.cs" />
+    <Compile Include="Classes\Network\Request\Inventory\ObjectGet.cs" />
+    <Compile Include="Classes\Network\Request\Inventory\UserInventory.cs" />
+    <Compile Include="Classes\Network\Request\Places\PlaceGet.cs" />
+    <Compile Include="Classes\Network\Request\Places\PlaceMonster.cs" />
+    <Compile Include="Classes\Network\Request\Places\RegionMonster.cs" />
+    <Compile Include="Classes\Network\Request\Places\RegionsGet.cs" />
+    <Compile Include="Classes\Network\Request\ReturnObject.cs" />
+    <Compile Include="Classes\Network\Request\Auth\Login.cs" />
+    <Compile Include="Classes\Network\Request\Auth\Logout.cs" />
+    <Compile Include="Classes\Network\Request\Auth\Register.cs" />
+    <Compile Include="Classes\Network\Request\Auth\ResetPassword.cs" />
+    <Compile Include="Classes\Network\Request\HttpRequest.cs" />
+    <Compile Include="Classes\Network\Request\Monster\MonsterAttackIDGet.cs" />
+    <Compile Include="Classes\Network\Request\Monster\MonsterAttackIDPost.cs" />
+    <Compile Include="Classes\Network\Request\Monster\MonsterIDGet.cs" />
+    <Compile Include="Classes\Network\Request\Monster\MonsterIDPost.cs" />
+    <Compile Include="Classes\Network\Request\Monster\Monsters.cs" />
+    <Compile Include="Classes\Network\Request\Monster\UsersMonster.cs" />
+    <Compile Include="Classes\Network\Request\Users\UserFriendsGet.cs" />
+    <Compile Include="Classes\Network\Request\Users\UserFriendsPost.cs" />
+    <Compile Include="Classes\Network\Request\Users\UserPut.cs" />
+    <Compile Include="Classes\Network\Request\Users\Users.cs" />
+    <Compile Include="Classes\ElementsGame\Stats\Stats.cs" />
+    <Compile Include="Classes\Settings\Settings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ElementsGame\Item\Item.cs" />
+    <Compile Include="Classes\ElementsGame\Item\ItemGroup.cs" />
+    <Compile Include="Classes\ElementsGame\Chat\Message.cs" />
+    <Compile Include="Classes\ElementsGame\Shop\ShopElement.cs" />
+    <Compile Include="Classes\ElementsGame\Shop\ShopMenu.cs" />
+    <Compile Include="Pages\AreaPage.xaml.cs">
+      <DependentUpon>AreaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BattlePage.xaml.cs">
+      <DependentUpon>BattlePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EndBattlePage.xaml.cs">
+      <DependentUpon>EndBattlePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MonsterPage.xaml.cs">
+      <DependentUpon>MonsterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PrepareBattlePage.xaml.cs">
+      <DependentUpon>PrepareBattlePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\AddAllyPopUp.xaml.cs">
+      <DependentUpon>AddAllyPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\CatchAreaProposition.xaml.cs">
+      <DependentUpon>CatchAreaProposition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\ForgotPassPopUp.xaml.cs">
+      <DependentUpon>ForgotPassPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\MonsterNearPopUp.xaml.cs">
+      <DependentUpon>MonsterNearPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\NewBattlePopUp.xaml.cs">
+      <DependentUpon>NewBattlePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\ReceiveMessagePopup.xaml.cs">
+      <DependentUpon>ReceiveMessagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\RegisterPopUp.xaml.cs">
+      <DependentUpon>RegisterPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\SettingsPopUp.xaml.cs">
+      <DependentUpon>SettingsPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Style\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Style\TabHeaderMap.xaml.cs">
+      <DependentUpon>TabHeaderMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AnimatedBackground.xaml.cs">
+      <DependentUpon>AnimatedBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BlurBackground.xaml.cs">
+      <DependentUpon>BlurBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CircularContenor.xaml.cs">
+      <DependentUpon>CircularContenor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CircularItem.xaml.cs">
+      <DependentUpon>CircularItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CircularItemAdd.xaml.cs">
+      <DependentUpon>CircularItemAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CircularItemInformation.xaml.cs">
+      <DependentUpon>CircularItemInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MapInformationVIew.xaml.cs">
+      <DependentUpon>MapInformationVIew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SearchBox.xaml.cs">
+      <DependentUpon>SearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SpriteAnimation.xaml.cs">
+      <DependentUpon>SpriteAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SwipeContentControl.cs" />
+    <Compile Include="UI\TitleBarCustom.cs" />
+    <Compile Include="Utils\ColorUtils.cs" />
+    <Compile Include="Utils\Connection.cs" />
+    <Compile Include="Utils\CropBitmap.cs" />
+    <Compile Include="Utils\DeviceInformation.cs" />
+    <Compile Include="Utils\GifView.xaml.cs">
+      <DependentUpon>GifView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="Utils\IO.cs" />
+    <Compile Include="Utils\Log.cs" />
+    <Compile Include="Utils\MapElementData.cs" />
+    <Compile Include="Utils\MapExtensions.cs" />
+    <Compile Include="Utils\RandomValue.cs" />
+    <Compile Include="Utils\StorageApplication.cs" />
+    <Compile Include="ViewModel\ContentController.cs" />
+    <Compile Include="ViewModel\HomePageController.cs" />
+    <Compile Include="ViewModel\MonsterListViewModel.cs" />
+    <Compile Include="ViewModel\NotificationInternal.cs" />
+    <Compile Include="View\AreaViews\AreaHeaderView.xaml.cs">
+      <DependentUpon>AreaHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AreaViews\AreaItemItemView.xaml.cs">
+      <DependentUpon>AreaItemItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AreaViews\AreaItemView.xaml.cs">
+      <DependentUpon>AreaItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AreaViews\AreaMonsterItemView.xaml.cs">
+      <DependentUpon>AreaMonsterItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AreaViews\AreaMonsterView.xaml.cs">
+      <DependentUpon>AreaMonsterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AreaViews\AreaSwapMonster.xaml.cs">
+      <DependentUpon>AreaSwapMonster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\AnnimationCanvas.xaml.cs">
+      <DependentUpon>AnnimationCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\AttackEffectViews\AttackEffectView.xaml.cs">
+      <DependentUpon>AttackEffectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\BattleCanvas.xaml.cs">
+      <DependentUpon>BattleCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\BattleIcon.xaml.cs">
+      <DependentUpon>BattleIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\BattleList\BattleElemtView.xaml.cs">
+      <DependentUpon>BattleElemtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\BattleList\BattleListMainView.xaml.cs">
+      <DependentUpon>BattleListMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\BattleList\BattleListView.xaml.cs">
+      <DependentUpon>BattleListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\EnemieMonster.xaml.cs">
+      <DependentUpon>EnemieMonster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\InformationBattleView.xaml.cs">
+      <DependentUpon>InformationBattleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\UserBattleListView.xaml.cs">
+      <DependentUpon>UserBattleListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\UserBattleView.xaml.cs">
+      <DependentUpon>UserBattleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\UserMonster.xaml.cs">
+      <DependentUpon>UserMonster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\UserMonsterList.xaml.cs">
+      <DependentUpon>UserMonsterList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BattleViews\UserMonsterView.xaml.cs">
+      <DependentUpon>UserMonsterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\ChanelListView.xaml.cs">
+      <DependentUpon>ChanelListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\ChanelView.xaml.cs">
+      <DependentUpon>ChanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\ChatMainView.xaml.cs">
+      <DependentUpon>ChatMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\ChatMenuView.xaml.cs">
+      <DependentUpon>ChatMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\ChatView.xaml.cs">
+      <DependentUpon>ChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\MeMessageTemplate.xaml.cs">
+      <DependentUpon>MeMessageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\StartNewChatView.xaml.cs">
+      <DependentUpon>StartNewChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatViews\YouMessageTemplate.xaml.cs">
+      <DependentUpon>YouMessageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventView.xaml.cs">
+      <DependentUpon>EventView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GardenViews\GardenElementListView.xaml.cs">
+      <DependentUpon>GardenElementListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GardenViews\GardenElementView.xaml.cs">
+      <DependentUpon>GardenElementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GardenViews\GardenItem.xaml.cs">
+      <DependentUpon>GardenItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageView.xaml.cs">
+      <DependentUpon>ManageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapPoint\MapInformationPoint.xaml.cs">
+      <DependentUpon>MapInformationPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapPoint\MonsterMapPoint.xaml.cs">
+      <DependentUpon>MonsterMapPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapPoint\PlayerMapPoint.xaml.cs">
+      <DependentUpon>PlayerMapPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapPoint\UserMapPoint.xaml.cs">
+      <DependentUpon>UserMapPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapView.xaml.cs">
+      <DependentUpon>MapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\AreaInfoView.xaml.cs">
+      <DependentUpon>AreaInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\MapControlView.xaml.cs">
+      <DependentUpon>MapControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\MapListElement.xaml.cs">
+      <DependentUpon>MapListElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\MonsterMapList.xaml.cs">
+      <DependentUpon>MonsterMapList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\UserMapList.xaml.cs">
+      <DependentUpon>UserMapList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterTapItem.xaml.cs">
+      <DependentUpon>MonsterTapItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterInformationView.xaml.cs">
+      <DependentUpon>MonsterInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterListView.xaml.cs">
+      <DependentUpon>MonsterListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterMainView.xaml.cs">
+      <DependentUpon>MonsterMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterMenuView.xaml.cs">
+      <DependentUpon>MonsterMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterSoloView.xaml.cs">
+      <DependentUpon>MonsterSoloView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView\MonsterView.xaml.cs">
+      <DependentUpon>MonsterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterHeaderView.xaml.cs">
+      <DependentUpon>MonsterHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterStatsView.xaml.cs">
+      <DependentUpon>MonsterStatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterStatsViewLittle.xaml.cs">
+      <DependentUpon>MonsterStatsViewLittle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterView.xaml.cs">
+      <DependentUpon>MonsterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrepareBattleView\EnterBattle.xaml.cs">
+      <DependentUpon>EnterBattle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrepareBattleView\PrepareEnnemiHeaderView.xaml.cs">
+      <DependentUpon>PrepareEnnemiHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrepareBattleView\PrepareHeaderView.xaml.cs">
+      <DependentUpon>PrepareHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrepareBattleView\PrepareMonsterSelected.xaml.cs">
+      <DependentUpon>PrepareMonsterSelected.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrepareBattleView\UserMonsterListView.xaml.cs">
+      <DependentUpon>UserMonsterListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrepareBattleView\UsersProfileEntrance.xaml.cs">
+      <DependentUpon>UsersProfileEntrance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfileViews\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfileViews\MonsterStat.xaml.cs">
+      <DependentUpon>MonsterStat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfileViews\PlayerInformationView.xaml.cs">
+      <DependentUpon>PlayerInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfileViews\StatiUserView.xaml.cs">
+      <DependentUpon>StatiUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RootView\InternetStatueView.xaml.cs">
+      <DependentUpon>InternetStatueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsViews\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShopView.xaml.cs">
+      <DependentUpon>ShopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShopViews\ShopMeniItem.xaml.cs">
+      <DependentUpon>ShopMeniItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShopViews\WorldEchangeView.xaml.cs">
+      <DependentUpon>WorldEchangeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StuffView.xaml.cs">
+      <DependentUpon>StuffView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserViews\AllyView.xaml.cs">
+      <DependentUpon>AllyView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="NestedWorld_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Flower\Flower.png" />
+    <Content Include="Assets\Flower\flowerDirt.png" />
+    <Content Include="Assets\Flower\flowerElec.png" />
+    <Content Include="Assets\Flower\flowerFire.png" />
+    <Content Include="Assets\Flower\flowerGrass.png" />
+    <Content Include="Assets\Flower\flowerWater.png" />
+    <Content Include="Assets\iconTest2.jpg" />
+    <Content Include="Assets\iconTest.png" />
+    <Content Include="Assets\monsterTest\test.png" />
+    <Content Include="Assets\NestedWorldLogoee.png" />
+    <Content Include="Assets\Type\dirt.png" />
+    <Content Include="Assets\Type\elec.png" />
+    <Content Include="Assets\Type\fire.png" />
+    <Content Include="Assets\Type\grass.png" />
+    <Content Include="Assets\Type\water.png" />
+    <Content Include="DataModel\ShopData.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AreaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BattlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EndBattlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MonsterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PrepareBattlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\AddAllyPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\CatchAreaProposition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\ForgotPassPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\MonsterNearPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\NewBattlePopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\ReceiveMessagePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\RegisterPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUp\SettingsPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\TabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\TabHeaderMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UI\AnimatedBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\BlurBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CircularContenor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CircularItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CircularItemAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CircularItemInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\LoadingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\MapInformationVIew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\SpriteAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\GifView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AreaViews\AreaHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AreaViews\AreaItemItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AreaViews\AreaItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AreaViews\AreaMonsterItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AreaViews\AreaMonsterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AreaViews\AreaSwapMonster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\AnnimationCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\AttackEffectViews\AttackEffectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\BattleCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\BattleIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\BattleList\BattleElemtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\BattleList\BattleListMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\BattleList\BattleListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\EnemieMonster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\InformationBattleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\UserBattleListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\UserBattleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\UserMonster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\UserMonsterList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BattleViews\UserMonsterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\ChanelListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\ChanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\ChatMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\ChatMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\ChatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\MeMessageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\StartNewChatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChatViews\YouMessageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EventView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GardenViews\GardenElementListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GardenViews\GardenElementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GardenViews\GardenItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapPoint\MapInformationPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapPoint\MonsterMapPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapPoint\PlayerMapPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapPoint\UserMapPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\AreaInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\MapControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\MapListElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\MonsterMapList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\UserMapList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterTapItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterSoloView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView\MonsterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterStatsViewLittle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrepareBattleView\EnterBattle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrepareBattleView\PrepareEnnemiHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrepareBattleView\PrepareHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrepareBattleView\PrepareMonsterSelected.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrepareBattleView\UserMonsterListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrepareBattleView\UsersProfileEntrance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfileViews\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfileViews\MonsterStat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfileViews\PlayerInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfileViews\StatiUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RootView\InternetStatueView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsViews\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShopView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShopViews\ShopMeniItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShopViews\WorldEchangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StuffView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserViews\AllyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.13.0">
+      <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10586.0%29</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MessagePackNestedWorld\MessagePackNestedWorld.csproj">
+      <Project>{ec7adc26-bb01-4f53-b072-4402e61b8366}</Project>
+      <Name>MessagePackNestedWorld</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NotificationBackground\NotificationBackground.csproj">
+      <Project>{2a030313-195c-4650-8e36-02b3dda6f3f5}</Project>
+      <Name>NotificationBackground</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocketLib\SocketLib.csproj">
+      <Project>{d8f77536-bee0-4be3-9c75-935f88afa503}</Project>
+      <Name>SocketLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\winsdkfb-master\FBWinSDK\FBSDK-UWP\FBSDK-UWP\FBSDK-UWP.vcxproj">
+      <Project>{973a943b-ff77-4267-8f30-f5fe2b7f5583}</Project>
+      <Name>Facebook</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

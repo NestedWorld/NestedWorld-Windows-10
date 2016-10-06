@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.ProfileViews.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.ProfileViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="200"
+    d:DesignWidth="400">
+
+    <Grid Background="{StaticResource ForgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Path=Background}" Stretch="UniformToFill" Grid.RowSpan="2"></Image>
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="#7F000000"/>
+        <Ellipse Height="70" Width="70" StrokeThickness="2" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="{StaticResource BackrgoundBrush}">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Path=Image}"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
+            <TextBlock Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" Foreground="{StaticResource BackrgoundBrush}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Level}" FontSize="15" Margin="0, 5" Style="{StaticResource TextBlockStyleOne}" Foreground="{StaticResource BackrgoundBrush}" />
+                <TextBlock Text="Lvl" FontSize="15" Margin="0, 5" Style="{StaticResource TextBlockStyleOne}" Foreground="{StaticResource BackrgoundBrush}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

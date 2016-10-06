@@ -1,0 +1,628 @@
+
+����Assets
+�   ����Effect
+�   ����Flower
+�   ����Map
+�   ����monsterTest
+�   ����Shop
+�   ����Type
+����bin
+�   ����ARM
+�   �   ����Debug
+�   �   �   ����Core
+�   �   �   �   ����Assets
+�   �   �   �   �   ����Effect
+�   �   �   �   �   ����Flower
+�   �   �   �   �   ����monsterTest
+�   �   �   �   �   ����Type
+�   �   �   �   ����DataModel
+�   �   �   �   ����entrypoint
+�   �   �   �   ����Facebook
+�   �   �   �   �   ����Images
+�   �   �   �   ����Properties
+�   �   �   �   ����WinMetadata
+�   �   �   ����DataModel
+�   �   �   ����Pages
+�   �   �   ����PopUp
+�   �   �   ����Style
+�   �   �   ����Theme
+�   �   �   ����Themes
+�   �   �   ����UI
+�   �   �   ����Utils
+�   �   �   ����View
+�   �   �       ����AreaViews
+�   �   �       ����BattleViews
+�   �   �       ����ChatViews
+�   �   �       ����EventViews
+�   �   �       ����GardenViews
+�   �   �       ����HomeView
+�   �   �       ����MapPoint
+�   �   �       ����MapViews
+�   �   �       ����MonsterViews
+�   �   �       ����PrepareBattleView
+�   �   �       ����ProfileViews
+�   �   �       ����SettingsViews
+�   �   �       ����ShopViews
+�   �   �       ����UserViews
+�   �   ����Release
+�   �       ����DataModel
+�   �       ����ilc
+�   �       �   ����Assets
+�   �       �   �   ����Effect
+�   �       �   �   ����Flower
+�   �       �   �   ����Map
+�   �       �   �   ����monsterTest
+�   �       �   �   ����Type
+�   �       �   ����DataModel
+�   �       �   ����Facebook
+�   �       �   �   ����Images
+�   �       �   ����ForBundle
+�   �       ����Pages
+�   �       ����PopUp
+�   �       ����Style
+�   �       ����Theme
+�   �       ����Themes
+�   �       ����UI
+�   �       ����View
+�   �           ����BattleViews
+�   �           ����ChatViews
+�   �           ����GardenViews
+�   �           ����HomeView
+�   �           ����MapPoint
+�   �           ����MapViews
+�   �           ����MonsterViews
+�   �           ����PrepareBattleView
+�   �           ����ProfileViews
+�   �           ����SettingsViews
+�   �           ����ShopViews
+�   �           ����UserViews
+�   ����x64
+�   �   ����Debug
+�   �   �   ����AppX
+�   �   �   �   ����Assets
+�   �   �   �   �   ����Effect
+�   �   �   �   �   ����Flower
+�   �   �   �   �   ����Map
+�   �   �   �   �   ����monsterTest
+�   �   �   �   �   ����Shop
+�   �   �   �   �   ����Type
+�   �   �   �   ����DataModel
+�   �   �   �   ����entrypoint
+�   �   �   �   ����Facebook
+�   �   �   �   �   ����Images
+�   �   �   �   ����Properties
+�   �   �   �   ����WinMetadata
+�   �   �   ����Core
+�   �   �   �   ����Assets
+�   �   �   �   �   ����Effect
+�   �   �   �   �   ����Flower
+�   �   �   �   �   ����monsterTest
+�   �   �   �   �   ����Type
+�   �   �   �   ����DataModel
+�   �   �   �   ����entrypoint
+�   �   �   �   ����Facebook
+�   �   �   �   �   ����Images
+�   �   �   �   ����Properties
+�   �   �   �   ����WinMetadata
+�   �   �   ����DataModel
+�   �   �   ����Pages
+�   �   �   ����PopUp
+�   �   �   ����Style
+�   �   �   ����Theme
+�   �   �   ����Themes
+�   �   �   ����UI
+�   �   �   ����Utils
+�   �   �   ����View
+�   �   �       ����AreaViews
+�   �   �       ����BattleViews
+�   �   �       ����ChatViews
+�   �   �       ����EventViews
+�   �   �       ����GardenViews
+�   �   �       ����HomeView
+�   �   �       ����MapPoint
+�   �   �       ����MapViews
+�   �   �       ����MonsterViews
+�   �   �       ����PrepareBattleView
+�   �   �       ����ProfileViews
+�   �   �       ����SettingsViews
+�   �   �       ����ShopViews
+�   �   �       ����UserViews
+�   �   ����Release
+�   �       ����AppX
+�   �       �   ����Assets
+�   �       �   �   ����Effect
+�   �       �   �   ����Flower
+�   �       �   �   ����Map
+�   �       �   �   ����monsterTest
+�   �       �   �   ����Type
+�   �       �   ����DataModel
+�   �       �   ����Facebook
+�   �       �       ����Images
+�   �       ����DataModel
+�   �       ����ilc
+�   �       �   ����Assets
+�   �       �   �   ����Effect
+�   �       �   �   ����Flower
+�   �       �   �   ����Map
+�   �       �   �   ����monsterTest
+�   �       �   �   ����Shop
+�   �       �   �   ����Type
+�   �       �   ����DataModel
+�   �       �   ����Facebook
+�   �       �   �   ����Images
+�   �       �   ����ForBundle
+�   �       ����Pages
+�   �       ����PopUp
+�   �       ����Style
+�   �       ����Theme
+�   �       ����Themes
+�   �       ����UI
+�   �       ����Utils
+�   �       ����View
+�   �           ����AreaViews
+�   �           ����BattleViews
+�   �           ����ChatViews
+�   �           ����EventViews
+�   �           ����GardenViews
+�   �           ����HomeView
+�   �           ����MapPoint
+�   �           ����MapViews
+�   �           ����MonsterViews
+�   �           ����PrepareBattleView
+�   �           ����ProfileViews
+�   �           ����SettingsViews
+�   �           ����ShopViews
+�   �           ����UserViews
+�   ����x86
+�       ����Debug
+�       �   ����AppX
+�       �   �   ����Assets
+�       �   �   �   ����Effect
+�       �   �   �   ����Flower
+�       �   �   �   ����Map
+�       �   �   �   ����monsterTest
+�       �   �   �   ����Type
+�       �   �   ����DataModel
+�       �   �   ����entrypoint
+�       �   �   ����Facebook
+�       �   �   �   ����Images
+�       �   �   ����Properties
+�       �   �   ����WinMetadata
+�       �   ����Core
+�       �   �   ����Assets
+�       �   �   �   ����Effect
+�       �   �   �   ����Flower
+�       �   �   �   ����Map
+�       �   �   �   ����monsterTest
+�       �   �   �   ����Type
+�       �   �   ����DataModel
+�       �   �   ����entrypoint
+�       �   �   ����Facebook
+�       �   �   �   ����Images
+�       �   �   ����Properties
+�       �   �   ����Telerik.UI.Xaml.Chart.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Controls.Data.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.DataVisualization.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Input.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Map.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Primitives.UWP
+�       �   �   �   ����Themes
+�       �   �   ����WinMetadata
+�       �   ����DataModel
+�       �   ����Pages
+�       �   ����PopUp
+�       �   ����Style
+�       �   ����Theme
+�       �   ����Themes
+�       �   ����UI
+�       �   ����Utils
+�       �   ����View
+�       �       ����AreaViews
+�       �       ����BattleViews
+�       �       ����ChatViews
+�       �       ����EventViews
+�       �       ����GardenViews
+�       �       ����HomeView
+�       �       ����MapPoint
+�       �       ����MapViews
+�       �       ����MonsterViews
+�       �       ����PrepareBattleView
+�       �       ����ProfileViews
+�       �       ����SettingsViews
+�       �       ����ShopViews
+�       �       ����UserViews
+�       ����Release
+�           ����DataModel
+�           ����ilc
+�           �   ����Assets
+�           �   �   ����Effect
+�           �   �   ����Flower
+�           �   �   ����Map
+�           �   �   ����monsterTest
+�           �   �   ����Type
+�           �   ����DataModel
+�           �   ����Facebook
+�           �   �   ����Images
+�           �   ����ForBundle
+�           ����Pages
+�           ����PopUp
+�           ����Style
+�           ����Theme
+�           ����Themes
+�           ����UI
+�           ����View
+�               ����BattleViews
+�               ����ChatViews
+�               ����GardenViews
+�               ����HomeView
+�               ����MapPoint
+�               ����MapViews
+�               ����MonsterViews
+�               ����PrepareBattleView
+�               ����ProfileViews
+�               ����SettingsViews
+�               ����ShopViews
+�               ����UserViews
+����BundleArtifacts
+����Classes
+�   ����Chat
+�   ����DesignUtilities
+�   ����ElementsGame
+�   �   ����Battle
+�   �   �   ����Paterns
+�   �   ����GameCore
+�   �   ����Maps
+�   �   ����Monsters
+�   �   ����Shop
+�   �   ����Users
+�   ����Enum
+�   ����Garden
+�   ����LiveRequest
+�   ����Network
+�   ����Request
+�   �   ����Auth
+�   �   ����Monster
+�   �   ����Places
+�   �   ����Users
+�   ����Stats
+����Common
+����DataModel
+����Model
+����obj
+�   ����ARM
+�   �   ����Debug
+�   �   �   ����Core
+�   �   �   �   ����Assets
+�   �   �   �   �   ����Effect
+�   �   �   �   �   ����Flower
+�   �   �   �   �   ����monsterTest
+�   �   �   �   �   ����Type
+�   �   �   �   ����DataModel
+�   �   �   �   ����Facebook
+�   �   �   �   �   ����Images
+�   �   �   �   ����Properties
+�   �   �   �   ����WinMetadata
+�   �   �   ����intermediatexaml
+�   �   �   ����Pages
+�   �   �   ����PopUp
+�   �   �   ����Style
+�   �   �   ����TempPE
+�   �   �   ����Theme
+�   �   �   ����Themes
+�   �   �   ����UI
+�   �   �   ����Utils
+�   �   �   ����View
+�   �   �       ����AreaViews
+�   �   �       ����BattleViews
+�   �   �       ����ChatViews
+�   �   �       ����EventViews
+�   �   �       ����GardenViews
+�   �   �       ����HomeView
+�   �   �       ����MapPoint
+�   �   �       ����MapViews
+�   �   �       ����MonsterViews
+�   �   �       ����PrepareBattleView
+�   �   �       ����ProfileViews
+�   �   �       ����SettingsViews
+�   �   �       ����ShopViews
+�   �   �       ����UserViews
+�   �   ����Release
+�   �       ����ilc
+�   �       �   ����in
+�   �       �   �   ����Assets
+�   �       �   �   �   ����Effect
+�   �       �   �   �   ����Flower
+�   �       �   �   �   ����Map
+�   �       �   �   �   ����monsterTest
+�   �       �   �   �   ����Type
+�   �       �   �   ����DataModel
+�   �       �   �   ����Facebook
+�   �       �   �   �   ����Images
+�   �       �   �   ����Properties
+�   �       �   �   ����WinMetadata
+�   �       �   ����intermediate
+�   �       �       ����BuildInfo
+�   �       �       ����ILTransformed
+�   �       �       ����MDIL
+�   �       �       ����Native
+�   �       �       ����NestedWorld.Interop
+�   �       �       ����PreMergeILTransformed
+�   �       �       ����ResW
+�   �       �       ����SgGenerated
+�   �       �       ����Toc
+�   �       ����intermediatexaml
+�   �       ����NestedWorld_1.0.0.0_Bundle
+�   �       ����PackageLayout
+�   �       �   ����Assets
+�   �       �   �   ����Effect
+�   �       �   �   ����Flower
+�   �       �   �   ����Map
+�   �       �   �   ����monsterTest
+�   �       �   �   ����Type
+�   �       �   ����DataModel
+�   �       �   ����Facebook
+�   �       �       ����Images
+�   �       ����Pages
+�   �       ����PopUp
+�   �       ����Stripped
+�   �       ����Style
+�   �       ����TempPE
+�   �       ����Theme
+�   �       ����Themes
+�   �       ����UI
+�   �       ����View
+�   �           ����AreaViews
+�   �           ����BattleViews
+�   �           ����ChatViews
+�   �           ����EventViews
+�   �           ����GardenViews
+�   �           ����HomeView
+�   �           ����MapPoint
+�   �           ����MapViews
+�   �           ����MonsterViews
+�   �           ����PrepareBattleView
+�   �           ����ProfileViews
+�   �           ����SettingsViews
+�   �           ����ShopViews
+�   �           ����UserViews
+�   ����x64
+�   �   ����Debug
+�   �   �   ����Core
+�   �   �   �   ����Assets
+�   �   �   �   �   ����Effect
+�   �   �   �   �   ����Flower
+�   �   �   �   �   ����monsterTest
+�   �   �   �   �   ����Type
+�   �   �   �   ����DataModel
+�   �   �   �   ����Facebook
+�   �   �   �   �   ����Images
+�   �   �   �   ����Properties
+�   �   �   �   ����WinMetadata
+�   �   �   ����intermediatexaml
+�   �   �   ����Pages
+�   �   �   ����PopUp
+�   �   �   ����Style
+�   �   �   ����TempPE
+�   �   �   ����Theme
+�   �   �   ����Themes
+�   �   �   ����UI
+�   �   �   ����Utils
+�   �   �   ����View
+�   �   �       ����AreaViews
+�   �   �       ����BattleViews
+�   �   �       ����ChatViews
+�   �   �       ����EventViews
+�   �   �       ����GardenViews
+�   �   �       ����HomeView
+�   �   �       ����MapPoint
+�   �   �       ����MapViews
+�   �   �       ����MonsterViews
+�   �   �       ����PrepareBattleView
+�   �   �       ����ProfileViews
+�   �   �       ����SettingsViews
+�   �   �       ����ShopViews
+�   �   �       ����UserViews
+�   �   ����Release
+�   �       ����ilc
+�   �       �   ����in
+�   �       �   �   ����Assets
+�   �       �   �   �   ����Effect
+�   �       �   �   �   ����Flower
+�   �       �   �   �   ����Map
+�   �       �   �   �   ����monsterTest
+�   �       �   �   �   ����Shop
+�   �       �   �   �   ����Type
+�   �       �   �   ����DataModel
+�   �       �   �   ����Facebook
+�   �       �   �   �   ����Images
+�   �       �   �   ����Properties
+�   �       �   �   ����WinMetadata
+�   �       �   ����intermediate
+�   �       �       ����BuildInfo
+�   �       �       ����ILTransformed
+�   �       �       ����MDIL
+�   �       �       ����Native
+�   �       �       ����NestedWorld.McgInterop
+�   �       �       ����PreMergeILTransformed
+�   �       �       ����ResW
+�   �       �       ����SgGenerated
+�   �       �       ����Toc
+�   �       �       ����TransformedSRWR
+�   �       ����intermediatexaml
+�   �       ����NestedWorld_1.0.2.0_Bundle
+�   �       ����PackageLayout
+�   �       �   ����Assets
+�   �       �   �   ����Effect
+�   �       �   �   ����Flower
+�   �       �   �   ����Map
+�   �       �   �   ����monsterTest
+�   �       �   �   ����Shop
+�   �       �   �   ����Type
+�   �       �   ����DataModel
+�   �       �   ����Facebook
+�   �       �       ����Images
+�   �       ����Pages
+�   �       ����PopUp
+�   �       ����Stripped
+�   �       ����Style
+�   �       ����TempPE
+�   �       ����Theme
+�   �       ����Themes
+�   �       ����UI
+�   �       ����Utils
+�   �       ����View
+�   �           ����AreaViews
+�   �           ����BattleViews
+�   �           ����ChatViews
+�   �           ����EventViews
+�   �           ����GardenViews
+�   �           ����HomeView
+�   �           ����MapPoint
+�   �           ����MapViews
+�   �           ����MonsterViews
+�   �           ����PrepareBattleView
+�   �           ����ProfileViews
+�   �           ����SettingsViews
+�   �           ����ShopViews
+�   �           ����UserViews
+�   ����x86
+�       ����Debug
+�       �   ����Core
+�       �   �   ����Assets
+�       �   �   �   ����Effect
+�       �   �   �   ����Flower
+�       �   �   �   ����Map
+�       �   �   �   ����monsterTest
+�       �   �   �   ����Type
+�       �   �   ����DataModel
+�       �   �   ����Facebook
+�       �   �   �   ����Images
+�       �   �   ����Properties
+�       �   �   ����Telerik.UI.Xaml.Chart.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Controls.Data.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.DataVisualization.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Input.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Map.UWP
+�       �   �   �   ����Themes
+�       �   �   ����Telerik.UI.Xaml.Primitives.UWP
+�       �   �   �   ����Themes
+�       �   �   ����WinMetadata
+�       �   ����intermediatexaml
+�       �   ����Pages
+�       �   ����PopUp
+�       �   ����Style
+�       �   ����Templates
+�       �   ����TempPE
+�       �   ����Theme
+�       �   ����Themes
+�       �   ����UI
+�       �   ����Utils
+�       �   ����View
+�       �       ����AreaViews
+�       �       ����BattleViews
+�       �       ����ChatViews
+�       �       ����EventViews
+�       �       ����GardenView
+�       �       ����GardenViews
+�       �       ����HomeView
+�       �       ����MapPoint
+�       �       ����MapViews
+�       �       ����MonsterViews
+�       �       ����PopUpView
+�       �       ����PrepareBattleView
+�       �       ����ProfileViews
+�       �       ����SettingsViews
+�       �       ����ShopViews
+�       �       ����UserViews
+�       ����Release
+�           ����ilc
+�           �   ����in
+�           �   �   ����Assets
+�           �   �   �   ����Effect
+�           �   �   �   ����Flower
+�           �   �   �   ����Map
+�           �   �   �   ����monsterTest
+�           �   �   �   ����Type
+�           �   �   ����DataModel
+�           �   �   ����Facebook
+�           �   �   �   ����Images
+�           �   �   ����Properties
+�           �   �   ����WinMetadata
+�           �   ����intermediate
+�           �       ����BuildInfo
+�           �       ����ILTransformed
+�           �       ����MDIL
+�           �       ����Native
+�           �       ����NestedWorld.Interop
+�           �       ����PreMergeILTransformed
+�           �       ����ResW
+�           �       ����SgGenerated
+�           �       ����Toc
+�           ����intermediatexaml
+�           ����PackageLayout
+�           �   ����Assets
+�           �   �   ����Effect
+�           �   �   ����Flower
+�           �   �   ����Map
+�           �   �   ����monsterTest
+�           �   �   ����Type
+�           �   ����DataModel
+�           �   ����Facebook
+�           �       ����Images
+�           ����Pages
+�           ����PopUp
+�           ����Stripped
+�           ����Style
+�           ����TempPE
+�           ����Theme
+�           ����Themes
+�           ����UI
+�           ����Utils
+�           ����View
+�               ����AreaViews
+�               ����BattleViews
+�               ����ChatViews
+�               ����EventViews
+�               ����GardenViews
+�               ����HomeView
+�               ����MapPoint
+�               ����MapViews
+�               ����MonsterViews
+�               ����PrepareBattleView
+�               ����ProfileViews
+�               ����SettingsViews
+�               ����ShopViews
+�               ����UserViews
+����Pages
+����PopUp
+����Properties
+����Resource
+����Style
+����UI
+����Utils
+����View
+�   ����AreaViews
+�   ����BattleViews
+�   ����ChatViews
+�   ����EventViews
+�   �   ����Cards
+�   ����GardenViews
+�   ����HomeView
+�   ����MapPoint
+�   ����MapViews
+�   ����MonsterViews
+�   ����PrepareBattleView
+�   ����ProfileViews
+�   ����SettingsViews
+�   ����ShopViews
+�   ����UserViews
+����ViewModel

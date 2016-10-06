@@ -1,0 +1,32 @@
+﻿<UserControl x:Name="userControl"
+    x:Class="NestedWorld.View.MonsterTapItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:NestedWorld.View.MonsterViews"
+    xmlns:monsterViews="using:NestedWorld.View.MonsterViews"
+    xmlns:UI="using:NestedWorld.UI"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Click="Button_Click" Height="50" Width="50" x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="{StaticResource ForgroundBrush}" HorizontalAlignment="Left" Background="#00000000" />
+            <TextBox TextChanged="TextBox_TextChanged" PlaceholderText="Search" Style="{StaticResource TextBoxStyleLogin}" Margin="0,0,0,10" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Grid>
+        <SplitView Grid.Row="1" x:Name="splitViewOption" IsPaneOpen="False"  OpenPaneLength="250" DisplayMode="Overlay" CompactPaneLength="50">
+            <SplitView.Pane>
+                <view:MonsterMenuView x:Name="menu"/>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <view:MonsterMainView x:Name="main"/>
+            </SplitView.Content>
+        </SplitView>
+        <UI:LoadingView Grid.RowSpan="2" Visibility="Collapsed" x:Name="LoadingView"/>
+    </Grid>
+</UserControl>

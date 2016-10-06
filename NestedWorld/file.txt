@@ -1,0 +1,31 @@
+|---Assets
+|   |---Effect
+|   |---Flower
+|   |---Map
+|   |---monsterTest
+|   |---Shop
+|   |---Type
+|---Pages
+|---PopUp
+|---Properties
+|---Resource
+|---Style
+|---UI
+|---Utils
+|---View
+|   |---AreaViews
+|   |---BattleViews
+|   |---ChatViews
+|   |---EventViews
+|   |   |---Cards
+|   |---GardenViews
+|   |---HomeView
+|   |---MapPoint
+|   |---MapViews
+|   |---MonsterViews
+|   |---PrepareBattleView
+|   |---ProfileViews
+|   |---SettingsViews
+|   |---ShopViews
+|   |---UserViews
+|---ViewModel

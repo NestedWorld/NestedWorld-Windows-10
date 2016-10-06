@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.MapPoint.PlayerMapPoint"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.MapPoint"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="50"
+    Width="50" RenderTransformOrigin="0.5,1">
+    <UserControl.RenderTransform>
+        <CompositeTransform TranslateX="-25" TranslateY="-50"/>
+    </UserControl.RenderTransform>
+
+    <Grid>
+        <Image Source="ms-appx:///Assets/Map/position.png"></Image>
+        <Ellipse  Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,6,0,0">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="{Binding Path=Image}"/>
+            </Ellipse.Fill>
+        </Ellipse>
+    </Grid>
+</UserControl>

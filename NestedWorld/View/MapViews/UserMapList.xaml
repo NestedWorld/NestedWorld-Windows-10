@@ -1,0 +1,61 @@
+﻿<UserControl x:Name="userControl"
+    x:Class="NestedWorld.View.MapViews.UserMapList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.MapViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="300"
+    RenderTransformOrigin="0, 0.5">
+  
+    <UserControl.Resources>
+        <Storyboard x:Name="ShowAnnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="userControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="RemoveAnnimation">
+            <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="userControl" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.RenderTransform>
+        <CompositeTransform/>
+    </UserControl.RenderTransform>
+
+    <Grid  Background="#EEEEEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Ally" Margin="10" FontSize="20"/>
+
+        <AppBarButton VerticalAlignment="Top" HorizontalAlignment="Right" Click="AppBarButton_Click"  Background="{x:Null}"  Width="50" Height="50">
+            <AppBarButton.Icon>
+                <PathIcon HorizontalAlignment="Center" VerticalAlignment="Top" Data="M1.87498676776886,0L3.18750667572021,0.562505722045898 9.99997043609619,7.31250715255737 16.8124732971191,0.562505722045898 18.1484050750732,7.16373324394226E-06 19.4374732971191,0.562505722045898 19.999979019165,1.89844000339508 19.4374732971191,3.18750357627869 12.6249732971191,9.99999904632568 19.4374732971191,16.8125038146973 19.999979019165,18.1484375 19.4374732971191,19.4375019073486 18.1015281677246,20 16.8124732971191,19.4375019073486 9.99997043609619,12.6250066757202 3.18750667572021,19.4375019073486 1.85155975818634,20 0.562504589557648,19.4375019073486 -3.72529029846191E-09,18.1015644073486 0.562504589557648,16.8125038146973 7.37500619888306,9.99999904632568 0.562504589557648,3.18750357627869 -3.72529029846191E-09,1.85156571865082 0.562504589557648,0.562505722045898 1.87498676776886,0z" />
+            </AppBarButton.Icon>
+        </AppBarButton>
+
+        <ListView Grid.Row="1" x:Name="listView" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:MapListElement Margin="5"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </Grid>
+</UserControl>

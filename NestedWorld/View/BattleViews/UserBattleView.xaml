@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.BattleViews.UserBattleView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.BattleViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="75"
+    Width="350">
+
+    <Grid Background="{StaticResource DarkbackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Ellipse Height="70" Width="70" Stroke="{StaticResource BackrgoundBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Path=UserImage}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="VICTORY" Margin="2" HorizontalAlignment="Center" FontSize="{StaticResource fontSizeSubTitle}" Foreground="{StaticResource BackrgoundBrush}"/>
+            <TextBlock Text="Date" Margin="2" HorizontalAlignment="Center"  Foreground="{StaticResource BackrgoundBrush}"/>
+            <TextBlock Text="location"  Margin="2" HorizontalAlignment="Center" Foreground="{StaticResource BackrgoundBrush}"/>
+        </StackPanel>
+
+        <Grid Grid.Column="2">
+            <Ellipse Height="70" Width="70" Stroke="{StaticResource BackrgoundBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Path=UserImage}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+    </Grid>
+</UserControl>

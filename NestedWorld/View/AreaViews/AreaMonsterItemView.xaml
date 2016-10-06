@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.AreaViews.AreaMonsterItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.AreaViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="75"
+    Width="75"
+    RenderTransformOrigin="0,0">
+    <UserControl.Resources>
+
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Ellipse>
+            <Ellipse.Fill>
+                <SolidColorBrush Color="{StaticResource background}"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse StrokeThickness="2">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="{Binding Path=Image}"/>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+                <SolidColorBrush Color="{Binding Path=color}"/>
+            </Ellipse.Stroke>
+        </Ellipse>
+        <Grid x:Name="InfoGrid" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <CompositeTransform ScaleX="0" ScaleY="0"/>
+            </Grid.RenderTransform>
+            <Grid.Background>
+                <SolidColorBrush Color="#7F616668"/>
+            </Grid.Background>
+            <Grid.BorderBrush>
+                <SolidColorBrush Color="#FF616668"/>
+            </Grid.BorderBrush>
+
+         
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,85 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.PrepareBattleView.UserMonsterListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.PrepareBattleView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:view="using:NestedWorld.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Your Monster" Margin="5"/>
+
+        <ScrollViewer Grid.Row="1">
+            <GridView HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"
+                  ItemsSource="{Binding}"
+                  x:Name="userMonsterGridView"
+                  CanDragItems="True"
+                  SelectionMode="Extended"
+                  DragItemsStarting="GridView_DragItemsStarting"
+                  CanReorderItems="True"
+                >
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <view:MonsterSoloView Margin="5"/>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                
+            </GridView>
+            
+        </ScrollViewer>
+
+
+        <TextBlock Grid.Row="2" Text="Monster for Battle" Margin="5"/>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="5" AllowDrop="True"  Drop="TargetListView_Drop"
+                   DragOver="TargetListView_DragOver" Background="{StaticResource BleuThreeBrush}"
+                  />
+            <Grid Margin="5" Grid.Column="1" AllowDrop="True"  Drop="TargetListView_Drop"
+                   DragOver="TargetListView_DragOver" Background="{StaticResource BleuThreeBrush}"
+                                   />
+
+            <Grid Margin="5" Grid.Column="2" AllowDrop="True"  Drop="TargetListView_Drop"
+                   DragOver="TargetListView_DragOver" Background="{StaticResource BleuThreeBrush}"
+                                   />
+
+            <Grid Margin="5" Grid.Column="3" AllowDrop="True"  Drop="TargetListView_Drop"
+                   DragOver="TargetListView_DragOver" Background="{StaticResource BleuThreeBrush}"
+                                    />
+
+        </Grid>
+
+        <GridView Visibility="Collapsed" Grid.Row="3" ItemsSource="{Binding}" 
+                   x:Name="selectedMonsterGridView" 
+                   AllowDrop="True"
+                   CanDragItems="True" 
+                   Drop="TargetListView_Drop"
+                   DragOver="TargetListView_DragOver"
+                   Background="{StaticResource BleuThreeBrush}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <view:MonsterSoloView Margin="20,5"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+
+        </GridView>
+    </Grid>
+</UserControl>

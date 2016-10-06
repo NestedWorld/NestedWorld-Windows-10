@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Groupe name="flower" image="ms-appx:///Assets/Flower/Flower.png">
+    <Item name="Fire Flower" image="ms-appx:///Assets/Flower/flowerFire.png" price="0.99" desc="description" type="1" att="1" def="2" life="3" exp="0"/>
+    <Item name="Water Flower" image="ms-appx:///Assets/Flower/flowerWater.png" price="0.99" desc="description" type="2" att="1" def="2" life="3" exp="0"/>
+    <Item name="Grass Flower" image="ms-appx:///Assets/Flower/flowerGrass.png" price="0.99" desc="description" type="3" att="1" def="2" life="3" exp="0"/>
+    <Item name="Dirt Flower" image="ms-appx:///Assets/Flower/flowerDirt.png" price="0.99" desc="description" type="4" att="1" def="2" life="3" exp="0"/>
+    <Item name="Electic Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="5" att="1" def="2" life="3" exp="0"/>
+    <Item name="Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="0" att="1" def="2" life="3" exp="0"/>
+  </Groupe>
+ <Groupe name="Tools" image="ms-appx:///Assets/NestedWorldLogo.png">
+    <Item name="Fire Flower" image="ms-appx:///Assets/Flower/flowerFire.png" price="0.99" desc="description" type="1" att="1" def="2" life="3" exp="0"/>
+    <Item name="Water Flower" image="ms-appx:///Assets/Flower/flowerWater.png" price="0.99" desc="description" type="2" att="1" def="2" life="3" exp="0"/>
+    <Item name="Grass Flower" image="ms-appx:///Assets/Flower/flowerGrass.png" price="0.99" desc="description" type="3" att="1" def="2" life="3" exp="0"/>
+    <Item name="Dirt Flower" image="ms-appx:///Assets/Flower/flowerDirt.png" price="0.99" desc="description" type="4" att="1" def="2" life="3" exp="0"/>
+    <Item name="Electic Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="5" att="1" def="2" life="3" exp="0"/>
+    <Item name="Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="0" att="1" def="2" life="3" exp="0"/>
+  </Groupe>
+ <Groupe name="Monster" image="ms-appx:///Assets/default_monster.png">
+    <Item name="Fire Flower" image="ms-appx:///Assets/Flower/flowerFire.png" price="0.99" desc="description" type="1" att="1" def="2" life="3" exp="0"/>
+    <Item name="Water Flower" image="ms-appx:///Assets/Flower/flowerWater.png" price="0.99" desc="description" type="2" att="1" def="2" life="3" exp="0"/>
+    <Item name="Grass Flower" image="ms-appx:///Assets/Flower/flowerGrass.png" price="0.99" desc="description" type="3" att="1" def="2" life="3" exp="0"/>
+    <Item name="Dirt Flower" image="ms-appx:///Assets/Flower/flowerDirt.png" price="0.99" desc="description" type="4" att="1" def="2" life="3" exp="0"/>
+    <Item name="Electic Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="5" att="1" def="2" life="3" exp="0"/>
+    <Item name="Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="0" att="1" def="2" life="3" exp="0"/>
+  </Groupe>
+ <Groupe name="flower" image="ms-appx:///Assets/Flower/Flower.png">
+    <Item name="Fire Flower" image="ms-appx:///Assets/Flower/flowerFire.png" price="0.99" desc="description" type="1" att="1" def="2" life="3" exp="0"/>
+    <Item name="Water Flower" image="ms-appx:///Assets/Flower/flowerWater.png" price="0.99" desc="description" type="2" att="1" def="2" life="3" exp="0"/>
+    <Item name="Grass Flower" image="ms-appx:///Assets/Flower/flowerGrass.png" price="0.99" desc="description" type="3" att="1" def="2" life="3" exp="0"/>
+    <Item name="Dirt Flower" image="ms-appx:///Assets/Flower/flowerDirt.png" price="0.99" desc="description" type="4" att="1" def="2" life="3" exp="0"/>
+    <Item name="Electic Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="5" att="1" def="2" life="3" exp="0"/>
+    <Item name="Flower" image="ms-appx:///Assets/Flower/flowerElec.png" price="0.99" desc="description" type="0" att="1" def="2" life="3" exp="0"/>
+  </Groupe>
+</Root>

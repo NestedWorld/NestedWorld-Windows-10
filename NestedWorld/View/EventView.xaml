@@ -1,0 +1,27 @@
+﻿<UserControl x:Name="userControl"
+    x:Class="NestedWorld.View.EventView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   mc:Ignorable="d">
+    <!--SplitView x:Name="splitViewOption" IsPaneOpen="False"  OpenPaneLength="250" DisplayMode="Overlay" CompactPaneLength="50" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+        <SplitView.Pane>
+            <StackPanel></StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid Width="{Binding Width, ElementName=userControl}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Button Click="HamburgerButton_Click"  Height="50" Width="50" x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="{StaticResource ForgroundBrush}" HorizontalAlignment="Left" Background="#00000000" />
+                </Grid>
+                <view:EventMainView Grid.Row="1" x:Name="EventMainView" x:FieldModifier="public"/>
+            </Grid>
+        </SplitView.Content>
+    </-->
+  
+</UserControl>

@@ -1,0 +1,89 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.AreaViews.AreaItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.AreaViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="300">
+
+    <Grid>
+        <StackPanel Background="{StaticResource BackrgoundBrush}" RenderTransformOrigin="0.5,0.5">
+            <Grid Height="175" Margin="5" >
+                <StackPanel HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="0, 0, 5, 0"  Click="Button_Click"  Height="50" Width="140" Background="{StaticResource BackrgoundBrush}">
+                            <Path  HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,18.998994L10,18.998994 10,20.998995 3.6957217,20.998995 3.7489566,21.144111C5.7468387,26.424817 10.691327,30.001 16.217963,30.001 22.460944,30.001 27.822974,25.57596 29.258948,19.238996L31.209968,19.681012C29.566962,26.934966 23.401954,32.000997 16.217963,32.000997 9.9657289,32.000997 4.3656281,28.043187 2.0010642,22.165466L1.9999998,22.162741 1.9999998,29.446997 0,29.446997z M16.217997,0C22.062997,0,27.297794,3.3901777,29.905921,8.6524944L29.999999,8.847024 29.999999,1.5159492 31.999999,1.5159492 31.999999,11.998978 21.999999,11.998978 21.999999,9.9989719 28.329637,9.9989719 28.119733,9.5532446C25.847263,4.9598923 21.295623,1.9999943 16.217997,1.9999943 9.9619972,1.9999943 4.5969971,6.4369812 3.1699972,12.789962L1.2189973,12.351963C2.8519971,5.0799856,9.0199968,0,16.217997,0z" Fill="{StaticResource ForgroundBrush}" />
+                        </Button>
+                        <Button Grid.Column="1" x:Name="profilButton" Margin="5, 0, 0, 0" Click="profilButton_Click"  Height="50" Width="140" Background="{StaticResource BackrgoundBrush}">
+                           
+                        </Button>
+                    </Grid>
+
+                    <TextBlock x:Name="NameMonster" Margin="5" TextAlignment="Center" Text="name" FontSize="20"/>
+                    <TextBlock x:Name="SurnameMonster" Margin="0, 2.5, 0, 2.5" TextAlignment="Center" Text="Surname" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="LevelMonster" x:Name="LevelMonster" Margin="0, 2.5, 0, 2.5" TextAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="0, 10">
+                <Ellipse Height="250" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center"  Stroke="{StaticResource ForgroundBrush}" StrokeThickness="2"/>
+                <Grid x:Name="grid" Height="300" Width="300" RenderTransformOrigin="0.5,0.5" >
+                    <Grid.RenderTransform>
+                        <CompositeTransform/>
+                    </Grid.RenderTransform>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="75"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="75"/>
+                    </Grid.ColumnDefinitions>
+                    <local:AreaItemItemView x:Name="itemOne" Grid.Column="2" Background="{StaticResource ElectBrush}"/>
+                    <local:AreaItemItemView x:Name="itemTwo" Grid.Column="0" Grid.Row="2" Background="{StaticResource FireBrush}" RenderTransformOrigin="0.5,0.5">
+                        <local:AreaItemItemView.RenderTransform>
+                            <CompositeTransform Rotation="-90"/>
+                        </local:AreaItemItemView.RenderTransform>
+                    </local:AreaItemItemView>
+                    <local:AreaItemItemView x:Name="itemFour" Grid.Column="4" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                        <local:AreaItemItemView.RenderTransform>
+                            <CompositeTransform Rotation="90"/>
+                        </local:AreaItemItemView.RenderTransform>
+                    </local:AreaItemItemView>
+                    <local:AreaItemItemView x:Name="itemTree" Grid.Column="2" Grid.Row="4" RenderTransformOrigin="0.5,0.5">
+                        <local:AreaItemItemView.RenderTransform>
+                            <CompositeTransform Rotation="-180"/>
+                        </local:AreaItemItemView.RenderTransform>
+                    </local:AreaItemItemView>
+
+
+                </Grid>
+                <Button x:Name="PrevButton" Click="Button_Click" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Style="{StaticResource ButtonStyleCircle}" Background="{StaticResource BleuTwoBrush}">
+                    <Path Data="M1.4200482,0L17.351001,16.046996 1.4980513,31.996001 0.078979631,30.585997 14.531046,16.046019 0,1.4089964z" Fill="{StaticResource BackrgoundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <CompositeTransform Rotation="180"/>
+                        </Path.RenderTransform>
+                    </Path>
+                </Button>
+
+                <Button x:Name="NextButton" Click="Button_Click" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" Grid.Column="4" Style="{StaticResource ButtonStyleCircle}" Background="{StaticResource BleuTwoBrush}">
+                    <Path Data="M1.4200482,0L17.351001,16.046996 1.4980513,31.996001 0.078979631,30.585997 14.531046,16.046019 0,1.4089964z" Fill="{StaticResource BackrgoundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+
+            </Grid>
+        </StackPanel>
+        <Popup x:Name="PopUpView"/>
+    </Grid>
+</UserControl>

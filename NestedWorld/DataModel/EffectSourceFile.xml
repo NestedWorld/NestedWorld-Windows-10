@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sprites>
+  <Sprite name="heal" folder="Effect" file="finalHeal.png" imagenumber="6" height="150" width="150"/>
+</Sprites>
