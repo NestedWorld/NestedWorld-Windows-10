@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NestedWorld.Utils
+namespace NestedWorldHttp.Utils
 {
     public class Log
     {

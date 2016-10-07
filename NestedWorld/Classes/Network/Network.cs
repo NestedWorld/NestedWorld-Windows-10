@@ -6,11 +6,12 @@ using NestedWorld.Classes.ElementsGame.Attack;
 using NestedWorld.Classes.ElementsGame.Monsters;
 using NestedWorld.Classes.ElementsGame.Player;
 using NestedWorld.Classes.ElementsGame.Users;
-using NestedWorld.Classes.Network.Request.Attacks;
-using NestedWorld.Classes.Network.Request.Places;
-using NestedWorld.Classes.Request.Auth;
-using NestedWorld.Classes.Request.Monster;
-using NestedWorld.Classes.Request.Users;
+using NestedWorldHttp;
+using NestedWorldHttp.Attacks;
+using NestedWorldHttp.Places;
+using NestedWorldHttp.Auth;
+using NestedWorldHttp.Monster;
+using NestedWorldHttp.Users;
 using NestedWorld.Utils;
 using Newtonsoft.Json.Linq;
 using System;
@@ -23,17 +24,17 @@ namespace NestedWorld.Classes.Network
 {
     public class Network
     {
-        private string _token;
         public InternetStatueView connectionView;
 
         public string Token
         {
-            get { return _token; }
+            get
+            {
+                return App.UserSession.Token;
+            }
             set
             {
-                _token = value;
-                StorageApplication.SetValue("TOKEN", value);
-
+                App.UserSession.Token = value;
             }
         }
 
@@ -66,18 +67,12 @@ namespace NestedWorld.Classes.Network
             streamConnection.onError += StreamConnection_onError;
         }
 
-        public bool IsFirstConnection()
-        {
-            return true;
-        }
-
-
         private void Connection_OnInternetAccess()
         {
             //throw new NotImplementedException();
 
             Log.Info("Connection", "Internet Access");
-           // this.connectionView.Hide();
+            // this.connectionView.Hide();
         }
 
         private void Connection_OnNoInternetAccess()
@@ -114,11 +109,17 @@ namespace NestedWorld.Classes.Network
                 };
             try
             {
-                JObject obj = await login.GetJsonAsync();
-                Token = obj["token"].ToObject<string>();
-                Debug.WriteLine("Token = " + Token);
-                await streamConnection.Connect();
-                ReturnObject = new ReturnObject() { Content = null, ErrorCode = 0, Message = string.Empty };
+                var ret = await login.GetJsonAsync();
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    Token = ret.Object["token"].ToObject<string>();
+                    await streamConnection.Connect();
+                    ReturnObject = new ReturnObject() { Content = null, ErrorCode = 0, Message = string.Empty };
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = ret.Object["message"].ToObject<string>(), ErrorCode = 1, Message = ret.Object["message"].ToObject<string>() };
+                }
             }
             catch (HttpRequestException HRException)
             {
@@ -154,8 +155,8 @@ namespace NestedWorld.Classes.Network
                 };
             try
             {
-                JObject obj = await userFriendsGet.GetJsonAsync();
-                UserList userlist = UserList.NewUserListFromJson(obj);
+                var ret = await userFriendsGet.GetJsonAsync();
+                UserList userlist = UserList.NewUserListFromJson(ret.Object);
                 ReturnObject = new ReturnObject() { Content = userlist, ErrorCode = 0, Message = string.Empty };
             }
             catch (HttpRequestException HRException)
@@ -192,9 +193,9 @@ namespace NestedWorld.Classes.Network
                 };
             try
             {
-                JObject obj = await userFriendsGet.GetJsonAsync();
+                var ret = await userFriendsGet.GetJsonAsync();
 
-                ReturnObject = new ReturnObject() { Content = obj, ErrorCode = 0, Message = string.Empty };
+                ReturnObject = new ReturnObject() { Content = ret.Object, ErrorCode = 0, Message = string.Empty };
             }
             catch (HttpRequestException HRException)
             {
@@ -234,10 +235,10 @@ namespace NestedWorld.Classes.Network
 
             try
             {
-                JObject obj = await user.GetJsonAsync();
+                var ret = await user.GetJsonAsync();
                 ReturnObject = new ReturnObject()
                 {
-                    Content = UserInfo.GetUserInfoFromJson(obj),
+                    Content = UserInfo.GetUserInfoFromJson(ret.Object),
                     ErrorCode = 0,
                     Message = string.Empty
                 };
@@ -278,7 +279,7 @@ namespace NestedWorld.Classes.Network
 
             try
             {
-                JObject obj = await logout.GetJsonAsync();
+                var ret = await logout.GetJsonAsync();
                 ReturnObject = new ReturnObject() { Content = null, ErrorCode = 0, Message = string.Empty };
             }
             catch (HttpRequestException HRException)
@@ -320,7 +321,8 @@ namespace NestedWorld.Classes.Network
                 };
             try
             {
-                ml = MonsterList.GetMonsterListFromJson(await monsters.GetJsonAsync());
+                var ret = await monsters.GetJsonAsync();
+                ml = MonsterList.GetMonsterListFromJson(ret.Object);
                 ReturnObject = new ReturnObject() { Content = ml, ErrorCode = 0, Message = string.Empty };
             }
             catch (HttpRequestException HRException)
@@ -362,7 +364,8 @@ namespace NestedWorld.Classes.Network
 
             try
             {
-                ml = MonsterList.GetUserMonsterListFromJson(await monsters.GetJsonAsync());
+                var ret = await monsters.GetJsonAsync();
+                ml = MonsterList.GetUserMonsterListFromJson(ret.Object);
                 ReturnObject = new ReturnObject() { Content = ml, ErrorCode = 0, Message = string.Empty };
             }
             catch (HttpRequestException HRException)
@@ -452,9 +455,9 @@ namespace NestedWorld.Classes.Network
 
             try
             {
-                var jsontmp = await request.GetJsonAsync();
+                var ret = await request.GetJsonAsync();
 
-                ReturnObject = new ReturnObject() { Content = AttackList.LoadFromJson(jsontmp), ErrorCode = 0, Message = "" };
+                ReturnObject = new ReturnObject() { Content = AttackList.LoadFromJson(ret.Object), ErrorCode = 0, Message = "" };
                 return ReturnObject;
             }
             catch (HttpRequestException HRException)
@@ -501,7 +504,7 @@ namespace NestedWorld.Classes.Network
 
             try
             {
-                var jsontmp = await request.GetJsonAsync();
+                var ret = await request.GetJsonAsync();
 
                 ReturnObject = new ReturnObject();
             }
@@ -689,8 +692,6 @@ namespace NestedWorld.Classes.Network
             SendRequest(Authenticate.GetAuthenticate(Token));
             streamConnection.StartLisen();
         }
-
-
         #endregion
     }
 }

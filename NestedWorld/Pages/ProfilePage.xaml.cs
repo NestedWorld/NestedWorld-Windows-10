@@ -1,4 +1,5 @@
-﻿using NestedWorld.Classes.ElementsGame.Users;
+﻿using NestedWorld.Classes.ElementsGame.Battle;
+using NestedWorld.Classes.ElementsGame.Users;
 using NestedWorld.Classes.Stats;
 using NestedWorld.Utils;
 using System;
@@ -103,8 +104,16 @@ namespace NestedWorld.Pages
 
         private void ProfilePage_OnCompled(object value)
         {
-            var battle = App.core.battleRouter.OppBattle[(value as MessagePack.Serveur.Combat.Available).id];
-            Frame.Navigate(typeof(Pages.PrepareBattlePage), battle);
+            try
+            {
+                var battle = App.core.battleRouter.OppBattle[(value as MessagePack.Serveur.Combat.Available).id];
+                Frame.Navigate(typeof(Pages.PrepareBattlePage), battle);
+
+            }
+            catch (NestedWorld.Classes.Exception.InvalideMapKeyException invalidMapKeyException)
+            {
+                Utils.Log.Error(invalidMapKeyException);
+            }
         }
     }
 }

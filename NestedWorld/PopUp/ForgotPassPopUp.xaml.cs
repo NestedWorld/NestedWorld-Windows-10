@@ -48,7 +48,7 @@ namespace NestedWorld.PopUp
                 return;
             }
 
-            Classes.Request.Auth.ResetPassword resetPassword = new Classes.Request.Auth.ResetPassword();
+            NestedWorldHttp.Auth.ResetPassword resetPassword = new NestedWorldHttp.Auth.ResetPassword();
 
             resetPassword.SetParam(mailEntry.Text);
             try

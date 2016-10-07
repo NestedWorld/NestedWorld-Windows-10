@@ -23,10 +23,7 @@ namespace NestedWorld
             UI.TitleBarCustom.ApplyToContainerMainPage();
 
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 500));
-           // App.network.connectionView = this.internalConnection;
         }
-
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -47,39 +44,39 @@ namespace NestedWorld
             ErrorTextBlock.Opacity = 0;
             if (UserNameText.Text == string.Empty)
             {
-                ShowError("Please enter a Login");
+                ShowError("Please enter your mail");
                 return;
             }
             if (PassWordText.Password == string.Empty)
             {
-                ShowError("Please enter a PassWord");
+                ShowError("Please enter your password");
                 return;
             }
 
             UserNameText.IsTabStop = false;
             PassWordText.IsTabStop = false;
+            App.UserSession.Mail = UserNameText.Text;
+            App.UserSession.Password = PassWordText.Password;
+        
+
             LoadingView.Start();
-
             loginButton.Visibility = Visibility.Collapsed;
-            var ret = await App.network.Connect(UserNameText.Text, PassWordText.Password);
-
-            LoadingView.Stop();
-            UserNameText.IsTabStop = true;
-            PassWordText.IsTabStop = true;
-
-            if (ret.IsError)
-                ShowError(ret.ToString());
-            else
+            try
             {
-                await App.core.Init();
-                loginButton.Visibility = Visibility.Visible;
-
-                UI.TitleBarCustom.ApplyToContainerHomePage();
-
-                Frame.Navigate(typeof(Pages.HomePage));
+                var ret = await App.UserSession.Connect();
+                if (ret.IsError)
+                {
+                    LoadingView.Stop();
+                    UserNameText.IsTabStop = true;
+                    PassWordText.IsTabStop = true;
+                    ShowError(ret.Message);
+                    loginButton.Visibility = Visibility.Visible;
+                }
             }
-            loginButton.Visibility = Visibility.Visible;
-
+            catch(System.Exception ex)
+            {
+                Utils.Log.Error(ex);
+            }
         }
 
         private void ShowError(string ErrorMessage)
@@ -88,24 +85,16 @@ namespace NestedWorld
             ErrorAnnimation.Begin();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Regiter_Click(object sender, RoutedEventArgs e)
         {
             LoadingView.Start();
-
             popupView.Child = new PopUp.RegisterPopUp();
             popupView.IsOpen = true;
         }
 
         private void Forgot_Click(object sender, RoutedEventArgs e)
         {
-
             LoadingView.Start();
-
             popupView.Child = new PopUp.ForgotPassPopUp();
             popupView.IsOpen = true;
         }
@@ -114,9 +103,6 @@ namespace NestedWorld
 
         private void Setting_Click(object sender, RoutedEventArgs e)
         {
-
-            //popupView.Child = new PopUp.SettingsPopUp();
-            //popupView.IsOpen = true;
         }
     }
 }

@@ -10,7 +10,7 @@ using NestedWorld.Classes.DesignUtilities;
 using NestedWorld.ViewModel;
 using NestedWorld.Classes.ElementsGame.Chat;
 using NestedWorld.Utils;
-using NestedWorld.Classes.Request.Users;
+using NestedWorldHttp.Users;
 using NestedWorld.Classes.ElementsGame.Attack;
 using NestedWorld.Classes.ElementsGame.Battle;
 

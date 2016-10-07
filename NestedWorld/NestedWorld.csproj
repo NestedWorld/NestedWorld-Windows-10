@@ -170,38 +170,17 @@
     <Compile Include="Classes\ElementsGame\Maps\MapController.cs" />
     <Compile Include="Classes\ElementsGame\Monsters\Monster.cs" />
     <Compile Include="Classes\ElementsGame\Monsters\MonsterList.cs" />
+    <Compile Include="Classes\ElementsGame\Session\UserSession.cs" />
     <Compile Include="Classes\ElementsGame\Shop\Shop.cs" />
     <Compile Include="Classes\ElementsGame\TypeEnum.cs" />
     <Compile Include="Classes\ElementsGame\Users\User.cs" />
     <Compile Include="Classes\ElementsGame\Users\UserList.cs" />
     <Compile Include="Classes\ElementsGame\Users\UserEnum.cs" />
+    <Compile Include="Classes\Exception\InvalideCompositeKeyException.cs" />
     <Compile Include="Classes\Exception\InvalideMapKeyException.cs" />
     <Compile Include="Classes\Network\AmazonPostingImage.cs" />
     <Compile Include="Classes\Network\ImageDownload.cs" />
     <Compile Include="Classes\Network\Network.cs" />
-    <Compile Include="Classes\Network\Request\Attacks\AttacksGet.cs" />
-    <Compile Include="Classes\Network\Request\Inventory\ObjectGet.cs" />
-    <Compile Include="Classes\Network\Request\Inventory\UserInventory.cs" />
-    <Compile Include="Classes\Network\Request\Places\PlaceGet.cs" />
-    <Compile Include="Classes\Network\Request\Places\PlaceMonster.cs" />
-    <Compile Include="Classes\Network\Request\Places\RegionMonster.cs" />
-    <Compile Include="Classes\Network\Request\Places\RegionsGet.cs" />
-    <Compile Include="Classes\Network\Request\ReturnObject.cs" />
-    <Compile Include="Classes\Network\Request\Auth\Login.cs" />
-    <Compile Include="Classes\Network\Request\Auth\Logout.cs" />
-    <Compile Include="Classes\Network\Request\Auth\Register.cs" />
-    <Compile Include="Classes\Network\Request\Auth\ResetPassword.cs" />
-    <Compile Include="Classes\Network\Request\HttpRequest.cs" />
-    <Compile Include="Classes\Network\Request\Monster\MonsterAttackIDGet.cs" />
-    <Compile Include="Classes\Network\Request\Monster\MonsterAttackIDPost.cs" />
-    <Compile Include="Classes\Network\Request\Monster\MonsterIDGet.cs" />
-    <Compile Include="Classes\Network\Request\Monster\MonsterIDPost.cs" />
-    <Compile Include="Classes\Network\Request\Monster\Monsters.cs" />
-    <Compile Include="Classes\Network\Request\Monster\UsersMonster.cs" />
-    <Compile Include="Classes\Network\Request\Users\UserFriendsGet.cs" />
-    <Compile Include="Classes\Network\Request\Users\UserFriendsPost.cs" />
-    <Compile Include="Classes\Network\Request\Users\UserPut.cs" />
-    <Compile Include="Classes\Network\Request\Users\Users.cs" />
     <Compile Include="Classes\ElementsGame\Stats\Stats.cs" />
     <Compile Include="Classes\Settings\Settings.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -299,9 +278,11 @@
     </Compile>
     <Compile Include="UI\SwipeContentControl.cs" />
     <Compile Include="UI\TitleBarCustom.cs" />
+    <Compile Include="Utils\AppData\Composite.cs" />
     <Compile Include="Utils\ColorUtils.cs" />
     <Compile Include="Utils\Connection.cs" />
     <Compile Include="Utils\CropBitmap.cs" />
+    <Compile Include="Utils\DateTimeExtend.cs" />
     <Compile Include="Utils\DeviceInformation.cs" />
     <Compile Include="Utils\GifView.xaml.cs">
       <DependentUpon>GifView.xaml</DependentUpon>
@@ -1016,9 +997,9 @@
       <Project>{ec7adc26-bb01-4f53-b072-4402e61b8366}</Project>
       <Name>MessagePackNestedWorld</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NotificationBackground\NotificationBackground.csproj">
-      <Project>{2a030313-195c-4650-8e36-02b3dda6f3f5}</Project>
-      <Name>NotificationBackground</Name>
+    <ProjectReference Include="..\NestedWorldHttp\NestedWorldHttp.csproj">
+      <Project>{12ca764e-f367-4d26-b162-ddf1a5baf415}</Project>
+      <Name>NestedWorldHttp</Name>
     </ProjectReference>
     <ProjectReference Include="..\SocketLib\SocketLib.csproj">
       <Project>{d8f77536-bee0-4be3-9c75-935f88afa503}</Project>

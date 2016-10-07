@@ -104,7 +104,7 @@ namespace NestedWorld.PopUp
 
         private async void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Classes.Request.Auth.Register register = new Classes.Request.Auth.Register();
+            NestedWorldHttp.Auth.Register register = new NestedWorldHttp.Auth.Register();
 
             if (passOneEntry.Password != passTwoEntry.Password)
             {

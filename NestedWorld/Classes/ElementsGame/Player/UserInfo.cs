@@ -36,9 +36,9 @@ namespace NestedWorld.Classes.ElementsGame.Player
         internal static UserInfo GetUserInfoFromJson(JObject obj)
         {
             JObject item = obj["user"].ToObject<JObject>();
-            string avatar = item["avatar"].ToObject<string>() == null ? "" : item["avatar"].ToObject<string>();
+            string avatar = item["avatar"].ToObject<string>() == null ? "ms-appx:///Assets/profilDefault.png" : item["avatar"].ToObject<string>();
             string name = item["pseudo"].ToObject<string>();
-            string background = item["background"].ToObject<string>() == null ? "" : item["background"].ToObject<string>();
+            string background = item["background"].ToObject<string>() == null ? "ms-appx:///Assets/NestedWorldLogo.png" : item["background"].ToObject<string>();
             int level = item["level"].ToObject<int>();
             return new UserInfo(name, avatar, background, level, 40);
         }

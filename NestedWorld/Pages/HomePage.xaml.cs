@@ -113,8 +113,7 @@ namespace NestedWorld.Pages
 
         private void LogtoutClick(object sender, RoutedEventArgs e)
         {
-            var ret = App.network.Logout();
-            Frame.Navigate(typeof(MainPage));
+            App.UserSession.Disconnect();
         }
 
         private void homeView_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
