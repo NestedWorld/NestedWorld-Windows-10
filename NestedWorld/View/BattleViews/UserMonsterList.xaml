@@ -6,24 +6,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Height="50"
-    Width="400">
+    Height="50">
 
-    <Grid Background="{StaticResource BackrgoundBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="100*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Background="{StaticResource BattleBrushWhite}">
+        <GridView  ItemsSource="{Binding}" HorizontalAlignment="Center" SelectionChanged="UserMonserGridView_SelectionChanged" x:Name="UserMonserGridView">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <local:UserMonsterView Height="40" Width="75"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
         
-        <local:UserMonsterView x:Name="monsterOne" Tapped="monsterOne_Tapped" Grid.Column="0" Margin="2, 2, 1, 2"/>
+        <!--local:UserMonsterView x:Name="monsterOne" Tapped="monsterOne_Tapped" Grid.Column="0" Margin="2, 2, 1, 2"/>
 
         <local:UserMonsterView x:Name="monsterTwo" Tapped="monsterOne_Tapped" Grid.Column="1" Margin="1, 2, 1, 2"/>
 
         <local:UserMonsterView x:Name="monsterThree" Tapped="monsterOne_Tapped" Grid.Column="2" Margin="1, 2, 1, 2"/>
 
-        <local:UserMonsterView x:Name="monsterFour" Tapped="monsterOne_Tapped" Grid.Column="3" Margin="1, 2, 2, 2"/>
+        <local:UserMonsterView x:Name="monsterFour" Tapped="monsterOne_Tapped" Grid.Column="3" Margin="1, 2, 2, 2"/-->
 
 
     </Grid>

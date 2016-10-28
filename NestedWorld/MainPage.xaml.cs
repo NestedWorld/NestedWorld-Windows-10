@@ -1,7 +1,9 @@
 ﻿using MessagePackNestedWorld.MessagePack.Client.Result.Combat;
+using NestedWorld.Utils;
 using System;
 using System.Diagnostics;
 using Windows.Foundation;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -57,7 +59,7 @@ namespace NestedWorld
             PassWordText.IsTabStop = false;
             App.UserSession.Mail = UserNameText.Text;
             App.UserSession.Password = PassWordText.Password;
-        
+
 
             LoadingView.Start();
             loginButton.Visibility = Visibility.Collapsed;
@@ -73,7 +75,7 @@ namespace NestedWorld
                     loginButton.Visibility = Visibility.Visible;
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 Utils.Log.Error(ex);
             }
@@ -90,6 +92,7 @@ namespace NestedWorld
             LoadingView.Start();
             popupView.Child = new PopUp.RegisterPopUp();
             popupView.IsOpen = true;
+
         }
 
         private void Forgot_Click(object sender, RoutedEventArgs e)

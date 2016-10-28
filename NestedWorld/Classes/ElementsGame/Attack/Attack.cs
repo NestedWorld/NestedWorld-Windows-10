@@ -43,6 +43,26 @@ namespace NestedWorld.Classes.ElementsGame.Attack
 
         public AttackType Type { get; set; }
 
+        public string typeString
+        {
+            get
+            {
+                switch (Type)
+                {
+                    case (AttackType.ATTACK):
+                        return "attack";
+                    case (AttackType.ATTACKSPE):
+                        return "attack special";
+                    case (AttackType.DEF):
+                        return "defense";
+                    case (AttackType.DEFSPE):
+                        return "defense special";
+                }
+                return "";
+            }
+            set { }
+        }
+
         #endregion
 
         public Attack(string name, string resource, TypeEnum type)

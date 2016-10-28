@@ -38,9 +38,9 @@ namespace NestedWorld.Style
             set
             {
                 _isSelect = value;
-                SetValue(backgroundProperty, new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF616668")));
+                SetValue(backgroundProperty, new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF808080")));
                 if (value)
-                    SetValue(backgroundProperty, new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF2196F3")));
+                    SetValue(backgroundProperty, new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FFFFFFFF")));
              }
         }
 

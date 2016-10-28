@@ -22,13 +22,19 @@ namespace NestedWorld.View.MonsterViews
 {
     public sealed partial class MonsterListView : UserControl
     {
+        public delegate void MonsterSelected(Monster value);
+
+        public event MonsterSelected OnMonsterSelected;
+
+
+
         public MonsterListView()
         {
             this.InitializeComponent();
             this.DataContextChanged += MonsterListView_DataContextChanged;
         }
 
-      
+
         private void MonsterListView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             try
@@ -46,7 +52,7 @@ namespace NestedWorld.View.MonsterViews
         {
             try
             {
-                Log.Info("MonsterGridView_SelectionChanged", (MonsterGridView.SelectedItem as Monster).Name);
+                OnMonsterSelected?.Invoke((MonsterGridView.SelectedItem as Monster));
             }
             catch (Exception ex)
             {

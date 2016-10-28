@@ -8,31 +8,30 @@
     mc:Ignorable="d"
     Width="100"
     Height="100">
-    <Grid Background="{StaticResource BackrgoundBrush}">
+    <Grid x:Name="root">
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Height="55" Width="55" VerticalAlignment="Top">
-            <Ellipse StrokeThickness="2" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="{StaticResource ForgroundBrush}">
-                <Ellipse.Fill>
-                    <ImageBrush Stretch="Fill" ImageSource="{Binding Path=Image}"/>
-                </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Height="15" Width="15" Margin="2.5" StrokeThickness="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Fill="{StaticResource BackrgoundBrush}">
-                <Ellipse.Stroke>
-                    <SolidColorBrush Color="{Binding Path=color}"/>
-                </Ellipse.Stroke>
-            </Ellipse>
-            <Ellipse Height="15" Width="15" Margin="2.5" StrokeThickness="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Stroke="{StaticResource ForgroundBrush}">
-                <Ellipse.Fill>
-                    <ImageBrush Stretch="Fill" ImageSource="{Binding Path=ImageType}"/>
-                </Ellipse.Fill>
-            </Ellipse>
-        </Grid>
-        <StackPanel Grid.Row="1" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
-            <TextBlock Margin="3" Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" FontSize="15" Foreground="{StaticResource ForgroundBrush}" />
-            <TextBlock Text="{Binding Path=Info}"  Style="{StaticResource TextBlockStyleOne}" Margin="0,5,0,0" FontSize="10"/>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Margin="2.5" x:Name="rectangleMain"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Stroke="{StaticResource ForgroundBrush}">
+            <Rectangle.Fill>
+                <ImageBrush Stretch="Fill" ImageSource="{Binding Path=Image}"/>
+            </Rectangle.Fill>
+           
+        </Rectangle>
+        <Ellipse Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="Fill" ImageSource="{Binding Path=ImageType}"/>
+            </Ellipse.Fill>
+        </Ellipse>
+       <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" FontSize="10" Foreground="{StaticResource ForgroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

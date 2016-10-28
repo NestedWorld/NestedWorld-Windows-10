@@ -22,14 +22,9 @@ namespace NestedWorld.View.UserViews
         public AllyView()
         {
             this.InitializeComponent();
-            this.Loaded += AllyView_Loaded;
         }
 
-        private void AllyView_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.LevelTextBlock.Text += " lvl";
-        }
-
+      
         private void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame root = Window.Current.Content as Frame;

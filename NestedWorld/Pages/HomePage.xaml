@@ -13,7 +13,7 @@
     mc:Ignorable="d"
     Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-       
+
     </Page.Resources>
 
     <Page.Foreground>
@@ -34,14 +34,14 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{StaticResource BleuTwoBrush}">
+                <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{StaticResource DarkbackgroundBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Nested World"  FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Foreground="{StaticResource BackrgoundBrush}"/>
 
-                    <CommandBar Grid.Column="1" Background="{StaticResource BleuTwoBrush}" Foreground="{StaticResource BackrgoundBrush}" >
+                    <CommandBar Grid.Column="1" Background="{StaticResource DarkbackgroundBrush}" Foreground="{StaticResource BackrgoundBrush}" >
                         <CommandBar.PrimaryCommands>
                             <AppBarButton Click="BattleClick" x:Name="BattleButton" Foreground="{StaticResource BackrgoundBrush}" Style="{StaticResource AppBarButtonStylePushCount}">
                                 <AppBarButton.Icon>
@@ -78,9 +78,7 @@
                             <PivotItem.Header>
                                 <Style:TabHeader Icon="M12,2A9,9 0 0,0 3,11V22L6,19L9,22L12,19L15,22L18,19L21,22V11A9,9 0 0,0 12,2M9,8A2,2 0 0,1 11,10A2,2 0 0,1 9,12A2,2 0 0,1 7,10A2,2 0 0,1 9,8M15,8A2,2 0 0,1 17,10A2,2 0 0,1 15,12A2,2 0 0,1 13,10A2,2 0 0,1 15,8Z" />
                             </PivotItem.Header>
-                            <RelativePanel>
-                                <view:MonsterTapItem x:Name="MonsterView" x:FieldModifier="public"/>
-                            </RelativePanel>
+                            <view:MonsterTab x:Name="MonsterView" x:FieldModifier="public"/>
                         </PivotItem>
                         <PivotItem Margin="0">
                             <PivotItem.Header>

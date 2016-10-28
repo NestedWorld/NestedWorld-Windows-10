@@ -48,7 +48,13 @@ namespace NestedWorld.Classes.ElementsGame.Session
             this.composite = Utils.AppData.Composite.Instance("session");
         }
 
-        public void Delete()
+        public async void Delete()
+        {
+            this.composite.Save();
+            await App.network.Logout();
+        }
+
+        public void SaveToken()
         {
             this.composite.Save();
         }

@@ -56,16 +56,18 @@ namespace NestedWorld.Classes.ElementsGame.Attack
         public AttackList NewAttackListFromJson(JObject Jobject)
         {
             AttackList ret = new AttackList();
-
-            JArray array = Jobject["attacks"].ToObject<JArray>();
-
-            int i = 0;
-
-            foreach (JObject obj in array)
+            try
             {
-                Attack att = list[obj["id"].ToObject<int>()];
-                ret.Add(att);
-                i++;
+                JArray array = Jobject["attacks"].ToObject<JArray>();
+                foreach (JObject obj in array)
+                {
+                    Attack att = list[obj["id"].ToObject<int>()];
+                    ret.Add(att);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Utils.Log.Error("AttackList::NewAttackListFromJson", ex);
             }
             return ret;
         }

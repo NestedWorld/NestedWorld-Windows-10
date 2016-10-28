@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Height="50"
-    Width="50" RenderTransformOrigin="0.5,0.5">
+    Width="50"
+             RenderTransformOrigin="0.5,0.5">
     <UserControl.Resources>
         <Storyboard x:Name="Active">
             <DoubleAnimation Duration="0:0:0.4" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="userControl" d:IsOptimized="True">
@@ -54,7 +55,7 @@
 
     <Grid>
         <Ellipse Fill="{StaticResource BackrgoundBrush}"></Ellipse>
-        <Ellipse Stroke="{StaticResource ForgroundBrush}" StrokeThickness="2">
+        <Ellipse Stroke="{StaticResource ForgroundBrush}">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="{Binding ImageItem}"/>
             </Ellipse.Fill>

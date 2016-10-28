@@ -1,0 +1,31 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.MonsterViews.MonsterPage.CharacView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.MonsterViews.MonsterPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="40"
+  >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock TextWrapping="WrapWholeWords" Text="{Binding Path=Name}" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="{StaticResource ForgroundBrush}"/>
+
+        <Grid Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2">
+            <Rectangle Height="25" Width="305" Fill="{StaticResource ForgroundBrush}" />
+            <Rectangle Height="20" HorizontalAlignment="Left" Width="{Binding Path=Size}" x:Name="LifeBar" Margin="2" Fill="{StaticResource BleuTwoBrush}"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Path=Value}" Foreground="{StaticResource BackrgoundBrush}"/>
+            <TextBlock Text="/" Margin="3,0" Foreground="{StaticResource BackrgoundBrush}"/>
+            <TextBlock Text="{Binding Path=ValueMax}" Foreground="{StaticResource BackrgoundBrush}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

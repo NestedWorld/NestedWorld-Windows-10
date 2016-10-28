@@ -167,8 +167,7 @@
         </StackPanel>
 
 
-
-
+       
         <Popup Grid.Row="0" Grid.RowSpan="4" IsOpen="False" x:Name="popupView" IsLightDismissEnabled="True">
 
         </Popup>
@@ -183,6 +182,5 @@
         </Button>
 
         <UI:LoadingView x:Name="LoadingView" Grid.RowSpan="5" Visibility="Collapsed"/>
-       
     </Grid>
 </Page>

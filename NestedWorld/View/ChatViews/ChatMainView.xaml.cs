@@ -1,4 +1,4 @@
-﻿using NestedWorld.Classes.ElementGame.Chat;
+﻿using NestedWorld.Classes.ElementsGame.Chat;
 using NestedWorld.Classes.ElementsGame.Users;
 using System;
 using System.Collections.Generic;

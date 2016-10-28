@@ -1,4 +1,5 @@
 ﻿using NestedWorld.Classes.ElementsGame.Battle;
+using NestedWorld.Classes.ElementsGame.Player;
 using NestedWorld.Classes.ElementsGame.Users;
 using NestedWorld.Classes.Stats;
 using NestedWorld.Utils;
@@ -71,7 +72,7 @@ namespace NestedWorld.Pages
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.EditProfileView.Show();
         }
 
 
@@ -99,21 +100,45 @@ namespace NestedWorld.Pages
 
         private void Tmp_OnCompled(MessagePack.Serveur.ResultRequest sender)
         {
-            App.network.serveurMessageList["combat:available"].OnCompled += ProfilePage_OnCompled;
+            User user = this.DataContext as User;
+
+            App.core.battleRouter.OppBattle[sender.id] = new Classes.ElementsGame.Battle.Battle()
+            {
+                OpponentImage = user.Image,
+                OpponentName = user.Name,
+                BattleID = sender.id,
+                ContextBattle = Context.PVP,
+                StateBattle = State.AVALAIBLE
+            };
+            var battle = App.core.battleRouter.OppBattle[sender.id];
+            Frame.Navigate(typeof(Pages.PrepareBattlePage), battle);
+
+            /*            }
+                        App.network.serveurMessageList["combat:available"].OnCompled += ProfilePage_OnCompled;*/
         }
 
         private void ProfilePage_OnCompled(object value)
         {
             try
             {
-                var battle = App.core.battleRouter.OppBattle[(value as MessagePack.Serveur.Combat.Available).id];
-                Frame.Navigate(typeof(Pages.PrepareBattlePage), battle);
-
+                MessagePack.Serveur.Combat.Available av = value as MessagePack.Serveur.Combat.Available;
+                if (av.origin == "duel")
+                {
+                    var battle = App.core.battleRouter.OppBattle[av.id];
+                    Frame.Navigate(typeof(Pages.PrepareBattlePage), battle);
+                }
             }
             catch (NestedWorld.Classes.Exception.InvalideMapKeyException invalidMapKeyException)
             {
                 Utils.Log.Error(invalidMapKeyException);
             }
+        }
+
+        private async void EditProfileView_OnCompled()
+        {
+            var ret = await App.network.GetUserInfo();
+
+            App.core.user = ret.Content as UserInfo;
         }
     }
 }

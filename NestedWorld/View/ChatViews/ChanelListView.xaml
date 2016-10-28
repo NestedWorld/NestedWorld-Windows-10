@@ -8,12 +8,18 @@
     mc:Ignorable="d"
     Width="350">
 
-    <Grid>
+    <Grid Background="{StaticResource DarkApplicationbackgroundBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="list" ItemsSource="{Binding}">
+        
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Text="Channels" Foreground="{StaticResource BackrgoundBrush}"/>
+
+        <Line X1="25" Y1="50" Y2="50" X2="325" StrokeThickness="2" Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource BackrgoundBrush}"></Line>
+
+        <ListView x:Name="list" Grid.Row="1" Margin="0, 10" ItemsSource="{Binding}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <local:ChanelView/>
@@ -21,7 +27,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="75"/>

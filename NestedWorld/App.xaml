@@ -28,16 +28,24 @@
         <Color x:Key="foreground">#616668</Color>
         <Color x:Key="BleuThree">#E3F2FD</Color>
 
+        <Color x:Key="BattleBackground">#CDFFFFFF</Color>
+        <Color x:Key="BattleForground">#CD616668</Color>
+        
+        <Color x:Key="ApplicationPageBackground">#FFEEEEEE</Color>
         <Color x:Key="Darkbackground">#FF1C1C25</Color>
         <Color x:Key="DarkApplicationbackground">#FF23232C</Color>
-
-        <Color x:Key="ApplicationPageBackground">#FFEEEEEE</Color>
 
         <x:Double x:Key="fontSizeTitle">30</x:Double>
         <x:Double x:Key="fontSizeSubTitle">20</x:Double>
         <x:Double x:Key="fontSize">15</x:Double>
+        
         <SolidColorBrush x:Key="DarkbackgroundBrush" Color="{StaticResource Darkbackground}"/>
         <SolidColorBrush x:Key="DarkApplicationbackgroundBrush" Color="{StaticResource DarkApplicationbackground}"/>
+
+        <SolidColorBrush x:Key="BattleBrushWhite" Color="{StaticResource BattleBackground}"/>
+        <SolidColorBrush x:Key="BattleBrushGrey" Color="{StaticResource BattleForground}"/>
+
+
 
         <SolidColorBrush x:Key="BackrgoundBrush" Color="{StaticResource background}"/>
         <SolidColorBrush x:Key="BleuTwoBrush" Color="{StaticResource BleuTwo}"/>
@@ -49,8 +57,7 @@
         <x:Double x:Key="PoliceSize">20</x:Double>
         <x:Double x:Key="TitleSize">40</x:Double>
         <x:String x:Key="maptoken">koCu3E5EUCni7ncnfPMV~33z8zI7S7emKhB-OthEBHg~Anf9TkDkiGp6pvYnLf07MoIVdrd47eWKRSvXlsQaM48XE8SapOwEtwV_tTQqKEnZ</x:String>
-        <FontFamily x:Key="Font">Segoe UI Light</FontFamily>
-
+        <FontFamily x:Key="Font">Assets/Font/Aller_Lt.ttf#Aller Light</FontFamily>
         <Style TargetType="Button" x:Key="ButtonStyleOne">
             <Setter Property="Background" Value="{StaticResource ResourceKey=background}"/>
             <Setter Property="Foreground" Value="{StaticResource ResourceKey=foreground}"/>

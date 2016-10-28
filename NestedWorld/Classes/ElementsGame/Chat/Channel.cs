@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace NestedWorld.Classes.ElementGame.Chat
+namespace NestedWorld.Classes.ElementsGame.Chat
 {
     public class Channel
     {

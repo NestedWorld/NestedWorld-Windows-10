@@ -6,8 +6,7 @@
     xmlns:user="using:NestedWorld.View.UserViews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:popup="using:NestedWorld.PopUp"
-    
+    xmlns:popup="using:NestedWorld.PopUp"  
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -31,11 +30,11 @@
         <GridView x:Name="userGridView" HorizontalAlignment="Center" Grid.Row="1" ItemsSource="{Binding}">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <user:AllyView Margin="20"/>
+                    <user:AllyView />
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <Popup x:Name="NewAlliePopupEntry">
-        </Popup>
+        <popup:AddAllyPopUp x:Name="AddAllyPopUp" Grid.RowSpan="2" VerticalAlignment="Top"/>
+
     </Grid>
 </UserControl>

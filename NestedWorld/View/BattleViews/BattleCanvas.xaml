@@ -10,6 +10,6 @@
 
     <Grid>
         <Canvas Visibility="Visible" x:FieldModifier="public" x:Name="mainCanvas"/>
-        <InkCanvas x:Name="inkCanvas" x:FieldModifier="public"/>
+        <InkCanvas x:Name="inkCanvas" x:FieldModifier="public" />
     </Grid>
 </UserControl>

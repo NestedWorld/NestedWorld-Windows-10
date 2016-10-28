@@ -92,6 +92,7 @@ namespace NestedWorld
                 if (UserSession.ValideToken)
                 {
                     var ret = await UserSession.Connect();
+                    Utils.Log.Info(ret);
                     if (ret.IsError)
                         rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }

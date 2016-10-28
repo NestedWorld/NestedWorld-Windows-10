@@ -13,11 +13,14 @@ using NestedWorld.Utils;
 using NestedWorldHttp.Users;
 using NestedWorld.Classes.ElementsGame.Attack;
 using NestedWorld.Classes.ElementsGame.Battle;
+using NestedWorld.Classes.ElementsGame.Item;
 
 namespace NestedWorld.Classes
 {
     public class Core
     {
+
+        public ItemList itemsList { get; set; } 
         public BattleRouter battleRouter { get; set; }
         public MonsterList monsterList { get; set; }
         public AttackList attackList { get; set; }
@@ -64,7 +67,6 @@ namespace NestedWorld.Classes
 
         public async Task Init()
         {
-            //UpdateInfo();
             areaList.Init();
             var ret = await App.network.GetUserInfo();
             user = ret.Content as UserInfo;
@@ -81,21 +83,15 @@ namespace NestedWorld.Classes
             ret = await App.network.GetAllies();
             userList = ret.Content as UserList;
             ret.ShowError();
+            ret = await App.network.GetObject();
+            itemsList = ret.Content as ItemList;
+            ret.ShowError();
             MapController = await MapController.GetNewMapController();
             Chat.Init();
             battleRouter.Init();
             user.AllyOnline = userList.UserOnLineNumber;
             user.AreasNumber = areaList.content.Count;
             user.MonsterCaptured = monsterUserList.monsterList.Count;
-        }
-
-        private async void UpdateInfo()
-        {
-            UserPut up = new UserPut();
-
-            up.SetParam("Thomas Caron", "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/10922803_10208019930037378_4351704227098544776_n.jpg?oh=9a17c7043f72507a08a4a9aa5e5eacb7&oe=57EE46D7", "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/12745856_10208904941482111_44201625354049998_n.jpg?oh=a788c33b1d88bac244cafdaab88cb7b9&oe=57FF34FA");
-
-            await up.GetJsonAsync();
         }
     }
 }

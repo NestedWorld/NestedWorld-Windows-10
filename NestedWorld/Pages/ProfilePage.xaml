@@ -47,6 +47,9 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
             </CommandBar>
+
+            <View:EditProfileView Height="500" Width="400" x:Name="EditProfileView" OnCompled="EditProfileView_OnCompled"/>
+
         </Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

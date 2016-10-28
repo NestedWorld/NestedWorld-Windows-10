@@ -5,14 +5,13 @@
     xmlns:local="using:NestedWorld.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:NestedWorld.View.ItemsViews.ItemsTab"
     mc:Ignorable="d">
+   
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-       
+        <view:ItemsListView OnItemSelected="ItemsListView_OnItemSelected"/>
+
+        <view:Use x:Name="Use" Height="500" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
     </Grid>
 </UserControl>

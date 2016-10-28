@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.MonsterViews.MonsterPage.MonsterSpecView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.MonsterViews.MonsterPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="200"
+    >
+
+    <StackPanel>
+      
+
+        <local:CharacView x:Name="lifeSpec"/>
+        <local:CharacView x:Name="AttackSpec"/>
+        <local:CharacView x:Name="DefSpec"/>
+        <local:CharacView x:Name="AttackSpeSpec"/>
+        <local:CharacView x:Name="DefSpeSpec"/>
+
+    </StackPanel>
+</UserControl>

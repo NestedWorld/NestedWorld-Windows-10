@@ -1,6 +1,5 @@
 ﻿using MessagePack.Client.Chat;
 using MessagePack.Serveur.Chat;
-using NestedWorld.Classes.ElementGame.Chat;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

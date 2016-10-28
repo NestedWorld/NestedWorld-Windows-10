@@ -27,25 +27,18 @@ namespace NestedWorld.View
             set
             {
                 _monsterList = value;
-                main.monsterListView.DataContext = monsterList.monsterList;
+                this.DataContext = value;
             }
         }
 
         public MonsterTapItem()
         {
-            this.InitializeComponent();
-            menu.monsterList = monsterList;
+            this.InitializeComponent();            
         }
 
         public void Init()
         {
-            LoadingView.Start();
-
-            //     var ret = await App.network.GetUseMonster();
-
             monsterList = App.core.monsterList;
-            LoadingView.Stop();
-            // ret.ShowError();*/
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -53,12 +46,19 @@ namespace NestedWorld.View
             monsterList = new MonsterList(monsterList.SearchMonster((sender as TextBox).Text));
         }
 
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void monsterListView_OnMonsterSelected(Monster value)
         {
-            splitViewOption.IsPaneOpen = !splitViewOption.IsPaneOpen;
+
         }
 
+        private void Banner_OnPannelOpenClose()
+        {
+            //this.splitViewOption.IsPaneOpen = !splitViewOption.IsPaneOpen;
+        }
+
+        private void Banner_OnSearch(string term)
+        {
+             monsterList = new MonsterList(App.core.monsterList.SearchMonster(term));
+        }
     }
 }

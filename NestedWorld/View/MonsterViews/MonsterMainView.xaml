@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <local:MonsterListView Grid.Row="1" HorizontalAlignment="Left" x:FieldModifier="public" x:Name="monsterListView"/>
+        <local:MonsterListView Grid.Row="1"  x:FieldModifier="public" x:Name="monsterListView"/>
     </Grid>
 </UserControl>

@@ -19,6 +19,7 @@ namespace NestedWorld.UI
 {
     public sealed partial class AnimatedBackground : UserControl
     {
+        
         public AnimatedBackground()
         {
             this.InitializeComponent();

@@ -17,7 +17,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         public TypeEnum Type { get; private set; }
         public Color color { get { return (Utils.ColorUtils.GetColorFromHex(Utils.ColorUtils.GetTypeColor(Type))); } set { } }
         public SolidColorBrush Brush { get { return new SolidColorBrush(color); } set { } }
-        public string Image { get; private set; }
+        public string Image { get { if (PlayerMonster) return UserImage; return WildImage; } set { } }
         public string ImageBackground { get; private set; }
         public string ImageType { get { return Utils.ImageUtils.GetImageType(Type); } set { } }
         public string Info { get; private set; }
@@ -26,6 +26,9 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         public int Level { get; private set; }
         public int LifeMax { get; set; }
         public double LifePercent { get { return (Life * 100) / LifeMax; } }
+
+        public string UserImage { get; set; }
+        public string WildImage { get; set; }
 
         public int Life { get; set; }
         public int Exp { get; private set; }
@@ -37,6 +40,35 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         public int UserID { get; private set; }
         public Attack.AttackList attackList { get; set; }
 
+
+        public bool PlayerAs { get; set; }
+
+        public Monster(Monster source)
+        {
+            this.Name = source.Name;
+            this.Type = source.Type;
+            this.Image = source.Image;
+            this.ID = source.ID;
+            mmp = new MonsterMapPoint();
+            mmp.DataContext = this;
+            Info = source.Info;
+            PlayerMonster = source.PlayerMonster;
+            this.attackList = source.attackList;
+            this.ImageBackground = "http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png";
+
+            if (PlayerMonster)
+            {
+                this.UserID = source.UserID;
+                this.Level = source.Level;
+                this.Life = source.Life;
+                this.Exp = source.Exp;
+                this.Attackeffect = source.Attackeffect;
+                this.Defence = source.Defence;
+                this.Surname = source.Surname;
+            }
+
+        }
+
         public Monster(string name, TypeEnum type, string image, int id, string info)
         {
             this.Name = name;
@@ -47,11 +79,10 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             mmp.DataContext = this;
             Info = info;
             PlayerMonster = false;
+            PlayerAs = false;
             this.attackList = Attack.AttackList.NewAttackList();
             this.ImageBackground = "http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png";
         }
-
-       
 
         public Monster(int ID, string name, TypeEnum type, string image, string info,
            int level = 0, int live = 0, int exp = 0, int attack = 0, int def = 0, string surname = null, int iduser = 0)
@@ -66,19 +97,53 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             this.Attackeffect = attack;
             this.Defence = def;
             this.Surname = surname;
+            this.LifeMax = live;
 
         }
 
+        
 
         internal static Monster GetMonster(JObject jObject)
         {
             try
             {
-                return new Monster(jObject["id"].ToObject<int>(),
-                    jObject["name"].ToObject<string>(),
-                    Utils.RandomValue.GetRandValueType(),
-                    "ms-appx:///Assets/default_monster.png",
-                    "Monster Description");
+                TypeEnum type = TypeEnum.FIRE;
+
+                switch (jObject["type"].ToObject<string>())
+                {
+                    case ("fire"):
+                        type = TypeEnum.FIRE;
+                        break;
+                    case ("plant"):
+                        type = TypeEnum.GRASS;
+                        break;
+                    case ("electric"):
+                        type = TypeEnum.ELEC;
+                        break;
+                    case ("water"):
+                        type = TypeEnum.WATHER;
+                        break;
+                    case ("earth"):
+                        type = TypeEnum.DIRT;
+                        break;
+                }
+
+                string name = jObject["name"].ToObject<string>();
+                string enraged_sprite = "https://s3-eu-west-1.amazonaws.com/nestedworld/Monsters/default_monster.png";
+               // string enraged_sprite = jObject["enraged_sprite"].ToObject<string>();
+                string base_sprite = jObject["base_sprite"].ToObject<string>();
+                int id = jObject["id"].ToObject<int>();
+                Monster ret =  new Monster()
+                {
+                    Name = name,
+                    ID = id,
+                    Type = type,
+                    UserImage = base_sprite,
+                    WildImage = enraged_sprite
+                };
+
+                ret.LoadAttack();
+                return ret;
             }
             catch (System.Exception ex)
             {
@@ -96,19 +161,36 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
 
                 int defense = Infos["defense"].ToObject<int>();
                 string name = Infos["name"].ToObject<string>();
-                int iduser = Infos["id"].ToObject<int>();
+             
                 int hp = Infos["hp"].ToObject<int>();
                 int attack = Infos["attack"].ToObject<int>();
-                int id = jObject["id"].ToObject<int>();
-
+                int user_id = jObject["id"].ToObject<int>();
+                int id = Infos["id"].ToObject<int>();
                 int exp = jObject["experience"].ToObject<int>();
                 int level = jObject["level"].ToObject<int>();
                 string surname = jObject["surname"].ToObject<string>();
 
+                Monster monster = App.core.monsterList[id];
+                App.core.monsterList[id].PlayerMonster = true;
 
-                return new Monster(id, name, Utils.RandomValue.GetRandValueType(),
-                   "ms-appx:///Assets/default_monster.png",
-                    "Monster Description", level, hp, exp, attack, 0, surname);
+                return new Monster()
+                {
+                    ID = id,
+                    UserID = user_id,
+                    Name = monster.Name,
+                    UserImage = monster.UserImage,
+                    WildImage = monster.WildImage,
+                    Type = monster.Type,
+                    Level = level,
+                    Life = hp,
+                    Exp = exp,
+                    Attackeffect = attack,
+                    Defence = defense,
+                    Surname = surname,
+                    PlayerMonster = true,
+                    LifeMax = hp,
+                    attackList = monster.attackList
+                };
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
@@ -142,11 +224,28 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
 
         public Monster FromStruct(MessagePack.Serveur.Combat.Struct.Monster oppomentMonster)
         {
-//            this.Surname = oppomentMonster.Name;
-            this.Life = oppomentMonster.Hp;
-            this.Level = oppomentMonster.Level;
+            Monster monsterRet = new Monster(this);
+            monsterRet.Life = oppomentMonster.Hp;
+            monsterRet.Level = oppomentMonster.Level;
+            monsterRet.LifeMax = oppomentMonster.Hp;
+            return monsterRet;
+        }
 
-            return this;
+        public Monster FromStruct(MessagePack.Serveur.Combat.Struct.AttackMonster attackMonster)
+        {
+            Monster monsterRet = new Monster(this);
+
+            monsterRet.Life = attackMonster.Hp;
+
+            return monsterRet;
+        }
+
+        public async void LoadAttack()
+        {
+            var ret = await App.network.GetMonsterAttack(this.ID);
+
+            if (ret.ErrorCode == 0)
+               this.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
         }
 
     }

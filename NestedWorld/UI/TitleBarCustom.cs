@@ -13,59 +13,38 @@ namespace NestedWorld.UI
 {
     public class TitleBarCustom
     {
-        public static void ApplyToContainerHomePage()
+        public static void BarCustom(Color backgroundColor, Color foregroundColor)
         {
-            //PC customization
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
             {
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 if (titleBar != null)
                 {
-                    titleBar.ButtonBackgroundColor = ((SolidColorBrush)Application.Current.Resources["BleuTwoBrush"]).Color;
-                    titleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources["BackrgoundBrush"]).Color;
-                    titleBar.BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BleuTwoBrush"]).Color;
-                    titleBar.ForegroundColor = ((SolidColorBrush)Application.Current.Resources["BackrgoundBrush"]).Color;
+                    titleBar.ButtonBackgroundColor = backgroundColor;
+                    titleBar.ButtonForegroundColor = foregroundColor;
+                    titleBar.BackgroundColor = backgroundColor;
+                    titleBar.ForegroundColor = foregroundColor;
                 }
             }
-
-            //Mobile customization
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 var statusBar = StatusBar.GetForCurrentView();
                 if (statusBar != null)
                 {
                     statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BleuTwoBrush"]).Color;
-                    statusBar.ForegroundColor = ((SolidColorBrush)Application.Current.Resources["BackrgoundBrush"]).Color;
+                    statusBar.BackgroundColor = backgroundColor;
+                    statusBar.ForegroundColor = foregroundColor;
                 }
             }
         }
+
+        public static void ApplyToContainerHomePage()
+        {
+            TitleBarCustom.BarCustom(Utils.ColorUtils.GetColorFromHex("#FF1C1C25"), Utils.ColorUtils.GetColorFromHex("#FFFFFFFF"));
+        }
         public static void ApplyToContainerMainPage()
         {
-            //PC customization
-            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
-            {
-                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                if (titleBar != null)
-                {
-                    titleBar.ButtonBackgroundColor = ((SolidColorBrush)Application.Current.Resources["BackrgoundBrush"]).Color;
-                    titleBar.ButtonForegroundColor = Colors.Black;
-                    titleBar.BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BackrgoundBrush"]).Color;
-                    titleBar.ForegroundColor = Colors.Black;
-                }
-            }
-
-            //Mobile customization
-            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusBar = StatusBar.GetForCurrentView();
-                if (statusBar != null)
-                {
-                    statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BackrgoundBrush"]).Color;
-                    statusBar.ForegroundColor = Colors.Black;
-                }
-            }
+            TitleBarCustom.BarCustom(Utils.ColorUtils.GetColorFromHex("#FFFFFFFF"), Utils.ColorUtils.GetColorFromHex("#FF1C1C25"));         
         }
     }
 }

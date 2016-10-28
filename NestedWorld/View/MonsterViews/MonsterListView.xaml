@@ -8,14 +8,12 @@
     mc:Ignorable="d"
     >
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer Margin="0" HorizontalAlignment="Left">
-            <GridView x:Name="MonsterGridView" Margin="0" SelectionChanged="MonsterGridView_SelectionChanged" HorizontalAlignment="Left" ItemsSource="{Binding}" Background="{x:Null}">
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <local:MonsterView  HorizontalAlignment="Left" Margin="5"/>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-        </ScrollViewer>
+        <GridView x:Name="MonsterGridView" Margin="0" SelectionChanged="MonsterGridView_SelectionChanged" HorizontalAlignment="Stretch" ItemsSource="{Binding}" Background="{x:Null}" VerticalAlignment="Center">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <local:MonsterView />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </UserControl>

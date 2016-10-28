@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NestedWorld.Classes.ElementsGame.Monsters;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,13 +23,6 @@ namespace NestedWorld.View.MonsterViews
         public MonsterView()
         {
             this.InitializeComponent();
-            
-        }
-
-      
-        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -126,6 +126,8 @@
     <Compile Include="Http\Places\RegionMonster.cs" />
     <Compile Include="Http\Places\RegionsGet.cs" />
     <Compile Include="Http\ReturnObject.cs" />
+    <Compile Include="Http\Users\GetUserId.cs" />
+    <Compile Include="Http\Users\Me.cs" />
     <Compile Include="Http\Users\UserFriendsGet.cs" />
     <Compile Include="Http\Users\UserFriendsPost.cs" />
     <Compile Include="Http\Users\UserPut.cs" />

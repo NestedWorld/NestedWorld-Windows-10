@@ -36,8 +36,7 @@ namespace NestedWorld.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NewAlliePopupEntry.Child = new PopUp.AddAllyPopUp();
-            NewAlliePopupEntry.IsOpen = true;
+            AddAllyPopUp.Show();
         }
     }
 }

@@ -14,6 +14,7 @@
             <RowDefinition Height="150*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
+
         <Image Source="{Binding Path=Background}" Stretch="UniformToFill" Grid.RowSpan="2"></Image>
         <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="#7F000000"/>
         <Ellipse Height="70" Width="70" StrokeThickness="2" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="{StaticResource BackrgoundBrush}">
@@ -29,5 +30,6 @@
                 <TextBlock Text="Lvl" FontSize="15" Margin="0, 5" Style="{StaticResource TextBlockStyleOne}" Foreground="{StaticResource BackrgoundBrush}" />
             </StackPanel>
         </StackPanel>
+        
     </Grid>
 </UserControl>

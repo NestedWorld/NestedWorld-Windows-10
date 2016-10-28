@@ -39,7 +39,8 @@ namespace NestedWorldHttp
     }
     public class HttpRequest
     {
-        private string BaseAddress = "http://eip-api-dev.kokakiwi.net/v1";
+        //private string BaseAddress = "https://api.nestedworld.com/v1";
+        private string BaseAddress = "https://api-dev.nestedworld.com/v1";
         protected Uri uri;
         protected string url;
         protected HttpWebRequest request;

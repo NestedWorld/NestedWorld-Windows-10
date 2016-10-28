@@ -22,26 +22,9 @@ namespace NestedWorld.View
         public MainView()
         {
             this.InitializeComponent();
-            Window.Current.SizeChanged += Current_SizeChanged;
-            UpdateSize();
+
         }
 
-        private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
-        {
-            UpdateSize();
-        }
-
-        private void UpdateSize()
-        {
-            if (Window.Current.Bounds.Width < 720)
-            {
-                monsterView.Width = (Window.Current.Bounds.Width - 10);
-                userView.Width = (Window.Current.Bounds.Width - 10);
-                return;
-            }
-            monsterView.Width = (Window.Current.Bounds.Width / 2) - 10;
-            userView.Width = (Window.Current.Bounds.Width / 2) - 10;
-        }
 
         public void Init()
         {
@@ -49,12 +32,25 @@ namespace NestedWorld.View
             userView.userList = App.core.userList;
             homeView.DataContext = App.core.user;
         }
-
-
-        private void homeView_Tapped(object sender, TappedRoutedEventArgs e)
+        
+        private void homeView_OnAllyTapped()
         {
-            Frame root = Window.Current.Content as Frame;
-            root.Navigate(typeof(Pages.ProfilePage));
+
+        }
+
+        private void homeView_OnAreaTaped()
+        {
+            this.AreaTap.ShowHide();
+        }
+
+        private void homeView_OnCreditTaped()
+        {
+
+        }
+
+        private void homeView_OnMonsterTaped()
+        {
+
         }
     }
 }

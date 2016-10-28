@@ -12,9 +12,9 @@
     >
 
 
-    <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+    <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" Background="{StaticResource DarkbackgroundBrush}">
         <Path Fill="{Binding background}" Data="{Binding dataIcon}" Stretch="Uniform" Width="30" Height="30" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" >
         </Path>
-       
+
     </Grid>
 </UserControl>

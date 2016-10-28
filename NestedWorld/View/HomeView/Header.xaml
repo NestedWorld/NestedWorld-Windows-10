@@ -1,13 +1,12 @@
 ﻿<UserControl
-    x:Class="NestedWorld.View.HomeView"
+    x:Class="NestedWorld.View.HomeView.Header"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:NestedWorld.View"
+    xmlns:local="using:NestedWorld.View.HomeView"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="using:NestedWorld.UI"
     mc:Ignorable="d"
-    Height="200">
+     Height="200">
 
     <Grid Background="{StaticResource ForgroundBrush}">
         <Grid.RowDefinitions>
@@ -27,7 +26,7 @@
         <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="#7F000000"/>
         <Ellipse Height="76" Width="76" StrokeThickness="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="{StaticResource BackrgoundBrush}">
             <Ellipse.Fill>
-                <ImageBrush Stretch="Uniform" ImageSource="{Binding Path=Image}"/>
+                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Path=Image}"/>
             </Ellipse.Fill>
         </Ellipse>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
@@ -37,7 +36,7 @@
                 <TextBlock Text="{Binding Path=Level}" FontSize="15" Margin="0, 5" Style="{StaticResource TextBlockStyleOne}" Foreground="{StaticResource BackrgoundBrush}" />
             </StackPanel>
         </StackPanel>
-
+        <Grid Grid.ColumnSpan="2" Tapped="Grid_Tapped_1" />
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
@@ -109,6 +108,15 @@
                     </TextBlock.Foreground>
                 </TextBlock>
             </StackPanel>
+
+            <Grid x:Name="credit" Tapped="Grid_Tapped" Background="#00000000"/>
+            <Grid x:Name="monster" Grid.Column="1" Tapped="Grid_Tapped" Background="#00000000"/>
+            <Grid x:Name="area" Grid.Column="2" Tapped="Grid_Tapped" Background="#00000000"/>
+            <Grid x:Name="ally" Grid.Column="3" Tapped="Grid_Tapped" Background="#00000000"/>
+
+
         </Grid>
+        <Grid Grid.ColumnSpan="2" Tapped="Grid_Tapped_1" Background="#00000000"/>
+
     </Grid>
 </UserControl>

@@ -22,6 +22,7 @@ namespace NestedWorld.UI
         public LoadingView()
         {
             this.InitializeComponent();
+            this.Visibility = Visibility.Collapsed;
         }
 
         public void Start()

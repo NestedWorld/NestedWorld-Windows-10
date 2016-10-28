@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 
@@ -11,26 +12,16 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
     {
         public List<Monster> monsterList { get; set; }
 
-        public List<Monster> monsterListByType
+        public ObservableCollection<Monster> content
         {
-            get { return monsterList.OrderBy(item => item.Type).ToList(); }
-            set { int i = 0; i++; }
-        }
+            get
+            {
+                return new ObservableCollection<Monster>(monsterList);
+            }
+            set
+            {
 
-        public List<Monster> monsterListByName
-        {
-            get { return monsterList.OrderBy(item => item.Name).ToList(); }
-            set { int i = 0; i++; }
-        }
-        public List<Monster> monsterListByLevel
-        {
-            get { return monsterList.OrderBy(item => item.Level).ToList(); }
-            set { int i = 0; i++; }
-        }
-        public List<Monster> monsterListByID
-        {
-            get { return monsterList.OrderBy(item => item.ID).ToList(); }
-            set { int i = 0; i++; }
+            }
         }
 
 
@@ -50,10 +41,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             return q.ToList();
         }
 
-        public void init()
-        {
 
-        }
         public void Add(Monster newMonster)
         {
             if (newMonster == null)
@@ -64,14 +52,21 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             monsterList?.Add(newMonster);
         }
 
+        public void Add(Monster newMonster, int index)
+        {
+            if (index >= monsterList.Count)
+            {
+                monsterList.Add(newMonster);
+            }
+            else
+            {
+                monsterList[index] = newMonster;
+            }
+        }
+
         public Monster GetMonsterByID(int ID)
         {
             var querry = from item in monsterList where item.ID == ID select item;
-
-            foreach (Monster monster in querry)
-            {
-                Debug.WriteLine(monster.Name);
-            }
 
             if (querry.Count() != 0)
                 return querry.ElementAt(0);
@@ -90,14 +85,26 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             return new MonsterList(q.ToList());
         }
 
+        public async void loadAttack()
+        {
+            foreach (Monster m in monsterList)
+            {
+                if (m == null)
+                    break;
+                var ret = await App.network.GetMonsterAttack(m.ID);
+
+                if (ret.ErrorCode == 0)
+                    m.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
+
+                ret.ShowError();
+            }
+        }
+
 
         #region Json
 
         internal static MonsterList GetMonsterListFromJson(JObject jObject, int number = -1)
         {
-            if (jObject == null)
-                return NewList(number);
-
             MonsterList ret = new MonsterList();
             try
             {
@@ -119,26 +126,10 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             return ret;
         }
 
-        public async void loadAttack()
-        {
-            foreach (Monster m in monsterList)
-            {
-                if (m == null)
-                    break;
-                var ret = await App.network.GetMonsterAttack(m.ID);
 
-                if (ret.ErrorCode == 0)
-                    m.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
-
-                ret.ShowError();
-            }
-        }
 
         internal static MonsterList GetUserMonsterListFromJson(JObject jObject, int number = -1)
         {
-            if (jObject == null)
-                return NewListUser(number);
-
             MonsterList ret = new MonsterList();
             try
             {
@@ -158,16 +149,6 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
                 Debug.WriteLine("GetMonsterListFromJson :" + ex.ToString());
             }
             return ret;
-        }
-
-        private static MonsterList NewList(int number)
-        {
-            MonsterList list = new MonsterList();
-            for (int i = 0; i < number; i++)
-            {
-                list.Add(Monster.GetMonster(i));
-            }
-            return list;
         }
 
         private static MonsterList NewListUser(int number)
@@ -199,8 +180,32 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             }
             set
             {
-
+                this.monsterList[id] = value;
             }
+        }
+
+        public int[] idarray
+        {
+            get
+            {
+                return getIds();
+            }
+            set { }
+        }
+
+        private int[] getIds()
+        {
+            int[] ids = new int[4] { 0, 0, 0, 0 };
+
+            int i = 0;
+            foreach (var m in this.monsterList)
+            {
+                if (m != null)
+                    ids[i] = m.ID;
+                i++;
+            }
+
+            return ids;
         }
     }
 }

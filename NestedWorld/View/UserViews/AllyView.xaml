@@ -6,10 +6,37 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    Height="125"
+    Width="125">
 
-    <StackPanel Orientation="Vertical" Tapped="StackPanel_Tapped">
+    <Grid Tapped="StackPanel_Tapped">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle x:Name="rectangleMain" StrokeThickness="2"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <ImageBrush Stretch="Fill" ImageSource="{Binding Path=Image}"/>
+            </Rectangle.Fill>
+            <Rectangle.Stroke>
+                <SolidColorBrush Color="{Binding Path=color}"/>
+            </Rectangle.Stroke>
+        </Rectangle>
+
+        <Ellipse Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="{StaticResource DarkbackgroundBrush}"/>
+        <TextBlock Text="{Binding Path=Level}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 0, 10, 5" Foreground="{StaticResource BackrgoundBrush}"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" FontSize="15" Foreground="{StaticResource ForgroundBrush}"/>
+    </Grid>
+
+    <!--StackPanel Orientation="Vertical" Tapped="StackPanel_Tapped">
         <Rectangle x:Name="rectangleMain" StrokeThickness="2" Height="100" Width="100">
             <Rectangle.Fill>
                 <ImageBrush Stretch="Fill" ImageSource="{Binding Path=Image}"/>
@@ -31,5 +58,5 @@
                 </TextBlock.Foreground>
             </TextBlock>
         </StackPanel>
-    </StackPanel>
+    </-->
 </UserControl>

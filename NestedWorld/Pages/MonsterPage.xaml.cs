@@ -29,45 +29,8 @@ namespace NestedWorld.Pages
         public MonsterPage()
         {
             this.InitializeComponent();
-            Window.Current.SizeChanged += Current_SizeChanged;
         }
 
-        private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
-        {
-            SetSize(e.Size.Width);
-        }
-
-        private void SetSize(double width)
-        {
-            if (width >= 1080)
-            {
-                InfoBlock.Width = (width / 3) - 10;
-                LocationBlock.Width = (width / 3) - 10;
-                UserMonsterInfoBlock.Width = (width / 3) - 10;
-                UserMonsterLoactionBlock.Width = (width / 3) - 10;
-                AttacksBlock.Width = (width / 3) - 10;
-                StatsBlock.Width = (width / 3) - 10;
-                return;
-            }
-
-            if (width >= 720)
-            {
-                InfoBlock.Width = (width / 2) - 10;
-                LocationBlock.Width = (width / 2) - 10;
-                UserMonsterInfoBlock.Width = (width / 2) - 10;
-                UserMonsterLoactionBlock.Width = (width / 2) - 10;
-                AttacksBlock.Width = (width / 2) - 10;
-                StatsBlock.Width = (width / 2) - 10;
-                return;
-            }
-
-            InfoBlock.Width = (width) - 10;
-            LocationBlock.Width = (width) - 10;
-            UserMonsterInfoBlock.Width = (width) - 10;
-            UserMonsterLoactionBlock.Width = (width) - 10;
-            AttacksBlock.Width = (width) - 10;
-            StatsBlock.Width = width - 10;
-        }
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
@@ -82,29 +45,23 @@ namespace NestedWorld.Pages
             try
             {
                 Monster monster = e.Parameter as Monster;
+                monster.LoadAttack();
+                this.DataContext = monster;
+
                 if (!monster.PlayerMonster)
                 {
-                    UserMonsterInfoBlock.Visibility = Visibility.Collapsed;
-                    UserMonsterLoactionBlock.Visibility = Visibility.Collapsed;
-                    AttacksBlock.Visibility = Visibility.Collapsed;
-                    StatsBlock.Visibility = Visibility.Collapsed;
+
                 }
                 else
                 {
-                    StatsView.Life = monster.Life;
-                    StatsView.Exp = monster.Exp;
-                    BattleStats.DataContext = Stats.NewStat("Battle Stats", Utils.RandomValue.GetRandValue(0, 30), Utils.RandomValue.GetRandValue(0, 30), Utils.RandomValue.GetRandValue(0, 30));
-                    userLocationMonster.point = new Windows.Devices.Geolocation.Geopoint(Utils.RandomValue.GetRandomPosition());
+
                 }
-                this.DataContext = e.Parameter;
-                hearderView.DataContext = e.Parameter;
+
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-
-            SetSize(Window.Current.Bounds.Width);
         }
 
         private void MonsterPage_BackRequested(object sender, BackRequestedEventArgs e)

@@ -1,0 +1,26 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.PrepareBattleView.SelectedMonsterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.PrepareBattleView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="100"
+    d:DesignWidth="400">
+
+    <Grid x:Name="root">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <local:SelectedMonsterItemView Height="75" Width="75" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+        <local:SelectedMonsterItemView Height="75" Width="75" Grid.Column="1" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+        <local:SelectedMonsterItemView Height="75" Width="75"  Grid.Column="2" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+        <local:SelectedMonsterItemView Height="75" Width="75" Grid.Column="3" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+
+    </Grid>
+</UserControl>

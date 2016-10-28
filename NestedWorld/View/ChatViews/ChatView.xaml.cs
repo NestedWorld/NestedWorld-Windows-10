@@ -1,5 +1,4 @@
-﻿using NestedWorld.Classes.ElementGame.Chat;
-using NestedWorld.Classes.ElementsGame.Chat;
+﻿using NestedWorld.Classes.ElementsGame.Chat;
 using System;
 using System.Diagnostics;
 using Windows.UI.Xaml;

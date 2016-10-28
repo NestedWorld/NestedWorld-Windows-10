@@ -10,13 +10,13 @@
 
     <Grid Background="{StaticResource DarkApplicationbackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Text="Fight" Foreground="{StaticResource BackrgoundBrush}"/>
 
-        <Line X1="25" Y1="75" Y2="75" X2="325" StrokeThickness="2" Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource BackrgoundBrush}"></Line>
+        <Line X1="25" Y1="50" Y2="50" X2="325" StrokeThickness="2" Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource BackrgoundBrush}"></Line>
 
         <ScrollViewer Grid.Row="1" Margin="0, 10, 0, 0">
             <StackPanel>

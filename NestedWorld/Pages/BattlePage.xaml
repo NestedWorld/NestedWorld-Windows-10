@@ -8,7 +8,29 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid Margin="0" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Battle/cityBG.png"/>
+        </Grid.Background>
+
+        <Grid VerticalAlignment="Center">
+            <BattleView:BattleCanvas x:Name="battleCanvas"/>
+            <UI:AnimationCanvas x:Name="AnimationCanvas"/>
+        </Grid>
+        
+        <BattleView:EnemieMonster Margin="5, 0, 5, 0" Grid.Row="0" VerticalAlignment="Top" x:Name="UIEnnemieMonster"/>
+
+       
+
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="5, 0, 5, 0">
+            <BattleView:UserMonster Grid.Row="2" x:Name="UIUserMonster"/>
+            <BattleView:UserMonsterList x:Name="userMonsterList" Grid.Row="3"  VerticalAlignment="Bottom" Background="{StaticResource BackrgoundBrush}"/>
+        </StackPanel>
+
+    </Grid>
+    <!--Grid Margin="0" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="170"/>
@@ -27,5 +49,5 @@
             <BattleView:UserMonster Grid.Row="2" x:Name="UIUserMonster"/>
             <BattleView:UserMonsterList x:Name="userMonsterList" Grid.Row="3" Margin="0, 0, 0, 5" VerticalAlignment="Bottom" Background="{StaticResource BackrgoundBrush}"/>
         </Grid>
-    </Grid>
+    </-->
 </Page>

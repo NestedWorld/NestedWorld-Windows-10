@@ -19,6 +19,8 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using NestedWorld.View.RootView;
+using NestedWorldHttp.Http.Users;
+using NestedWorld.Classes.ElementsGame.Item;
 
 namespace NestedWorld.Classes.Network
 {
@@ -113,6 +115,7 @@ namespace NestedWorld.Classes.Network
                 if (ret.code == System.Net.HttpStatusCode.OK)
                 {
                     Token = ret.Object["token"].ToObject<string>();
+                    App.UserSession.SaveToken();
                     await streamConnection.Connect();
                     ReturnObject = new ReturnObject() { Content = null, ErrorCode = 0, Message = string.Empty };
                 }
@@ -138,6 +141,73 @@ namespace NestedWorld.Classes.Network
 
             }
             return ReturnObject;
+        }
+
+        public async Task<ReturnObject> UpdateInfo(string name, string userImage, string userBackground)
+        {
+            ReturnObject ReturnObject;
+            UserPut up = new UserPut();
+
+            try
+            {
+                up.SetParam(name, userImage, userBackground);
+                var ret = await up.GetJsonAsync();
+
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    ReturnObject = new ReturnObject() { Content = UserInfo.GetUserInfoFromJson(ret.Object), ErrorCode = 0, Message = ret.Object["message"].ToObject<string>() };
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = null, ErrorCode = 1, Message = "Error updating user info" };
+                }
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+            }
+            return ReturnObject;
+        }
+
+        public async Task<ReturnObject> GetUser(int id)
+        {
+            ReturnObject ReturnObject;
+            GetUserId getUserId = new GetUserId();
+            try
+            {
+                getUserId.SetParam(id);
+                var ret = await getUserId.GetJsonAsync();
+                ReturnObject = new ReturnObject() { Content = User.GetFronJson(ret.Object), ErrorCode = 0, Message = string.Empty };
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+
+            }
+            return ReturnObject;
+
         }
 
         public async Task<ReturnObject> GetAllies()
@@ -178,6 +248,41 @@ namespace NestedWorld.Classes.Network
             return ReturnObject;
         }
 
+        public async Task<ReturnObject> GetObject()
+        {
+            ReturnObject ReturnObject;
+
+            NestedWorldHttp.Inventory.ObjectGet getObject = new NestedWorldHttp.Inventory.ObjectGet();
+            getObject.SetParam();
+
+            try
+            {
+                var ret = await getObject.GetJsonAsync();
+                ItemList itemList = ItemList.NewJromJson(ret.Object);
+
+                ReturnObject = new ReturnObject() { Content = itemList, ErrorCode = 0, Message = string.Empty };
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+
+            }
+            return ReturnObject;
+        }
+
+
+
         public async Task<ReturnObject> PostAllies(string pseudo)
         {
             ReturnObject ReturnObject;
@@ -195,7 +300,7 @@ namespace NestedWorld.Classes.Network
             {
                 var ret = await userFriendsGet.GetJsonAsync();
 
-                ReturnObject = new ReturnObject() { Content = ret.Object, ErrorCode = 0, Message = string.Empty };
+                ReturnObject = new ReturnObject() { Content = ret, ErrorCode = 0, Message = string.Empty };
             }
             catch (HttpRequestException HRException)
             {
@@ -230,7 +335,7 @@ namespace NestedWorld.Classes.Network
                 };
             }
 
-            Users user = new Users();
+            Me user = new Me();
             user.SetParam();
 
             try
@@ -359,7 +464,6 @@ namespace NestedWorld.Classes.Network
                     Content = MonsterList.GetUserMonsterListFromJson(null, 12),
                     ErrorCode = 0,
                     Message = string.Empty
-
                 };
 
             try
@@ -409,7 +513,7 @@ namespace NestedWorld.Classes.Network
             {
                 var jsontmp = await request.GetJsonAsync();
 
-                ReturnObject = new ReturnObject() { Content = jsontmp, ErrorCode = 0, Message = "" };
+                ReturnObject = new ReturnObject() { Content = jsontmp.Object, ErrorCode = 0, Message = "" };
                 return ReturnObject;
             }
             catch (HttpRequestException HRException)
@@ -442,7 +546,6 @@ namespace NestedWorld.Classes.Network
             AttacksGet request = new AttacksGet();
             request.SetParam();
 
-
             if (App.core.Offline)
             {
                 return new ReturnObject()
@@ -456,7 +559,6 @@ namespace NestedWorld.Classes.Network
             try
             {
                 var ret = await request.GetJsonAsync();
-
                 ReturnObject = new ReturnObject() { Content = AttackList.LoadFromJson(ret.Object), ErrorCode = 0, Message = "" };
                 return ReturnObject;
             }

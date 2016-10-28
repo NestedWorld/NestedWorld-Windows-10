@@ -6,6 +6,8 @@ using Windows.UI.Xaml;
 using MessagePack.Serveur.Combat;
 using NestedWorld.Classes.ElementsGame.Monsters;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Popups;
+using MessagePackNestedWorld.MessagePack.Serveur.Combat;
 
 namespace NestedWorld.Classes.ElementsGame.Battle
 {
@@ -13,63 +15,43 @@ namespace NestedWorld.Classes.ElementsGame.Battle
     {
         public List<BattleIcon> iconList { get; set; }
 
-        public AnnimationCanvas annimationCanvas { get; set; }
+        public UI.AnimationCanvas annimationCanvas { get; set; }
 
         private List<Patern> paternList;
-        private int _userMIndex;
-        private int _ennMIndex;
-        public Start start { get; set; }
+
+        public Start start { get { return _start; } set { _start = value; this.round = value.first; } }
         public int combatID;
         private Monster _ennemieMonster;
-        private EnemieMonster _UIEnnemiMonster;
+        private Start _start;
+        private Monster _userMonster;
 
         public Battle self { get; set; }
 
-        public int UserIndex
-        {
-            get { return _userMIndex; }
-            set
-            {
-                _userMIndex = value;
-                if (UIUserMonster != null)
-                    UIUserMonster.DataContext = UserMonster;
-                UserMonster.LifeMax = UserMonster.Life;
-            }
-        }
+        public bool round { get; set; }
 
-        public int EnnemieIndex
-        {
-            get { return _ennMIndex; }
-            set
-            {
-                _ennMIndex = value;
-                if (UIEnnemiMonster != null)
-                    UIEnnemiMonster.DataContext = EnnemieMonster;
-            }
-        }
 
         public Monsters.MonsterList UserMonsters { get; set; }
-        // public Monsters.MonsterList EnnemieMonsters { get; set; }
 
-        public Monsters.Monster UserMonster { get { return UserMonsters.monsterList[_userMIndex]; } set { } }
+        public Monsters.Monster UserMonster
+        {
+            get { return _userMonster; }
+            set
+            {
+                _userMonster = value;
+                UIUserMonster.Monster = value;
+            }
+        }
         public Monsters.Monster EnnemieMonster
         {
             get { return _ennemieMonster; }
             set
             {
                 _ennemieMonster = value;
-                value.LifeMax = value.Life;
+                UIEnnemiMonster.Monster = value;
             }
         }
 
-        public EnemieMonster UIEnnemiMonster
-        {
-            get { return _UIEnnemiMonster; }
-            set
-            {
-                _UIEnnemiMonster = value;
-            }
-        }
+        public EnemieMonster UIEnnemiMonster { get; set; }
         public UserMonster UIUserMonster { get; set; }
 
         public BattleController()
@@ -81,9 +63,6 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             paternList.Add(new Paterns.AttackSpePatern(this));
             paternList.Add(new Paterns.DefenceSpePatern(this));
 
-
-            _ennMIndex = 0;
-            _userMIndex = 0;
             UIEnnemiMonster = null;
             UIUserMonster = null;
         }
@@ -91,9 +70,6 @@ namespace NestedWorld.Classes.ElementsGame.Battle
 
         public void Init(BattleCanvas value)
         {
-            EnnemieIndex = 0;
-            UserIndex = 0;
-
             iconList = new List<BattleIcon>();
             iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 1));
             iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 2));
@@ -102,23 +78,45 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 5));
             iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 6));
 
-            App.network.serveurMessageList["combat:attack-received"].OnCompled += AttackReceiveEvent;
-            App.network.serveurMessageList["combat:monster-ko"].OnCompled += MonsterKoEvent;
-            App.network.serveurMessageList["combat:end"].OnCompled += EndEvent;
-
             foreach (BattleIcon b in iconList)
             {
                 value.mainCanvas.Children.Add(b);
             }
+
+            App.network.serveurMessageList["combat:attack-received"].OnCompled += AttackReceiveEvent;
+            App.network.serveurMessageList["combat:monster-ko"].OnCompled += MonsterKoEvent;
+            App.network.serveurMessageList["combat:end"].OnCompled += EndEvent;
+            App.network.serveurMessageList["combat:monster-replaced"].OnCompled += MonsterReplacedEvent;
+
+
             value.inkCanvas.InkPresenter.StrokeInput.StrokeEnded += StrokeInput_StrokeEnded;
             value.inkCanvas.InkPresenter.StrokeInput.StrokeStarted += StrokeInput_StrokeStarted;
+
             SetPlacement(Window.Current.Bounds.Height, Window.Current.Bounds.Width);
             Window.Current.SizeChanged += Current_SizeChanged;
         }
 
-        private void EndEvent(object value)
+        private void MonsterReplacedEvent(object value)
+        {
+            MonsterReplaced monsterReplaced = (value as MonsterReplaced);
+
+
+            this.EnnemieMonster = App.core.monsterList[monsterReplaced.monster.Monster_Id].FromStruct(monsterReplaced.monster);
+            //monsterReplaced.monster
+        }
+
+        #region Event
+
+        private async void EndEvent(object value)
         {
             End end = value as End;
+            // end battle
+
+            Utils.Log.Info("end combat");
+            await new MessageDialog("you " + end.Status, "Combat finish").ShowAsync();
+
+            Frame root = Window.Current.Content as Frame;
+            root.Navigate(typeof(Pages.HomePage));
         }
 
         private void MonsterKoEvent(object value)
@@ -131,20 +129,46 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         private void AttackReceiveEvent(object value)
         {
             AttackReceived attackReceived = value as AttackReceived;
-
-            annimationCanvas.Next = App.core.attackList.list[attackReceived.Attack];
-            UserMonster.Life = attackReceived.Target.Hp;
-            EnnemieMonster.Life = attackReceived.Monster.Hp;
-            UIUserMonster.Life = UserMonster.LifePercent;
-            UIEnnemiMonster.Life = EnnemieMonster.LifePercent;
-
-            if (EnnemieMonster.Life <= 0)
+            try
             {
-                Frame root = Window.Current.Content as Frame;
-                root.Navigate(typeof(Pages.EndBattlePage), EnnemieMonster);
+
+                if (attackReceived.Monster.Id == start.OppomentMonster.Id)
+                {
+                    //oppoment monster send;
+                    UserMonster = UserMonster.FromStruct(attackReceived.Monster);
+                    EnnemieMonster = App.core.monsterList[start.OppomentMonster.Monster_Id].FromStruct(attackReceived.Target);
+                    annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
+                }
+                else
+                {
+                    //userMonster;
+                    UserMonster = UserMonster.FromStruct(attackReceived.Target);
+                    EnnemieMonster = App.core.monsterList[start.OppomentMonster.Monster_Id].FromStruct(attackReceived.Monster);
+                }
+
+                this.round = true;
+
+
+                //TODO : tmp code; 
+                if (EnnemieMonster.Life <= 0)
+                {
+                    //oppoment monster KO
+                }
+                if (UserMonster.Life <= 0)
+                {
+                    //user monster KO;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Utils.Log.Error("AttackReceived", ex);
             }
         }
 
+        #endregion
+
+
+        #region UI
         private void StrokeInput_StrokeEnded(Windows.UI.Input.Inking.InkStrokeInput sender, Windows.UI.Core.PointerEventArgs args)
         {
             sender.InkPresenter.StrokeContainer.Clear();
@@ -189,15 +213,17 @@ namespace NestedWorld.Classes.ElementsGame.Battle
 
             double PidivTwo = (Math.PI / 2);
             double alpha = (2 * Math.PI) / iconList.Count;
-            double defautTop = ((height) / 2) - (iconList[0].Height / 2);
-            double defautLeft = ((width) / 2) - (iconList[0].Width / 2);
+            double defaultTop = ((height) / 2) - (iconList[0].Height / 2);
+            double defaultLeft = ((width) / 2) - (iconList[0].Width / 2);
             int index = 0;
             foreach (BattleIcon item in iconList)
             {
-                item.top = ((Math.Sin(PidivTwo + index * alpha)) * 130) + (defautTop / 2) - 40;
-                item.left = ((Math.Cos(PidivTwo + index * alpha)) * 130) + defautLeft;
+                item.top = ((Math.Sin(PidivTwo + index * alpha)) * 150) + (defaultTop / 2) - 15;
+                item.left = ((Math.Cos(PidivTwo + index * alpha)) * 150) + defaultLeft;
                 index++;
             }
         }
+
+        #endregion
     }
 }

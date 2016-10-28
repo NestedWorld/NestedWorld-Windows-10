@@ -1,4 +1,5 @@
-﻿using NestedWorld.View.BattleViews.BattleList;
+﻿using NestedWorld.Classes.ElementsGame.Users;
+using NestedWorld.View.BattleViews.BattleList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,10 +73,13 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             }
             else if (avaible.origin == "duel")
             {
-                OppBattle[avaible.id] = new Battle() { OpponentImage = "", OpponentName = avaible.user.Name, BattleID = avaible.id, ContextBattle = Context.PVP, StateBattle = State.AVALAIBLE };
+                var ret = await App.network.GetUser(avaible.user.Id);
+
+                OppBattle[avaible.id] = new Battle() { OpponentImage = (ret.Content as User).Image, OpponentName = avaible.user.Name, BattleID = avaible.id, ContextBattle = Context.PVP, StateBattle = State.AVALAIBLE };
                 return OppBattle[avaible.id];
             }
             return null;
         }
+
     }
 }

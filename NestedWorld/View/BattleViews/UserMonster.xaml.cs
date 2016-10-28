@@ -21,29 +21,40 @@ namespace NestedWorld.View.BattleViews
     public sealed partial class UserMonster : UserControl
     {
 
+        private const int LIFEBARMAX = 300;
+
+        private Monster _monster;
+
         public double Life
         {
             get { return 0; }
             set
             {
-                LifeBar.Width = value * 315 / 100;
+                LifeBar.Width = value * LIFEBARMAX / Monster.LifeMax;
 
                 LifeBar.Fill = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF2196F3"));
-                if (value < 20)
+                if (LifeBar.Width < 20)
                     LifeBar.Fill = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FFF44336"));
             }
         }
+
+        public Monster Monster
+        {
+            get { return _monster; }
+            set
+            {
+                _monster = value;
+                DataContext = value;
+                Life = _monster.Life;
+            }
+        }
+
+
         public UserMonster()
         {
             this.InitializeComponent();
-            this.DataContextChanged += EnemieMonster_DataContextChanged;
         }
 
-        private void EnemieMonster_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
-        {
-            Monster monster = DataContext as Monster;
-
-            Life = (double)monster.Life;
-        }
+       
     }
 }

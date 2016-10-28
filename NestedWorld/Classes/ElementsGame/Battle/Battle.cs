@@ -22,6 +22,12 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         TOWER
     }
 
+    public class BattleOpponent
+    {
+        public string name { get; set; }
+        public string image { get; set; }
+    }
+
     public class Battle
     {
         private BattleController _controller = new BattleController();
@@ -31,6 +37,16 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         public string BattleID { get; set; }
         public Context ContextBattle { get; set; }
         public State StateBattle { get; set; }
+
+
+        public BattleOpponent Opponent
+        {
+            get
+            {
+                return new BattleOpponent() { name = this.OpponentImage, image = this.OpponentImage };
+            }
+            set { }
+        }
 
         public string combatStatus
         {

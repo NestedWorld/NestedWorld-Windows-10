@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.MonsterViews.MonsterTab.Banner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.MonsterViews.MonsterTab"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="50"
+  >
+
+    <Grid Background="{StaticResource BackrgoundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Click="HamburgerButton_Click"  Height="50" Width="50" x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="{StaticResource ForgroundBrush}" HorizontalAlignment="Left" Background="{StaticResource BackrgoundBrush}"/>
+        <TextBox VerticalAlignment="Center" Width="200" Grid.Column="1" TextChanged="TextBox_TextChanged"  PlaceholderText="Search" Margin="25, 0" HorizontalAlignment="Right" BorderBrush="{StaticResource BackrgoundBrush}" Background="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
+
+    </Grid>
+</UserControl>

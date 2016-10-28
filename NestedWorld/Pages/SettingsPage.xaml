@@ -62,6 +62,10 @@
                 </StackPanel>
             </PivotItem>
 
+            <PivotItem Header="goodies">
+                <MediaElement x:Name="player" Source="https://s3-eu-west-1.amazonaws.com/nestedworld/nested+world.mp4" AutoPlay="False"/>
+            </PivotItem>
+
         </Pivot>
     </Grid>
 </Page>

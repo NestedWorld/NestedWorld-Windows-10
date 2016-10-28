@@ -23,43 +23,28 @@ namespace NestedWorld.View.BattleViews
     {
         private BattleController _controller;
 
-        public BattleController controller { get { return _controller; } set { _controller = value;  SetBinding(); } }
-
-        private void SetBinding()
+        public BattleController controller
         {
-            if (controller.UserMonsters.monsterList.Count <= 4)
-                monsterFour.DataContext = controller.UserMonsters.monsterList[3];
-            if (controller.UserMonsters.monsterList.Count <= 3)
-                monsterThree.DataContext = controller.UserMonsters.monsterList[2];
-            if (controller.UserMonsters.monsterList.Count <= 2)
-                monsterTwo.DataContext = controller.UserMonsters.monsterList[1];
-            if (controller.UserMonsters.monsterList.Count <= 1)
-                monsterOne.DataContext = controller.UserMonsters.monsterList[0];
+            get { return _controller; }
+            set
+            {
+                _controller = value;
+
+                this.UserMonserGridView.DataContext = _controller.UserMonsters.content;
+                this.UserMonserGridView.SelectedIndex = 0;
+            }
         }
 
         public UserMonsterList()
         {
             this.InitializeComponent();
-            
         }
 
-        private void monsterOne_Tapped(object sender, TappedRoutedEventArgs e)
+        private void UserMonserGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserMonsterView umv = sender as UserMonsterView;
 
-            Log.Info("monsterOne_Tapped", umv.Name);
-
-            switch (umv.Name)
-            {
-                case "monsterOne":
-                    break;
-                case "monsterTwo":
-                    break;
-                case "monsterThree":
-                    break;
-                case "monsterFour":
-                    break;
-            }
+            //TODO: Change Monster
+            //this.controller.
         }
     }
 }

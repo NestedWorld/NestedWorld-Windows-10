@@ -103,13 +103,11 @@ namespace SocketLib
                         reader.ReadBytes(bytes);
 
                         var tmp = type.Concat(bytes).ToArray<byte>();
-                        Utils.PrintBytes(tmp);
                         onReceiveCompled?.Invoke(tmp);
                     }
                     else
                     {
                         reader.ReadBytes(bytes);
-                        Utils.PrintBytes(bytes);
                         onReceiveCompled?.Invoke(bytes);
                     }
                     Debug.WriteLine("lisen...");

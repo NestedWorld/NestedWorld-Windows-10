@@ -3,31 +3,38 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NestedWorld.View"
+    xmlns:view="using:NestedWorld.View.HomeView"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tap="using:NestedWorld.View.HomeView.Tap"
     mc:Ignorable="d">
 
-    <RelativePanel>
-        <Grid x:Name="grid" RelativePanel.AlignBottomWithPanel="True"
-              RelativePanel.AlignLeftWithPanel="True"
-              RelativePanel.AlignRightWithPanel="True"
-              RelativePanel.AlignTopWithPanel="True" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <!--RelativePanel-->
+    <Grid x:Name="grid"  Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <local:HomeView Height="200" VerticalAlignment="Top" x:FieldModifier="public" x:Name="homeView" Tapped="homeView_Tapped"/>
+        <view:Header Height="200" VerticalAlignment="Top" x:FieldModifier="public" x:Name="homeView" OnAllyTapped="homeView_OnAllyTapped" OnAreaTaped="homeView_OnAreaTaped" OnCreditTaped="homeView_OnCreditTaped" OnMonsterTaped="homeView_OnMonsterTaped" />
 
-            <ScrollViewer Grid.Row="1">
-                <RelativePanel>
-                    <local:MonsterView x:FieldModifier="public"  Margin="5"  x:Name="monsterView" />
-                    <local:UserView x:FieldModifier="public" Margin="5"  x:Name="userView" />
-                </RelativePanel>
-            </ScrollViewer>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <local:MonsterView x:FieldModifier="public"  Margin="5"  x:Name="monsterView" />
+                <local:UserView x:FieldModifier="public" Margin="5"  x:Name="userView" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid RenderTransformOrigin="0.5,0.5" >
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="190"/>
+            </Grid.RenderTransform>
+            <!--INFO From tap-->
+            <tap:AreaTap x:Name="AreaTap" Visibility="Collapsed"/>
         </Grid>
-        <Popup x:Name="PopUpView"/>
-        <VisualStateManager.VisualStateGroups>
+
+    </Grid>
+    <!--VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -80,6 +87,6 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-    </RelativePanel>
+        </>
+    </-->
 </UserControl>

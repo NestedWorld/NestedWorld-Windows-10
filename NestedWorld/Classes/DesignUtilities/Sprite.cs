@@ -81,6 +81,20 @@ namespace NestedWorld.Classes.DesignUtilities
             }
         }
 
+        public Windows.UI.Xaml.Media.ImageBrush this[int key]
+        {
+            get
+            {
+                Windows.UI.Xaml.Media.ImageBrush ib = new Windows.UI.Xaml.Media.ImageBrush();
+                ib.ImageSource = this.imageList[key];
+                return ib;
+            }
+            set
+            {
+
+            }
+        }
+
         internal static Sprite LoadSprite(XElement element)
         {
             Sprite ret = new Sprite();

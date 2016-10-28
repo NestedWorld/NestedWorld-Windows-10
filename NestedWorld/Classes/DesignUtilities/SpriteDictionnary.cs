@@ -42,7 +42,17 @@ namespace NestedWorld.Classes.DesignUtilities
             return ret;
         }
 
-      
+        public Sprite this[string key]
+        {
+            get
+            {
+                return GetSprite(key);
+            }
+            set
+            {
+
+            }
+        }
 
         public Sprite GetSprite(string name)
         {

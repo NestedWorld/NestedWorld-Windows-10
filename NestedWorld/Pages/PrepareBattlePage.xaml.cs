@@ -26,7 +26,6 @@ namespace NestedWorld.Pages
         public PrepareBattlePage()
         {
             this.InitializeComponent();
-            UserMonsterGridView.DataContext = App.core.monsterUserList.monsterList;
 
             App.network.serveurMessageList["combat:start"].OnCompled += CombatStart;
         }
@@ -39,11 +38,10 @@ namespace NestedWorld.Pages
 
                 BattleController battleController = new BattleController();
 
-                battleController.UserMonsters = prepareSelectedMonsted.MonsterListSelected;
-                battleController.EnnemieMonster = App.core.monsterList[start.OppomentMonster.Monster_Id].FromStruct(start.OppomentMonster);
+                battleController.UserMonsters = body.selectedMonster;
                 battleController.combatID = start.combat_id;
                 battleController.start = start;
-
+                loadingView.Stop();
                 Frame.Navigate(typeof(Pages.BattlePage), battleController);
             }
             catch (System.NullReferenceException nullex)
@@ -71,39 +69,18 @@ namespace NestedWorld.Pages
                     break;
             }
 
-            try
-            {
-                ennemie = e.Parameter as User;
-                Header.DataContext = App.core.user;
-                EnnemieHeader.DataContext = ennemie;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
+            header.Battle = this.battle;
+
         }
 
         private void OK_click(object sender, RoutedEventArgs e)
         {
+            loadingView.Start();
             App.network.SendRequest(
                   MessagePackNestedWorld.MessagePack.Client.Result.Combat.ResultAskSuccess.Awnser(
                       this.battle.BattleID,
-                  true, prepareSelectedMonsted.idarray));
-            prepareSelectedMonsted.MonsterListSelected.loadAttack();
-
-            /*
-
-            #region debug
-            BattleController battleController = new BattleController();
-
-            battleController.UserMonsters = prepareSelectedMonsted.MonsterListSelected;
-            battleController.EnnemieMonsters = prepareSelectedMonsted.MonsterListSelected;
-            battleController.combatID = 0;
-
-            Frame.Navigate(typeof(Pages.BattlePage), battleController);
-
-            #endregion*/
-
+                  true, this.body.selectedMonster.idarray));
+            this.body.selectedMonster.loadAttack();
         }
 
         private void Cancel_click(object sender, RoutedEventArgs e)
@@ -111,49 +88,10 @@ namespace NestedWorld.Pages
             Frame.GoBack();
         }
 
-        private void SelectButton_Click(object sender, RoutedEventArgs e)
-        {
-            prepareSelectedMonsted.Add(UserMonsterGridView.SelectedItem as Monster);
-        }
-
-        private void UserMonsterGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            if (UserMonsterGridView.SelectedIndex == -1)
-                return;
-
-            StackIndicator.Children.Clear();
-
-            for (int i = 0; i < App.core.monsterUserList.monsterList.Count; i++)
-            {
-                if (i == UserMonsterGridView.SelectedIndex)
-                {
-                    StackIndicator.Children.Add(new Ellipse()
-                    {
-                        Height = 10,
-                        Width = 10,
-                        Fill = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF2196F3")),
-                        Stroke = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF2196F3")),
-                        Margin = new Thickness(2.5)
-                    });
-                }
-                else
-                {
-                    StackIndicator.Children.Add(new Ellipse()
-                    {
-                        Height = 10,
-                        Width = 10,
-                        Fill = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FFFFFFFF")),
-                        Stroke = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF2196F3")),
-                        Margin = new Thickness(2.5)
-                    });
-                }
-            }
-        }
-
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            prepareSelectedMonsted.Init();
+
+            //  prepareSelectedMonsted.Init();
         }
     }
 }

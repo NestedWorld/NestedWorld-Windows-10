@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.MonsterViews.MonsterTab.Menu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.MonsterViews.MonsterTab"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="250">
+
+    <Grid Background="{StaticResource BattleBrushGrey}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+          
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="10, 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Text="Souls" Foreground="{StaticResource BackrgoundBrush}"/>
+
+        <Line X1="10" Y1="50" Y2="50" X2="240" StrokeThickness="2" Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource BackrgoundBrush}"></Line>
+
+        <StackPanel Grid.Row="1" Margin="10">
+            <TextBlock Margin="0,5" Text="Order by"/>
+
+            <ComboBox Width="225">
+                <TextBlock Text="ByName" x:Name="ByName"/>
+                <TextBlock Text="ByType" x:Name="ByType"/>
+                <TextBlock Text="ByLevel" x:Name="ByLevel"/>
+                <TextBlock Text="ByID" x:Name="ByID"/>
+            </ComboBox>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

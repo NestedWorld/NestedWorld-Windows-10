@@ -28,6 +28,7 @@ namespace MessagePack.Serveur
             Add(new Combat.AttackReceived());
             Add(new Combat.MonsterKo());
             Add(new Combat.End());
+            Add(new MessagePackNestedWorld.MessagePack.Serveur.Combat.MonsterReplaced());
         }
 
         public void Add(ResultBase resutl)

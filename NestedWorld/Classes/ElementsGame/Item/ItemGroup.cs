@@ -44,7 +44,7 @@ namespace NestedWorld.Classes.ElementsGame.Item
             {
                 foreach(XElement item in element.Elements("Item"))
                 {
-                    Add(new Item((string)item.Attribute("name"), (double) item.Attribute("price"),(string)item.Attribute("desc"),(string)item.Attribute("image"), (int)item.Attribute("att"), (int)item.Attribute("def"), (int)item.Attribute("life"), (int)item.Attribute("exp")));
+                  // Add(new Item((string)item.Attribute("name"), (double) item.Attribute("price"),(string)item.Attribute("desc"),(string)item.Attribute("image"), (int)item.Attribute("att"), (int)item.Attribute("def"), (int)item.Attribute("life"), (int)item.Attribute("exp")));
                 }
             }
             catch (System.Exception ex)

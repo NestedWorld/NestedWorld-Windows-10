@@ -9,6 +9,7 @@ using System.IO;
 using Windows.Foundation;
 using Windows.Storage.Streams;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.UI.Xaml.Media;
 
 namespace NestedWorld.Utils
 {
@@ -25,6 +26,25 @@ namespace NestedWorld.Utils
 
             return wrb;
         }
+
+
+        public static ImageBrush UrlToFillSource(string url)
+        {
+            try
+            {
+                var bitmapImage = new BitmapImage();
+                ImageBrush brush = new ImageBrush();
+                bitmapImage.UriSource = new Uri(url);
+                brush.ImageSource = bitmapImage;
+                return brush;
+            }
+            catch (Exception ex)
+            {
+                Utils.Log.Error(ex);
+               return UrlToFillSource("ms-appx:///Assets/NestedWorldLogo.png");
+            }
+        }
+
 
         public static async Task<byte[]> getBytes(this WriteableBitmap wb)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NestedWorld.Classes.ElementsGame.Item;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,6 +20,21 @@ namespace NestedWorld.View
 {
     public sealed partial class StuffView : UserControl
     {
+        private ItemList _itemList;
+
+        public ItemList itemList
+        {
+            get
+            {
+                return _itemList;
+            }
+            set
+            {
+                _itemList = value;
+                this.DataContext = value;
+            }
+        }
+
         public StuffView()
         {
             this.InitializeComponent();
@@ -26,17 +42,14 @@ namespace NestedWorld.View
 
         public void Init()
         {
-
+            this.itemList = App.core.itemsList;
         }
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        private void ItemsListView_OnItemSelected(Item item)
         {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            Utils.Log.Info(item.Name);
+            this.Use.DataContext = item;
+            this.Use.Show();
         }
     }
 }
