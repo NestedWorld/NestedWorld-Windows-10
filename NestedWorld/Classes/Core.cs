@@ -14,13 +14,14 @@ using NestedWorldHttp.Users;
 using NestedWorld.Classes.ElementsGame.Attack;
 using NestedWorld.Classes.ElementsGame.Battle;
 using NestedWorld.Classes.ElementsGame.Item;
+using NestedWorld.Classes.ElementsGame.Portals;
 
 namespace NestedWorld.Classes
 {
     public class Core
     {
 
-        public ItemList itemsList { get; set; } 
+        public ItemList itemsList { get; set; }
         public BattleRouter battleRouter { get; set; }
         public MonsterList monsterList { get; set; }
         public AttackList attackList { get; set; }
@@ -36,6 +37,8 @@ namespace NestedWorld.Classes
 
         public bool Offline { get; set; }
 
+        public PortalList PortalList { get; set; }
+
         public Shop Shop { get; set; }
         public ChatCore Chat { get; set; }
         public MapController MapController { get; set; }
@@ -48,6 +51,7 @@ namespace NestedWorld.Classes
             monsterUserList = new MonsterList();
             userList = new UserList();
             areaList = new AreaList();
+            PortalList = new PortalList();
             Shop = new Shop();
             battleRouter = new BattleRouter();
             Chat = new ChatCore();

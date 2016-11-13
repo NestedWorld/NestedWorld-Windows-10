@@ -1,4 +1,5 @@
-﻿using NestedWorld.Classes.ElementsGame.Users;
+﻿using NestedWorld.Classes.ElementsGame.Portals;
+using NestedWorld.Classes.ElementsGame.Users;
 using NestedWorld.View.MapPoint;
 using System;
 using System.Collections.Generic;
@@ -27,14 +28,29 @@ namespace NestedWorld.View.MapViews
         public MapControlView()
         {
             this.InitializeComponent();
-            
         }
-
 
         private void Locate(object sender, RoutedEventArgs e)
         {
             App.core.MapController.Locate();
         }
 
+        public void PortalMapPoint_OnPortalSelected(Portal portal)
+        {
+            this.PortalView.DataContext = portal;
+            this.PortalView.Show();
+        }
+
+        public async void focusOn(Portal portal)
+        {
+            try
+            {
+                await mapControl.TrySetViewAsync(new Windows.Devices.Geolocation.Geopoint(portal.Location), 10, 0, 0, MapAnimationKind.Bow);
+            }
+            catch(Exception ex)
+            {
+                Utils.Log.Error("focusOn", ex);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using NestedWorld.View.MapViews;
+﻿using NestedWorld.Classes.ElementsGame.Portals;
+using NestedWorld.View.MapViews;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,9 +31,13 @@ namespace NestedWorld.View
 
         public async void Init()
         {
-            await App.network.GetPlaces();
-
-            //await App.network.
+            App.core.PortalList = new Classes.ElementsGame.Portals.PortalList();
+            var ret = await App.network.GetPortals();
+            ret.ShowErrorOnApp();
+            App.core.PortalList = ret.Content as PortalList;
+            this.PortalListView.DataContext = App.core.PortalList;
+            this.PortalListView.OnPortalSelected += mapControlView.focusOn;
+            App.core.PortalList.DisplayOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
         }
 
 
@@ -60,9 +65,9 @@ namespace NestedWorld.View
                     break;
                 case ("areasShowSwitch"):
                     if (ts.IsOn)
-                        App.core.MapController.ShowAreaLocation();
+                        App.core.PortalList.DisplayOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
                     else
-                        App.core.MapController.ColapseAreaLocation();
+                        App.core.PortalList.HideOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
                     break;
                 case ("alliesShowSwitch"):
                     if (ts.IsOn)

@@ -123,6 +123,7 @@
     <Content Include="Assets\none_monster.png" />
     <Content Include="Assets\Place_DefautlImage.png" />
     <Content Include="Assets\profilDefault.png" />
+    <Content Include="Assets\red.png" />
     <Content Include="Assets\Shop\alliesexchange.png" />
     <Content Include="Assets\Shop\worldechange.jpg" />
     <Content Include="Assets\default_monster.png" />
@@ -181,6 +182,8 @@
     <Compile Include="Classes\ElementsGame\Maps\MapController.cs" />
     <Compile Include="Classes\ElementsGame\Monsters\Monster.cs" />
     <Compile Include="Classes\ElementsGame\Monsters\MonsterList.cs" />
+    <Compile Include="Classes\ElementsGame\Portals\Portal.cs" />
+    <Compile Include="Classes\ElementsGame\Portals\PortalList.cs" />
     <Compile Include="Classes\ElementsGame\Session\UserSession.cs" />
     <Compile Include="Classes\ElementsGame\Shop\Shop.cs" />
     <Compile Include="Classes\ElementsGame\Stats\Charac.cs" />
@@ -448,6 +451,9 @@
     <Compile Include="View\MapPoint\PlayerMapPoint.xaml.cs">
       <DependentUpon>PlayerMapPoint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MapPoint\PortalMapPoint.xaml.cs">
+      <DependentUpon>PortalMapPoint.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MapPoint\UserMapPoint.xaml.cs">
       <DependentUpon>UserMapPoint.xaml</DependentUpon>
     </Compile>
@@ -465,6 +471,30 @@
     </Compile>
     <Compile Include="View\MapViews\MonsterMapList.xaml.cs">
       <DependentUpon>MonsterMapList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalListView.xaml.cs">
+      <DependentUpon>PortalListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\Body.xaml.cs">
+      <DependentUpon>Body.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\Footer.xaml.cs">
+      <DependentUpon>Footer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\MonsterCircleView.xaml.cs">
+      <DependentUpon>MonsterCircleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\MonsterCirleItemView.xaml.cs">
+      <DependentUpon>MonsterCirleItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\PortalListLitemView.xaml.cs">
+      <DependentUpon>PortalListLitemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\PortalMainView.xaml.cs">
+      <DependentUpon>PortalMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MapViews\UserMapList.xaml.cs">
       <DependentUpon>UserMapList.xaml</DependentUpon>
@@ -610,7 +640,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="NestedWorld_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Flower\Flower.png" />
@@ -948,6 +977,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MapPoint\PortalMapPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MapPoint\UserMapPoint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -969,6 +1002,38 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MapViews\MonsterMapList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\Body.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\Footer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\Header.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\MonsterCircleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\MonsterCirleItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\PortalListLitemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\PortalMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,11 +9,11 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
+    <Grid Background="{StaticResource BackrgoundBrush}">
         <ListView x:Name="listview" ItemsSource="{Binding}" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:ItemsListItemView Margin="0, 0, 0, 5"/>
+                    <local:ItemsListItemView/>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>

@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 using NestedWorld.View.RootView;
 using NestedWorldHttp.Http.Users;
 using NestedWorld.Classes.ElementsGame.Item;
+using NestedWorldHttp.Http.Places;
+using NestedWorld.Classes.ElementsGame.Portals;
 
 namespace NestedWorld.Classes.Network
 {
@@ -739,6 +741,48 @@ namespace NestedWorld.Classes.Network
                 var jsontmp = await request.GetJsonAsync();
 
                 ReturnObject = new ReturnObject();
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+
+            }
+            return ReturnObject;
+        }
+
+        public async Task<ReturnObject> GetPortals()
+        {
+            ReturnObject ReturnObject;
+
+            PortailGet request = new PortailGet();
+            request.SetParam();
+
+
+            if (App.core.Offline)
+            {
+                return new ReturnObject()
+                {
+                    Content = null,
+                    ErrorCode = 0,
+                    Message = ""
+                };
+            }
+
+            try
+            {
+                var jsontmp = await request.GetJsonAsync();
+                ReturnObject = new ReturnObject() { Content = PortalList.LoadJson(jsontmp.Object), ErrorCode = 0, Message = ""};
             }
             catch (HttpRequestException HRException)
             {

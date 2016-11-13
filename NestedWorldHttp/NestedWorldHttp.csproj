@@ -123,6 +123,7 @@
     <Compile Include="Http\Monster\UsersMonster.cs" />
     <Compile Include="Http\Places\PlaceGet.cs" />
     <Compile Include="Http\Places\PlaceMonster.cs" />
+    <Compile Include="Http\Places\PortailGet.cs" />
     <Compile Include="Http\Places\RegionMonster.cs" />
     <Compile Include="Http\Places\RegionsGet.cs" />
     <Compile Include="Http\ReturnObject.cs" />

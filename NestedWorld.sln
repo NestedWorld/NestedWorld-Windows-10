@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestedWorld", "NestedWorld\NestedWorld.csproj", "{DC76C179-A704-44FC-BCCB-763D162CC901}"
 EndProject
@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{25B7D9
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestNestedWorld", "UnitTestNestedWorld\UnitTestNestedWorld.csproj", "{91668086-0961-463E-9EFF-9A52135A4771}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketLib", "SocketLib\SocketLib.csproj", "{D8F77536-BEE0-4BE3-9C75-935F88AFA503}"
 EndProject
@@ -71,26 +69,6 @@ Global
 		{973A943B-FF77-4267-8F30-F5FE2B7F5583}.Release|x64.Build.0 = Release|x64
 		{973A943B-FF77-4267-8F30-F5FE2B7F5583}.Release|x86.ActiveCfg = Release|Win32
 		{973A943B-FF77-4267-8F30-F5FE2B7F5583}.Release|x86.Build.0 = Release|Win32
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|ARM.ActiveCfg = Debug|ARM
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|ARM.Build.0 = Debug|ARM
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|ARM.Deploy.0 = Debug|ARM
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|x64.ActiveCfg = Debug|x64
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|x64.Build.0 = Debug|x64
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|x64.Deploy.0 = Debug|x64
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|x86.ActiveCfg = Debug|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|x86.Build.0 = Debug|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Debug|x86.Deploy.0 = Debug|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|Any CPU.ActiveCfg = Release|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|ARM.ActiveCfg = Release|ARM
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|ARM.Build.0 = Release|ARM
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|ARM.Deploy.0 = Release|ARM
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|x64.ActiveCfg = Release|x64
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|x64.Build.0 = Release|x64
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|x64.Deploy.0 = Release|x64
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|x86.ActiveCfg = Release|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|x86.Build.0 = Release|x86
-		{91668086-0961-463E-9EFF-9A52135A4771}.Release|x86.Deploy.0 = Release|x86
 		{D8F77536-BEE0-4BE3-9C75-935F88AFA503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8F77536-BEE0-4BE3-9C75-935F88AFA503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8F77536-BEE0-4BE3-9C75-935F88AFA503}.Debug|ARM.ActiveCfg = Debug|ARM

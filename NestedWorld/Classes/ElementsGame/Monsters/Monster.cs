@@ -101,7 +101,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
 
         }
 
-        
+
 
         internal static Monster GetMonster(JObject jObject)
         {
@@ -129,11 +129,11 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
                 }
 
                 string name = jObject["name"].ToObject<string>();
-                string enraged_sprite = "https://s3-eu-west-1.amazonaws.com/nestedworld/Monsters/default_monster.png";
-               // string enraged_sprite = jObject["enraged_sprite"].ToObject<string>();
+                string enraged_sprite = "https://s3-eu-west-1.amazonaws.com/nestedworld/Monsters/bad.png";
+                //string enraged_sprite = jObject["enraged_sprite"].ToObject<string>();
                 string base_sprite = jObject["base_sprite"].ToObject<string>();
                 int id = jObject["id"].ToObject<int>();
-                Monster ret =  new Monster()
+                Monster ret = new Monster()
                 {
                     Name = name,
                     ID = id,
@@ -161,7 +161,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
 
                 int defense = Infos["defense"].ToObject<int>();
                 string name = Infos["name"].ToObject<string>();
-             
+
                 int hp = Infos["hp"].ToObject<int>();
                 int attack = Infos["attack"].ToObject<int>();
                 int user_id = jObject["id"].ToObject<int>();
@@ -245,7 +245,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             var ret = await App.network.GetMonsterAttack(this.ID);
 
             if (ret.ErrorCode == 0)
-               this.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
+                this.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
         }
 
     }

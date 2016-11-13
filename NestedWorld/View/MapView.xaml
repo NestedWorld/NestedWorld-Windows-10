@@ -12,13 +12,14 @@
     <Grid>
         <SplitView x:Name="splitViewOption" IsPaneOpen="False"  OpenPaneLength="250" DisplayMode="Overlay" CompactPaneLength="50" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" PaneBackground="{StaticResource BackrgoundBrush}" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
             <SplitView.Pane>
-                <StackPanel  Margin="5">
+                <!--StackPanel  Margin="5">
                     <TextBlock Text="Map Settings"/>
                     <Line X1="0" X2="230" Y1="1" Y2="1" Fill="{StaticResource ForgroundBrush}" Margin="0,10,0,10" Stroke="{StaticResource ForgroundBrush}"/>
                     <ToggleSwitch x:Name="monsterShowSwitch" Toggled="ToggleSwitch_Toggled"  Width="200"  Header="Monsters " OffContent="Hide" OnContent="Show" Foreground="{StaticResource ForgroundBrush}"  Style="{StaticResource ToggleSwitchStyleMonsterDisplay}"/>
                     <ToggleSwitch x:Name="areasShowSwitch" Toggled="ToggleSwitch_Toggled"  Width="200"  Header="Areas " OffContent="Hide" OnContent="Show" Foreground="{StaticResource ForgroundBrush}"  Style="{StaticResource ToggleSwitchStyleMonsterDisplay}"/>
                     <ToggleSwitch x:Name="alliesShowSwitch" Toggled="ToggleSwitch_Toggled"  Width="200"  Header="Allies " OffContent="Hide" OnContent="Show" Foreground="{StaticResource ForgroundBrush}"  Style="{StaticResource ToggleSwitchStyleMonsterDisplay}"/>
-                </StackPanel>
+                </-->
+                <MapViews:PortalListView x:Name="PortalListView"/>
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid>
