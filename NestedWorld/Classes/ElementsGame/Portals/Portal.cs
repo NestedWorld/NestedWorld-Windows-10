@@ -111,9 +111,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
 
         public static Portal LoadJson(JObject obj)
         {
-            /*  string url = obj["url"].ToObject<string>();
-              string[] urls = url.Split('/');*/
-
+           
             int id = obj["id"].ToObject<int>();
             double longitude = obj["position"].ToObject<double[]>()[0];
             double latitude = obj["position"].ToObject<double[]>()[1];
@@ -138,8 +136,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             }
             string name = obj["name"].ToObject<string>();
             string distance = (obj["distance"].ToObject<double>() < 1.0 ? "less than 1 m" : obj["distance"].ToObject<int>().ToString() + " m");
-            Utils.Log.Info("coor", longitude, latitude);
-
+      
             return NewPortal(id, longitude, latitude, type, name, distance);
         }
     }

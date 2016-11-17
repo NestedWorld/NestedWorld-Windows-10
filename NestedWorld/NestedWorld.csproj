@@ -164,6 +164,7 @@
     <Content Include="Assets\Square71x71Logo.scale-150.png" />
     <Content Include="Assets\Square71x71Logo.scale-200.png" />
     <Content Include="Assets\Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\swords-in-cross-arrangement.svg" />
     <Content Include="Assets\user_defaultImage.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
@@ -303,6 +304,9 @@
     </Compile>
     <Compile Include="Style\TabHeaderMap.xaml.cs">
       <DependentUpon>TabHeaderMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Style\TabHeaderText.xaml.cs">
+      <DependentUpon>TabHeaderText.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\AnimatedBackground.xaml.cs">
       <DependentUpon>AnimatedBackground.xaml</DependentUpon>
@@ -786,6 +790,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\TabHeaderMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\TabHeaderText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
