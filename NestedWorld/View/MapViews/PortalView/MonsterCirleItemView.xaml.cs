@@ -58,15 +58,5 @@ namespace NestedWorld.View.MapViews.PortalView
                 Utils.Log.Error("MonsterCirleItemView::Grid_Tapped", ex);
             }
         }
-
-        private void Ellipse_Drop(object sender, DragEventArgs e)
-        {
-            Utils.Log.Info("drop");
-        }
-
-        private void Ellipse_DropCompleted(UIElement sender, DropCompletedEventArgs args)
-        {
-            Utils.Log.Info("dropCompleted");
-        }
     }
 }

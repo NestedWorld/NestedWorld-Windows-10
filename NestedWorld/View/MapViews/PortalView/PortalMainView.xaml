@@ -50,7 +50,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Select the soul to use on this portal" Foreground="{StaticResource BackrgoundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-        <local:Body Grid.Row="1"/>
+        <local:MonsterCircleView Grid.Row="1" OnMonsterSelected="MonsterCircleView_OnMonsterSelected"/>
 
         <Button Click="Button_Click" Grid.Row="2" HorizontalAlignment="Center" Height="40" Width="200" VerticalAlignment="Center" Background="{StaticResource BleuTwoBrush}">
             <TextBlock Text="Done" Foreground="{StaticResource BackrgoundBrush}"/>

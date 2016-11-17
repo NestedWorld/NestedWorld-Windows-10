@@ -1,4 +1,5 @@
-﻿using NestedWorld.View.MapPoint;
+﻿using NestedWorld.Classes.ElementsGame.Monsters;
+using NestedWorld.View.MapPoint;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Windows.UI;
 using Windows.UI.Xaml.Controls.Maps;
 
 namespace NestedWorld.Classes.ElementsGame.Portals
@@ -19,6 +21,8 @@ namespace NestedWorld.Classes.ElementsGame.Portals
 
     public class Portal
     {
+        public Monster monster { get; set; }
+
         public int ID { get; set; }
         public double longitude { get; set; }
         public double latitude { get; set; }
@@ -37,6 +41,9 @@ namespace NestedWorld.Classes.ElementsGame.Portals
         }
         public TypeEnum type;
         private PortalMapPoint _pmp;
+        public Color color { get { return (Utils.ColorUtils.GetColorFromHex(Utils.ColorUtils.GetTypeColor(type))); } set { } }
+
+        public string Name { get; set; }
 
         public PortalMapPoint pmp
         {
@@ -52,13 +59,11 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             }
         }
 
-        public Task<double> distance
+        public string distance
         {
-            get
-            {
-                return Distance();
-            }
-            set { }
+            get;
+
+            set;
         }
 
         private async Task<double> Distance()
@@ -90,8 +95,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             set { }
         }
 
-
-        public static Portal NewPortal(int Id, double longitude, double latitude, TypeEnum type)
+        public static Portal NewPortal(int Id, double longitude, double latitude, TypeEnum type, string name, string distance)
         {
             return new Portal()
             {
@@ -99,21 +103,44 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 longitude = longitude,
                 latitude = latitude,
                 type = type,
-                pmp = new PortalMapPoint()
+                pmp = new PortalMapPoint(),
+                Name = name,
+                distance = distance
             };
         }
 
         public static Portal LoadJson(JObject obj)
         {
-            string url = obj["url"].ToObject<string>();
-            string[] urls = url.Split('/');
+            /*  string url = obj["url"].ToObject<string>();
+              string[] urls = url.Split('/');*/
 
-            int id = Convert.ToInt32(urls[4]);
-            double longitude = obj["position"].ToObject<int[]>()[0];
-            double latitude = obj["position"].ToObject<int[]>()[1];
+            int id = obj["id"].ToObject<int>();
+            double longitude = obj["position"].ToObject<double[]>()[0];
+            double latitude = obj["position"].ToObject<double[]>()[1];
             TypeEnum type = TypeEnum.WATHER;
+            switch (obj["type"].ToObject<string>())
+            {
+                case ("fire"):
+                    type = TypeEnum.FIRE;
+                    break;
+                case ("plant"):
+                    type = TypeEnum.GRASS;
+                    break;
+                case ("electric"):
+                    type = TypeEnum.ELEC;
+                    break;
+                case ("water"):
+                    type = TypeEnum.WATHER;
+                    break;
+                case ("earth"):
+                    type = TypeEnum.DIRT;
+                    break;
+            }
+            string name = obj["name"].ToObject<string>();
+            string distance = (obj["distance"].ToObject<double>() < 1.0 ? "less than 1 m" : obj["distance"].ToObject<int>().ToString() + " m");
+            Utils.Log.Info("coor", longitude, latitude);
 
-            return NewPortal(id, longitude, latitude, type);
+            return NewPortal(id, longitude, latitude, type, name, distance);
         }
     }
 }

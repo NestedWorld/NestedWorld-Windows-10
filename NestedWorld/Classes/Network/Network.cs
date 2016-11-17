@@ -56,7 +56,7 @@ namespace NestedWorld.Classes.Network
             {
                 hostname = "eip.kokakiwi.net",
                 //hostname="localhost",
-                port = 6464,
+                port = 6465,
                 offline = App.core.Offline,
 
             });
@@ -761,12 +761,12 @@ namespace NestedWorld.Classes.Network
             return ReturnObject;
         }
 
-        public async Task<ReturnObject> GetPortals()
+        public async Task<ReturnObject> GetPortals(double lat, double lon)
         {
             ReturnObject ReturnObject;
 
             PortailGet request = new PortailGet();
-            request.SetParam();
+            request.SetParam(lat, lon);
 
 
             if (App.core.Offline)

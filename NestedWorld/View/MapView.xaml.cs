@@ -27,12 +27,22 @@ namespace NestedWorld.View
             this.InitializeComponent();
             App.core.MapController.MapControl = mapControlView.mapControl;
             App.core.MapController.GeolocatoreActivated = true;
+            App.core.MapController.OnUserPositionChanged += MapController_OnUserPositionChanged;
+
         }
 
-        public async void Init()
+        private void MapController_OnUserPositionChanged(Windows.Devices.Geolocation.Geoposition position)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
+            DisplayPortal(position.Coordinate.Latitude, position.Coordinate.Longitude);
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
+
+        private async void DisplayPortal(double latitude, double longitude)
+        {
+            App.core.PortalList.HideOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
             App.core.PortalList = new Classes.ElementsGame.Portals.PortalList();
-            var ret = await App.network.GetPortals();
+            var ret = await App.network.GetPortals(latitude, longitude);
             ret.ShowErrorOnApp();
             App.core.PortalList = ret.Content as PortalList;
             this.PortalListView.DataContext = App.core.PortalList;
@@ -40,42 +50,18 @@ namespace NestedWorld.View
             App.core.PortalList.DisplayOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
         }
 
+        public async void Init()
+        {
+            var locate = await App.core.MapController.GetUserPosition();
+#pragma warning disable CS0618 // Type or member is obsolete
+            DisplayPortal(locate.Coordinate.Latitude, locate.Coordinate.Longitude);
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             splitViewOption.IsPaneOpen = !splitViewOption.IsPaneOpen;
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
-        {
-            ToggleSwitch ts = sender as ToggleSwitch;
-
-            switch (ts.Name)
-            {
-                case ("monsterShowSwitch"):
-                    if (ts.IsOn)
-                        App.core.MapController.ShowMonsterLocation();
-                    else
-                        App.core.MapController.ColapseMonsterLocation();
-                    break;
-                case ("areasShowSwitch"):
-                    if (ts.IsOn)
-                        App.core.PortalList.DisplayOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
-                    else
-                        App.core.PortalList.HideOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
-                    break;
-                case ("alliesShowSwitch"):
-                    if (ts.IsOn)
-                        App.core.MapController.ShowAllyLocation();
-                    else
-                        App.core.MapController.ColapseAllyLocation();
-                    break;
-            }
         }
     }
 }

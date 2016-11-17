@@ -10,6 +10,6 @@
     d:DesignWidth="300">
 
     <Grid>
-        <local:MonsterCircleView/>
+        <local:MonsterCircleView x:Name="PortalInfo" x:FieldModifier="public"/>
     </Grid>
 </UserControl>

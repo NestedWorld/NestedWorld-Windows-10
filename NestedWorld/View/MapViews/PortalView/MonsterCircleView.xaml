@@ -27,6 +27,9 @@
             </Ellipse.Fill>
 
         </Ellipse>
+
+        <Ellipse  Stroke="{StaticResource BattleBrushGrey}" Height="300" Width="300" RenderTransformOrigin="0.5,0.5"/>
+
         <Canvas x:Name="CanvasDisplay" x:FieldModifier="public"/>
         <Ellipse Height="50" Width="50" AllowDrop="True" DragEnter="Ellipse_DragEnter" DragOver="Ellipse_DragOver" DropCompleted="ellipse_DropCompleted"></Ellipse>
     </Grid>

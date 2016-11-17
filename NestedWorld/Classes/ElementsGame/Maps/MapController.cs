@@ -14,6 +14,10 @@ namespace NestedWorld.Classes.ElementsGame.Maps
 {
     public class MapController
     {
+        public delegate void UserPositionChanged(Geoposition position);
+
+        public event UserPositionChanged OnUserPositionChanged;
+
         private Geolocator geolocator;
         private bool _geoActiv;
 
@@ -100,6 +104,7 @@ namespace NestedWorld.Classes.ElementsGame.Maps
                   () =>
                   {
                       UpdateUserPosition(args.Position);
+                      this.OnUserPositionChanged?.Invoke(args.Position);
                   }));
             }
             catch (System.Exception ex)

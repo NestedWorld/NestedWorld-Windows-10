@@ -63,7 +63,8 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             }
             set
             {
-                Add(value);
+                this._portalMap[id] = value;
+//                Add(value);
             }
         }
 
@@ -78,14 +79,14 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             int i = 0;
             foreach (JObject JPortal in array)
             {
-                ret.Add(Portal.LoadJson(JPortal));
-                if (i > 20)
-                    break;
+                ret[i] = (Portal.LoadJson(JPortal));
+             //   if (i > 20)
+               //     break;
                 i++;
             }
             return ret;
         }
 
-      
+
     }
 }

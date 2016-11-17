@@ -24,6 +24,7 @@ namespace NestedWorld.Style
     {
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register("dataIcon", typeof(Geometry), typeof(TabHeader), null);
         public static readonly DependencyProperty backgroundProperty = DependencyProperty.Register("background", typeof(SolidColorBrush), typeof(TabHeader), null);
+    
         private bool _isSelect;
 
         public Geometry Icon
@@ -41,7 +42,7 @@ namespace NestedWorld.Style
                 SetValue(backgroundProperty, new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF808080")));
                 if (value)
                     SetValue(backgroundProperty, new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FFFFFFFF")));
-             }
+            }
         }
 
         public TabHeader()
@@ -55,8 +56,8 @@ namespace NestedWorld.Style
         private void SetSize(double width)
         {
             this.Width = width / 5.0;
-            
-              
+
+
         }
 
         private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)

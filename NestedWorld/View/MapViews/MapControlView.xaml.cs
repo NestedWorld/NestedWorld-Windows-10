@@ -24,10 +24,12 @@ namespace NestedWorld.View.MapViews
 {
     public sealed partial class MapControlView : UserControl
     {
+        public bool IsShow;
         public MapControl mapControl { get { return mC; } set { mC = value; } }
         public MapControlView()
         {
             this.InitializeComponent();
+            IsShow = false;
         }
 
         private void Locate(object sender, RoutedEventArgs e)
@@ -39,13 +41,15 @@ namespace NestedWorld.View.MapViews
         {
             this.PortalView.DataContext = portal;
             this.PortalView.Show();
+            this.IsShow = true;
         }
 
         public async void focusOn(Portal portal)
         {
             try
             {
-                await mapControl.TrySetViewAsync(new Windows.Devices.Geolocation.Geopoint(portal.Location), 10, 0, 0, MapAnimationKind.Bow);
+                this.PortalView.DataContext = portal;
+                await mapControl.TrySetViewAsync(new Windows.Devices.Geolocation.Geopoint(portal.Location), mapControl.ZoomLevel < 15 ? 15 : mapControl.ZoomLevel, 0, 0, MapAnimationKind.Bow);
             }
             catch(Exception ex)
             {

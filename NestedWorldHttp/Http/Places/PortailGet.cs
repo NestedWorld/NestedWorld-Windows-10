@@ -11,9 +11,9 @@ namespace NestedWorldHttp.Http.Places
         public PortailGet() 
             : base ("/geo/portals", RequestType.GET) { }
 
-        public void SetParam()
+        public void SetParam(double lat, double lon)
         {
-            this.uri = new Uri(url);
+            this.uri = new Uri(url + "/" +  lat + "/" + lon);
         }
     }
 }

@@ -121,6 +121,7 @@
     <Compile Include="MessagePack\Client\Combat\MonsterKoReplace.cs" />
     <Compile Include="MessagePack\Client\Combat\Replace.cs" />
     <Compile Include="MessagePack\Client\Combat\SendAttack.cs" />
+    <Compile Include="MessagePack\Client\Portal\Capture.cs" />
     <Compile Include="MessagePack\Client\RequestBase.cs" />
     <Compile Include="MessagePack\Client\Result\Combat\ResultAsk.cs" />
     <Compile Include="MessagePack\Client\Result\Special\Error.cs" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <Folder Include="MessagePack\Client\Answers\Geo\" />
     <Folder Include="MessagePack\Client\Geo\" />
+    <Folder Include="MessagePack\Client\Result\Portal\" />
     <Folder Include="MessagePack\Serveur\Geo\" />
     <Folder Include="MessagePack\Serveur\Special\" />
   </ItemGroup>

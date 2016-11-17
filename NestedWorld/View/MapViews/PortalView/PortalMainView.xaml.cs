@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NestedWorld.Classes.ElementsGame.Portals;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,6 +41,33 @@ namespace NestedWorld.View.MapViews.PortalView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void MonsterCircleView_OnMonsterSelected(Classes.ElementsGame.Monsters.Monster monster)
+        {
+            Utils.Log.Info(monster.Name);
+            try
+            {
+                var tmp = MessagePackNestedWorld.MessagePack.Client.Portal.Capture.TryCapture((this.DataContext as Portal).ID, monster.UserID);
+                tmp.OnSuccess += Tmp_OnSuccess;
+                tmp.OnError += Tmp_OnError;
+                App.network.SendRequest(tmp);
+            }
+            catch(Exception ex)
+            {
+                Utils.Log.Error("OnMonsterSelected", ex);
+            }
+
+        }
+
+        private void Tmp_OnError(MessagePack.Serveur.ResultRequest result)
+        {
+            
+        }
+
+        private void Tmp_OnSuccess(MessagePack.Serveur.ResultRequest result)
+        {
+            
         }
     }
 }
