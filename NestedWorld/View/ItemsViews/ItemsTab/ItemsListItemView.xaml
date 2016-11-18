@@ -23,6 +23,13 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 0" Grid.Column="1">
             <TextBlock Text="{Binding Path=Name}" FontSize="15"/>
+            <TextBlock Text="{Binding Path=Description}" FontSize="10"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="x" FontSize="10"/>
+            <TextBlock Text="{Binding Path=number}" Margin="2.5, 0" FontSize="10"/>
+
         </StackPanel>
     </Grid>
 </UserControl>

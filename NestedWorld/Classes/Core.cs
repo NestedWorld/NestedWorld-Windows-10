@@ -27,8 +27,9 @@ namespace NestedWorld.Classes
         public AttackList attackList { get; set; }
         public MonsterList monsterUserList { get; set; }
         public NotificationInternal notificationInternal { get; set; }
-
         public Resources Resources { get; set; }
+        
+
 
         public UserList userList { get; set; }
         public AreaList areaList { get; set; }

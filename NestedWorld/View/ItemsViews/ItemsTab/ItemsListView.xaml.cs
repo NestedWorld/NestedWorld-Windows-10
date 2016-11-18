@@ -37,7 +37,7 @@ namespace NestedWorld.View.ItemsViews.ItemsTab
 
             try
             {
-                listview.DataContext = (this.DataContext as ItemList).content;
+                listview.DataContext = (this.DataContext as Inventory).content;
             }
             catch (Exception ex)
             {

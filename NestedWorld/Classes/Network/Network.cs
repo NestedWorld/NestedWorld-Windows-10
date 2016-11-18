@@ -250,6 +250,39 @@ namespace NestedWorld.Classes.Network
             return ReturnObject;
         }
 
+        public async Task<ReturnObject> GetUserInventory()
+        {
+            ReturnObject ReturnObject;
+
+            NestedWorldHttp.Inventory.UserInventory getObject = new NestedWorldHttp.Inventory.UserInventory();
+            getObject.SetParam();
+
+            try
+            {
+                var ret = await getObject.GetJsonAsync();
+                Inventory itemList = Inventory.NewJromJson(ret.Object);
+
+                ReturnObject = new ReturnObject() { Content = itemList, ErrorCode = 0, Message = string.Empty };
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+
+            }
+            return ReturnObject;
+        }
+
         public async Task<ReturnObject> GetObject()
         {
             ReturnObject ReturnObject;

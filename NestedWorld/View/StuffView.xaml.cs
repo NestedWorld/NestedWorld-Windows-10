@@ -20,29 +20,17 @@ namespace NestedWorld.View
 {
     public sealed partial class StuffView : UserControl
     {
-        private ItemList _itemList;
-
-        public ItemList itemList
-        {
-            get
-            {
-                return _itemList;
-            }
-            set
-            {
-                _itemList = value;
-                this.DataContext = value;
-            }
-        }
-
         public StuffView()
         {
             this.InitializeComponent();
         }
 
-        public void Init()
+        public async void Init()
         {
-            this.itemList = App.core.itemsList;
+          
+            var ret = await App.network.GetUserInventory();
+            ret.ShowErrorOnApp();
+            this.DataContext = ret.Content as Inventory;
         }
 
         private void ItemsListView_OnItemSelected(Item item)

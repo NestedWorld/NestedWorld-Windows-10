@@ -24,6 +24,18 @@ namespace NestedWorld.Classes.ElementsGame.Item
 
         public Item() { }
 
+        public Item(Item source)
+        {
+            Name = source.Name;
+            Price = source.Price;
+            Description = source.Description;
+            Image = source.Image;
+            AttackEffect = source.AttackEffect;
+            DeffEffect = source.DeffEffect;
+            LifeEffect = source.LifeEffect;
+            ExpEffect = source.ExpEffect;
+        }
+
         public Item(string name, int price, string description, string image, int att, int deff, int life, int exp)
         {
             Name = name;

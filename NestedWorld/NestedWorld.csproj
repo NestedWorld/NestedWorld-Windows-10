@@ -213,6 +213,8 @@
     <Compile Include="Classes\ElementsGame\Battle\Paterns\DefenceSpePatern.cs" />
     <Compile Include="Classes\ElementsGame\Battle\Paterns\DefencePatern.cs" />
     <Compile Include="Classes\ElementsGame\Battle\Paterns\UseToolsPatern.cs" />
+    <Compile Include="Classes\ElementsGame\Item\Inventory.cs" />
+    <Compile Include="Classes\ElementsGame\Item\InventoryObject.cs" />
     <Compile Include="Classes\ElementsGame\Item\ItemList.cs" />
     <Compile Include="Classes\ElementsGame\Maps\Place.cs" />
     <Compile Include="Classes\ElementsGame\Maps\Region.cs" />

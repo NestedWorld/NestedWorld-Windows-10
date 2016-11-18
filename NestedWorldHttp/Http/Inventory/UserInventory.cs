@@ -5,7 +5,7 @@ namespace NestedWorldHttp.Inventory
     public class UserInventory : HttpRequest
     {
         public UserInventory() 
-            : base("/users/inventory/", RequestType.GET)
+            : base("/users/me/inventory/", RequestType.GET)
         {
         }
 
