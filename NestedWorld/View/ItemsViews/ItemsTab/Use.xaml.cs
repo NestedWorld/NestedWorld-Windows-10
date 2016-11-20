@@ -26,14 +26,16 @@ namespace NestedWorld.View.ItemsViews.ItemsTab
             this.Visibility = Visibility.Collapsed;
         }
 
-        
+
         public void Show()
         {
             this.Visibility = Visibility.Visible;
+            this.ShowAnnimation.Begin();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.HideAnnimation.Begin();
             this.Visibility = Visibility.Collapsed;
         }
 

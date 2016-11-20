@@ -11,7 +11,7 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <view:ItemsListView OnItemSelected="ItemsListView_OnItemSelected"/>
 
-        <view:Use x:Name="Use" Height="500" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <view:Use x:Name="Use" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </UserControl>

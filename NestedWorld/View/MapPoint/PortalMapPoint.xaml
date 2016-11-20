@@ -11,10 +11,13 @@
     RenderTransformOrigin="0.5,0.5">
     <Grid Tapped="Grid_Tapped" Background="Transparent">
 
-        <Ellipse Height="35" x:Name="Image" Width="35" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="{StaticResource BackrgoundBrush}" StrokeThickness="6">
+        <Ellipse Height="35" x:Name="Image" Width="35" HorizontalAlignment="Center" VerticalAlignment="Top" StrokeThickness="6">
             <Ellipse.Fill>
                 <SolidColorBrush Color="{Binding Path=color}"/>
             </Ellipse.Fill>
+            <Ellipse.Stroke>
+                <SolidColorBrush Color="{Binding Path=stateColor}"/>
+            </Ellipse.Stroke>
         </Ellipse>
     </Grid>
 </UserControl>

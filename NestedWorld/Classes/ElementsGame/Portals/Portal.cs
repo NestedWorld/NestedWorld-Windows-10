@@ -42,7 +42,23 @@ namespace NestedWorld.Classes.ElementsGame.Portals
         public TypeEnum type;
         private PortalMapPoint _pmp;
         public Color color { get { return (Utils.ColorUtils.GetColorFromHex(Utils.ColorUtils.GetTypeColor(type))); } set { } }
-
+        public Color stateColor
+        {
+            get
+            {
+                switch (state)
+                {
+                    case (PortalState.available):
+                        return Utils.ColorUtils.GetColorFromHex("#FFFFFFFF");
+                    case (PortalState.otherMonster):
+                        return Utils.ColorUtils.GetColorFromHex("#FF616668");
+                    case (PortalState.userMonster):
+                        return Utils.ColorUtils.GetColorFromHex("#FF1C1C25");
+                }
+                return Utils.ColorUtils.GetColorFromHex("#FFFFFFFF");
+            }
+            set { }
+        }
         public string Name { get; set; }
 
         public PortalMapPoint pmp

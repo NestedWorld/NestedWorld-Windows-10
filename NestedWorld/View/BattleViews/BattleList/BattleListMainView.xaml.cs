@@ -27,6 +27,9 @@ namespace NestedWorld.View.BattleViews.BattleList
 
         public void Init()
         {
+//            this.DataContext = App.core.battleRouter;
+            this.wildBattle.DataContext = App.core.battleRouter.WildBattle;
+            this.pvpBattle.DataContext = App.core.battleRouter.OppBattle;
         }
     }
 }

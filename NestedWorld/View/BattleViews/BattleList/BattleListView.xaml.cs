@@ -36,12 +36,11 @@ namespace NestedWorld.View.BattleViews.BattleList
             {
                 this.list.DataContext = bl.content;
                 this.titleList.Text = bl.header;
-                Utils.Log.Info("DataContextChanged", bl);
             }
 #pragma warning disable CS0168
             catch (Exception ex)
             {
-
+                Utils.Log.Error(ex);
             }
 #pragma warning restore CS0168
         }
