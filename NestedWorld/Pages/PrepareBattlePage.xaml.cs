@@ -80,7 +80,6 @@ namespace NestedWorld.Pages
                   MessagePackNestedWorld.MessagePack.Client.Result.Combat.ResultAskSuccess.Awnser(
                       this.battle.BattleID,
                   true, this.body.selectedMonster.idarray));
-            this.body.selectedMonster.loadAttack();
         }
 
         private void Cancel_click(object sender, RoutedEventArgs e)

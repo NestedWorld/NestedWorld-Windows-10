@@ -28,7 +28,7 @@
 
         <Grid Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2">
             <Rectangle Height="25" Width="305" Fill="{StaticResource ForgroundBrush}" />
-            <Rectangle Height="20" Width="300" x:Name="LifeBar"  Margin="2" Fill="{StaticResource BleuTwoBrush}"/>
+            <Rectangle HorizontalAlignment="Left" Height="20" Width="300" x:Name="LifeBar"  Margin="2" Fill="{StaticResource BleuTwoBrush}"/>
         </Grid>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

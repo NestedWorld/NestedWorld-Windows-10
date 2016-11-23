@@ -33,7 +33,7 @@ namespace NestedWorld.View.BattleViews
                 LifeBar.Width = value * LIFEBARMAX / Monster.LifeMax;
 
                 LifeBar.Fill = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FF2196F3"));
-                if (LifeBar.Width < 20)
+                if ((value * 100 / Monster.LifeMax) < 20)
                     LifeBar.Fill = new SolidColorBrush(Utils.ColorUtils.GetColorFromHex("#FFF44336"));
             }
         }
@@ -55,6 +55,6 @@ namespace NestedWorld.View.BattleViews
             this.InitializeComponent();
         }
 
-       
+
     }
 }

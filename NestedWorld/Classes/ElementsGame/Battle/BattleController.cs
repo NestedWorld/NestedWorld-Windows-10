@@ -71,12 +71,12 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         public void Init(BattleCanvas value)
         {
             iconList = new List<BattleIcon>();
-            iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 1));
-            iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 2));
-            iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 3));
-            iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 4));
-            iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 5));
-            iconList.Add(new BattleIcon("ms-appx:///Assets/Monster_Min.png", 6));
+            iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 1));
+            iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 2));
+            iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 3));
+            iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 4));
+            iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 5));
+            iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 6));
 
             foreach (BattleIcon b in iconList)
             {
@@ -129,25 +129,22 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         private void AttackReceiveEvent(object value)
         {
             AttackReceived attackReceived = value as AttackReceived;
+            Utils.Log.Info(attackReceived.Monster);
             try
             {
-
                 if (attackReceived.Monster.Id == start.OppomentMonster.Id)
                 {
                     //oppoment monster send;
-                    UserMonster = UserMonster.FromStruct(attackReceived.Monster);
-                    EnnemieMonster = App.core.monsterList[start.OppomentMonster.Monster_Id].FromStruct(attackReceived.Target);
-                    annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
+                    this.round = true;
+                    UserMonster = UserMonster.FromStruct(attackReceived.Target);
+                    EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Monster);
                 }
                 else
                 {
-                    //userMonster;
-                    UserMonster = UserMonster.FromStruct(attackReceived.Target);
-                    EnnemieMonster = App.core.monsterList[start.OppomentMonster.Monster_Id].FromStruct(attackReceived.Monster);
+                    this.round = false;
+                    UserMonster = UserMonster.FromStruct(attackReceived.Monster);
+                    EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Target);
                 }
-
-                this.round = true;
-
 
                 //TODO : tmp code; 
                 if (EnnemieMonster.Life <= 0)
@@ -158,6 +155,8 @@ namespace NestedWorld.Classes.ElementsGame.Battle
                 {
                     //user monster KO;
                 }
+                annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
+
             }
             catch (System.Exception ex)
             {
@@ -218,7 +217,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             int index = 0;
             foreach (BattleIcon item in iconList)
             {
-                item.top = ((Math.Sin(PidivTwo + index * alpha)) * 150) + (defaultTop / 2) - 15;
+                item.top = ((Math.Sin(PidivTwo + index * alpha)) * 150) + defaultTop - 200;
                 item.left = ((Math.Cos(PidivTwo + index * alpha)) * 150) + defaultLeft;
                 index++;
             }

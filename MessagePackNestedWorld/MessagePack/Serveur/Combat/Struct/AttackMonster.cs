@@ -10,7 +10,5 @@ namespace MessagePack.Serveur.Combat.Struct
     {
         public int Id { get; set; }
         public int Hp { get; set; }
-
-
     }
 }

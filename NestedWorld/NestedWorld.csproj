@@ -103,6 +103,7 @@
     <Content Include="Assets\Attack\finalAir.png" />
     <Content Include="Assets\Attack\finalElec.png" />
     <Content Include="Assets\Battle\cityBG.png" />
+    <Content Include="Assets\disk.png" />
     <Content Include="Assets\Effect\finalHeal.png" />
     <Content Include="Assets\icon\1240x600.png" />
     <Content Include="Assets\icon\142x142.png" />
@@ -184,6 +185,7 @@
     <Content Include="Assets\Font\Aller_LtIt.ttf" />
     <Content Include="Assets\Font\Aller_Rg.ttf" />
     <Content Include="Assets\Font\AllerDisplay.ttf" />
+    <None Include="nestedworld.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -1304,6 +1306,12 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>nestedworld.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

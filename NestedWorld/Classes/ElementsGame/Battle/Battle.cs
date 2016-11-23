@@ -30,7 +30,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
 
     public class Battle
     {
-        private BattleController _controller = new BattleController();
+        //private BattleController _controller = new BattleController();
 
         public string OpponentName { get; set; }
         public string OpponentImage { get; set; }
@@ -90,7 +90,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
 
         }
 
-        public BattleController BattleController { get { return _controller; } set { _controller = value; } }
+//        public BattleController BattleController { get { return _controller; } set { _controller = value; } }
 
     }
 

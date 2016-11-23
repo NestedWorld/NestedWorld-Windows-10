@@ -201,7 +201,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             foreach (var m in this.monsterList)
             {
                 if (m != null)
-                    ids[i] = m.ID;
+                    ids[i] = m.UserID;
                 i++;
             }
 

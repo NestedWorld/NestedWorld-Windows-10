@@ -15,7 +15,6 @@ namespace NestedWorld.Classes.ElementsGame.Battle.Paterns
         {
             if (controller.round)
             {
-                controller.annimationCanvas.Sprite = App.core.Resources.AttackSprite[controller.UserMonster.attackList[Attack.AttackType.DEFSPE].AttackRessourcesName];
                 var tmp = SendAttack.Attack(this.controller.combatID, controller.UserMonster.attackList[Attack.AttackType.DEFSPE].Id, controller.start.OppomentMonster.Id);
                 App.network.SendRequest(tmp);
             }

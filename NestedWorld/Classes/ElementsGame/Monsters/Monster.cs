@@ -25,8 +25,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         public bool PlayerMonster { get; set; }
         public int Level { get; private set; }
         public int LifeMax { get; set; }
-        public double LifePercent { get { return (Life * 100) / LifeMax; } }
-
+       
         public string UserImage { get; set; }
         public string WildImage { get; set; }
 
@@ -235,6 +234,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         {
             Monster monsterRet = new Monster(this);
 
+            monsterRet.LifeMax = this.LifeMax;
             monsterRet.Life = attackMonster.Hp;
 
             return monsterRet;
