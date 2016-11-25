@@ -77,6 +77,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 4));
             iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 5));
             iconList.Add(new BattleIcon("ms-appx:///Assets/disk.png", 6));
+        
 
             foreach (BattleIcon b in iconList)
             {
@@ -138,12 +139,14 @@ namespace NestedWorld.Classes.ElementsGame.Battle
                     this.round = true;
                     UserMonster = UserMonster.FromStruct(attackReceived.Target);
                     EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Monster);
+                    annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
                 }
-                else
+                else if (attackReceived.Monster.Id == start.UserMonster.Id)
                 {
                     this.round = false;
                     UserMonster = UserMonster.FromStruct(attackReceived.Monster);
                     EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Target);
+                    annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
                 }
 
                 //TODO : tmp code; 
@@ -155,8 +158,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
                 {
                     //user monster KO;
                 }
-                annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
-
+              
             }
             catch (System.Exception ex)
             {
@@ -211,15 +213,26 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         {
 
             double PidivTwo = (Math.PI / 2);
-            double alpha = (2 * Math.PI) / iconList.Count;
-            double defaultTop = ((height) / 2) - (iconList[0].Height / 2);
-            double defaultLeft = ((width) / 2) - (iconList[0].Width / 2);
+            double alpha = (2 * Math.PI) / 6;
+
+            double centerX = height / 2;
+            double centerY = width / 2;
+
+
+
+            double defaultTop = (height / 2) - (iconList[0].Height / 2);
+            double defaultLeft = ((width) / 2) - (iconList[0].Height / 2);
+
             int index = 0;
+
             foreach (BattleIcon item in iconList)
             {
+
+
                 item.top = ((Math.Sin(PidivTwo + index * alpha)) * 150) + defaultTop - 200;
                 item.left = ((Math.Cos(PidivTwo + index * alpha)) * 150) + defaultLeft;
                 index++;
+
             }
         }
 

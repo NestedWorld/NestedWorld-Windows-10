@@ -52,6 +52,8 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             mmp.DataContext = this;
             Info = source.Info;
             PlayerMonster = source.PlayerMonster;
+            if (source.attackList == null)
+                Utils.Log.Info("null");
             this.attackList = source.attackList;
             this.ImageBackground = "http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png";
 
@@ -79,8 +81,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             Info = info;
             PlayerMonster = false;
             PlayerAs = false;
-            this.attackList = Attack.AttackList.NewAttackList();
-            this.ImageBackground = "http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png";
+             this.ImageBackground = "http://www.intrawallpaper.com/static/images/abstract-mosaic-background.png";
         }
 
         public Monster(int ID, string name, TypeEnum type, string image, string info,
@@ -97,10 +98,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
             this.Defence = def;
             this.Surname = surname;
             this.LifeMax = live;
-
         }
-
-
 
         internal static Monster GetMonster(JObject jObject)
         {
@@ -128,8 +126,8 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
                 }
 
                 string name = jObject["name"].ToObject<string>();
-                string enraged_sprite = "https://s3-eu-west-1.amazonaws.com/nestedworld/Monsters/bad.png";
-                //string enraged_sprite = jObject["enraged_sprite"].ToObject<string>();
+                //string enraged_sprite = "https://s3-eu-west-1.amazonaws.com/nestedworld/Monsters/bad.png";
+                string enraged_sprite = jObject["enraged_sprite"].ToObject<string>();
                 string base_sprite = jObject["base_sprite"].ToObject<string>();
                 int id = jObject["id"].ToObject<int>();
                 Monster ret = new Monster()
@@ -171,6 +169,8 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
 
                 Monster monster = App.core.monsterList[id];
                 App.core.monsterList[id].PlayerMonster = true;
+                if (monster.attackList == null)
+                    Utils.Log.Info("null");
 
                 return new Monster()
                 {

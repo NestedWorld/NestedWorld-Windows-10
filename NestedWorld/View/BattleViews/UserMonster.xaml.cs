@@ -54,7 +54,6 @@ namespace NestedWorld.View.BattleViews
         {
             this.InitializeComponent();
         }
-
-
+        
     }
 }

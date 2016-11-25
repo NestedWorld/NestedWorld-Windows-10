@@ -24,6 +24,13 @@ namespace NestedWorld.View.BattleViews.BattleList
             this.InitializeComponent();
         }
 
+        public void Decline(object sender, RoutedEventArgs e)
+        {
+            Classes.ElementsGame.Battle.Battle battle = this.DataContext as Classes.ElementsGame.Battle.Battle;
+
+            App.core.battleRouter.Remove(battle);
+        }
+
         public void Accept(object sender, RoutedEventArgs e)
         {
             Classes.ElementsGame.Battle.Battle battle = this.DataContext as Classes.ElementsGame.Battle.Battle;
@@ -31,9 +38,12 @@ namespace NestedWorld.View.BattleViews.BattleList
             battle.Accept();
         }
 
-        public void Refuse()
-        {
 
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Classes.ElementsGame.Battle.Battle battle = this.DataContext as Classes.ElementsGame.Battle.Battle;
+
+            battle.Accept();
         }
     }
 }

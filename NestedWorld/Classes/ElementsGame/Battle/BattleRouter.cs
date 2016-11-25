@@ -32,6 +32,25 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         public BattleList OppBattle { get; set; }
         public BattleList TowerBattle { get; set; }
 
+        public void Remove(Battle battle)
+        {
+            battle.Decline();
+            switch (battle.ContextBattle)
+            {
+                case (Context.WILD):
+                    WildBattle.Remove(battle);
+                    WildBattle.view = _view.wildBattle;
+                    break;
+                case (Context.PVP):
+                    OppBattle.Remove(battle);
+                    OppBattle.view = _view.pvpBattle;
+                    break;
+                case (Context.TOWER):
+                    TowerBattle.Remove(battle);
+                    break;
+            }
+        }
+
         public BattleRouter()
         {
             WildBattle = new BattleList("PVE");

@@ -57,29 +57,20 @@ namespace NestedWorld.Pages
 
             this.battle = e.Parameter as Battle;
 
-            switch (battle.ContextBattle)
-            {
-                case (Context.WILD):
-                    break;
-
-                case (Context.PVP):
-                    break;
-
-                case (Context.TOWER):
-                    break;
-            }
-
+    
             header.Battle = this.battle;
 
         }
 
-        private void OK_click(object sender, RoutedEventArgs e)
+        private async void OK_click(object sender, RoutedEventArgs e)
         {
             loadingView.Start();
+            int ret = await this.body.selectedMonster.loadAttackAsync();
             App.network.SendRequest(
                   MessagePackNestedWorld.MessagePack.Client.Result.Combat.ResultAskSuccess.Awnser(
                       this.battle.BattleID,
                   true, this.body.selectedMonster.idarray));
+            
         }
 
         private void Cancel_click(object sender, RoutedEventArgs e)

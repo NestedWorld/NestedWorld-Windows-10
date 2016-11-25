@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using NestedWorld.Utils;
+
 
 namespace NestedWorld.Classes.ElementsGame.Battle
 {
@@ -39,6 +41,16 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         public State StateBattle { get; set; }
 
 
+        public DateTime receiveAt;
+        public string Time
+        {
+            get
+            {
+                TimeSpan diff = DateTime.Now - receiveAt;
+                return diff.ToPretyString();
+            }
+            set { }
+        }
         public BattleOpponent Opponent
         {
             get
@@ -46,6 +58,11 @@ namespace NestedWorld.Classes.ElementsGame.Battle
                 return new BattleOpponent() { name = this.OpponentImage, image = this.OpponentImage };
             }
             set { }
+        }
+
+        public Battle()
+        {
+            this.receiveAt = DateTime.Now;
         }
 
         public string combatStatus
@@ -87,10 +104,13 @@ namespace NestedWorld.Classes.ElementsGame.Battle
 
         public void Decline()
         {
-
+            App.network.SendRequest(
+                 MessagePackNestedWorld.MessagePack.Client.Result.Combat.ResultAskSuccess.Awnser(
+                     this.BattleID,
+                 false, null));
         }
 
-//        public BattleController BattleController { get { return _controller; } set { _controller = value; } }
+        //        public BattleController BattleController { get { return _controller; } set { _controller = value; } }
 
     }
 

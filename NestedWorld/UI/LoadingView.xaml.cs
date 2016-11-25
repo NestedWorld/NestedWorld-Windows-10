@@ -23,16 +23,24 @@ namespace NestedWorld.UI
         {
             this.InitializeComponent();
             this.Visibility = Visibility.Collapsed;
+            LoadingAnnim.Completed += LoadingAnnim_Completed;
+        }
+
+        private void LoadingAnnim_Completed(object sender, object e)
+        {
+            LoadingAnnim.Begin();
         }
 
         public void Start()
         {
             this.Visibility = Visibility.Visible;
+            LoadingAnnim.Begin();
         }
 
         public void Stop()
         {
             this.Visibility = Visibility.Collapsed;
+            LoadingAnnim.Stop();
         }
     }
 }

@@ -3,6 +3,7 @@ using MessagePack.Exception;
 using MessagePack.Serveur;
 using System;
 using System.Collections.Generic;
+using Windows.UI.Popups;
 
 namespace MessagePack.Client
 {
@@ -47,12 +48,20 @@ namespace MessagePack.Client
                throw new NoTypeFoundException(type.ToString());
            }
            */
-        public void SendRequest(RequestBase request)
+        public async void SendRequest(RequestBase request)
         {
             idhistory[request.id] = request;
-
-            if (!offline)
-                stream.Send(request.GetStream());
+            try
+            {
+                if (!offline)
+                    stream.Send(request.GetStream());
+            }
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (System.Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+            {
+                await new MessageDialog("Sorry but the server is not online", "Server error").ShowAsync();
+            }
         }
 
         public void ReceiveRequest(object value)

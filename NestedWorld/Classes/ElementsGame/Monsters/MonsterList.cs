@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -94,10 +94,28 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
                 var ret = await App.network.GetMonsterAttack(m.ID);
 
                 if (ret.ErrorCode == 0)
+                {
                     m.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
-
+                    if (m.attackList == null)
+                        Utils.Log.Info("null");
+                }
                 ret.ShowError();
             }
+        }
+
+        public async Task<int> loadAttackAsync()
+        {
+            foreach (Monster m in monsterList)
+            {
+                if (m == null)
+                    break;
+                var ret = await App.network.GetMonsterAttack(m.ID);
+
+                if (ret.ErrorCode == 0)
+                    m.attackList = App.core.attackList.NewAttackListFromJson(ret.Content as JObject);
+                ret.ShowError();
+            }
+            return 1;
         }
 
 

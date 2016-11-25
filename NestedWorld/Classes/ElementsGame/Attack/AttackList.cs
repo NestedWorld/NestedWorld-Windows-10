@@ -10,18 +10,18 @@ namespace NestedWorld.Classes.ElementsGame.Attack
 {
     public class AttackList
     {
-        public List<Attack> list { get; set; }
+        public Dictionary<int, Attack> list { get; set; }
 
-        public ObservableCollection<Attack> observable { get { return new ObservableCollection<Attack>(list); } set { } }
+        public ObservableCollection<Attack> observable { get { return new ObservableCollection<Attack>(list.Values); } set { } }
 
         public AttackList()
         {
-            list = new List<Attack>();
+            list = new Dictionary<int, Attack>();
         }
 
         public void Add(Attack newattack)
         {
-            list.Add(newattack);
+            list[newattack.Id] = newattack;
         }
 
         public void InitDebug()
@@ -61,7 +61,9 @@ namespace NestedWorld.Classes.ElementsGame.Attack
                 JArray array = Jobject["attacks"].ToObject<JArray>();
                 foreach (JObject obj in array)
                 {
-                    Attack att = list[obj["id"].ToObject<int>()];
+                    int index = obj["id"].ToObject<int>();
+                    Utils.Log.Info("id", index);
+                    Attack att = list[index];
                     ret.Add(att);
                 }
             }
@@ -79,24 +81,24 @@ namespace NestedWorld.Classes.ElementsGame.Attack
             set { }
         }
 
-        public Attack this[int key]
-        {
-            get { return Get(key); }
-            set { }
-        }
-
         private Attack Get(AttackType key)
         {
-            var q = from attack in list where attack.Type == key select attack;
+            var q = from attack in list.Values where attack.Type == key select attack;
 
             return q.ToList()[0];
         }
 
-        private Attack Get(int key)
-        {
-            var q = from attack in list where attack.Id == key select attack;
 
-            return q.ToList()[0];
+        public override string ToString()
+        {
+            var ret = "";
+
+            foreach (Attack a in list.Values)
+            {
+                ret += a.Id + " " + a.Name + " " + a.typeString;
+            }
+
+            return ret;
         }
     }
 }

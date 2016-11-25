@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -52,11 +53,21 @@ namespace NestedWorld.View
 
         public async void Init()
         {
-            var locate = await App.core.MapController.GetUserPosition();
+            try
+            {
+                var locate = await App.core.MapController.GetUserPosition();
+                mapControlView.CenterUser(locate);
 #pragma warning disable CS0618 // Type or member is obsolete
-            DisplayPortal(locate.Coordinate.Latitude, locate.Coordinate.Longitude);
+                DisplayPortal(locate.Coordinate.Latitude, locate.Coordinate.Longitude);
 #pragma warning restore CS0618 // Type or member is obsolete
-
+                
+            }
+            catch (Exception ex)
+            {
+                Utils.Log.Error("MapView::Init", ex);
+                await new MessageDialog("Please go to Settings > Privacy > location, and allow Nested World to access to your location", 
+                    "You're not enable Nested World to access to your localisation").ShowAsync();
+            }
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)

@@ -54,7 +54,7 @@ namespace NestedWorld
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected async override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -91,10 +91,7 @@ namespace NestedWorld
                 // parameter
                 if (UserSession.ValideToken)
                 {
-                    var ret = await UserSession.Connect();
-                    Utils.Log.Info(ret);
-                    if (ret.IsError)
-                        rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(Pages.LoadingPage), e.Arguments);
                 }
                 else
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);

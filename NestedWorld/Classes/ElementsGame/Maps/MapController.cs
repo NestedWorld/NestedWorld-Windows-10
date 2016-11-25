@@ -89,7 +89,7 @@ namespace NestedWorld.Classes.ElementsGame.Maps
 
         private void Init()
         {
-            
+
         }
 
         private async void Geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
@@ -130,7 +130,16 @@ namespace NestedWorld.Classes.ElementsGame.Maps
 
         public async void Locate()
         {
-            UpdateUserPosition(await GetUserPosition(), true);
+            try
+            {
+                UpdateUserPosition(await GetUserPosition(), true);
+            }
+            catch (System.Exception ex)
+            {
+                Utils.Log.Error("MapView::Init", ex);
+                await new MessageDialog("Please go to Settings > Privacy > location, and allow Nested World to access to your location",
+                    "You're not enable Nested World to access to your localisation").ShowAsync();
+            }
         }
 
         #region allieslocation
@@ -220,10 +229,11 @@ namespace NestedWorld.Classes.ElementsGame.Maps
                 case GeolocationAccessStatus.Allowed:
                     return new MapController();
                 case GeolocationAccessStatus.Denied:
-                    await new MessageDialog("Location not enable").ShowAsync();
+                    await new MessageDialog("Please go to Settings > Privacy > location, and allow Nested World to access to your location",
+                   "You're not enable Nested World to access to your localisation").ShowAsync();
                     break;
                 case GeolocationAccessStatus.Unspecified:
-                    await new MessageDialog("Nested World can't use your location").ShowAsync();
+                    await new MessageDialog("Some probleme to Nested World to access to your localisation").ShowAsync();
                     break;
             }
             var mapcontrollertmp = new MapController(false);
@@ -231,6 +241,6 @@ namespace NestedWorld.Classes.ElementsGame.Maps
             return mapcontrollertmp;
         }
 
-      
+
     }
 }

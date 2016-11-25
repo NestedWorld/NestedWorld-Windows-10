@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -51,10 +52,18 @@ namespace NestedWorld.View.MapViews
                 this.PortalView.DataContext = portal;
                 await mapControl.TrySetViewAsync(new Windows.Devices.Geolocation.Geopoint(portal.Location), mapControl.ZoomLevel < 15 ? 15 : mapControl.ZoomLevel, 0, 0, MapAnimationKind.Bow);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Utils.Log.Error("focusOn", ex);
             }
+        }
+
+        public async void CenterUser(Geoposition geo)
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            await mapControl.TrySetViewAsync(new Geopoint(new BasicGeoposition() { Longitude = geo.Coordinate.Longitude, Latitude = geo.Coordinate.Latitude }), mapControl.ZoomLevel < 15 ? 15 : mapControl.ZoomLevel, 0, 0, MapAnimationKind.Bow);
+#pragma warning restore CS0618 // Type or member is obsolete
+
         }
     }
 }

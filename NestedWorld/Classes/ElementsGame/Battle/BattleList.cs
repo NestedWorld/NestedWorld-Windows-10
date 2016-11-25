@@ -33,7 +33,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         {
             get
             {
-                return new ObservableCollection<Battle>(_map.Values);
+                return new ObservableCollection<Battle>(_map.Values.OrderBy(o => o.receiveAt).ToList());
             }
             set { }
         }

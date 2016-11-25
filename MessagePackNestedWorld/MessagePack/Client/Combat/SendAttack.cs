@@ -24,5 +24,11 @@ namespace MessagePack.Client.Combat
         {
             return new SendAttack() { attack = attack, target = target, combat = combatId };
         }
+
+
+        public override string ToString()
+        {
+            return "attack" + attack + " target " + target + " combat " + combat + " ";
+        }
     }
 }

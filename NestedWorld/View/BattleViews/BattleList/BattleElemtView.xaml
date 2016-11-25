@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
 
         <Ellipse Height="50" Width="50" StrokeThickness="2" Stroke="{StaticResource BackrgoundBrush}">
@@ -24,11 +24,15 @@
 
         <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Center">
             <TextBlock Text="{Binding Path=OpponentName}" Foreground="{StaticResource BackrgoundBrush}" Margin="0, 2.5" />
-            <TextBlock Text="{Binding Path=combatStatus}" Foreground="{StaticResource BackrgoundBrush}" Margin="0, 2.5"/>
+            <TextBlock Text="{Binding Path=Time}" Foreground="{StaticResource BackrgoundBrush}" Margin="0, 2.5"/>
         </StackPanel>
 
-        <Button Click="Accept"  Grid.Column="2" Width="50" Margin="0, 0, 10, 0" HorizontalAlignment="Right" Height="55" Background="{StaticResource DarkApplicationbackgroundBrush}">
-            <Path Data="M1.4200482,0L17.351001,16.046996 1.4980513,31.996001 0.078979631,30.585997 14.531046,16.046019 0,1.4089964z" Fill="{StaticResource BackrgoundBrush}"/>
+
+        <Button Click="Accept" Height="55" Width="55" HorizontalAlignment="Left" Grid.Column="2" Background="{StaticResource DarkApplicationbackgroundBrush}">
+            <Path Data="M18.3774948120117,0L20,2.24126791954041 5.23250579833984,13.4243755340576 3.60876083374023,11.1843862533569 3.61000061035156,11.183126449585 0,6.19438076019287 2.19249725341797,4.53563642501831 5.8018684387207,9.52251243591309 18.3774948120117,0z" Fill="{StaticResource BackrgoundBrush}"/>
+        </Button>
+        <Button Click="Decline" Height="55" Width="55" HorizontalAlignment="Right" Grid.Column="2" Background="{StaticResource DarkApplicationbackgroundBrush}">
+            <Path Data="M1.87498676776886,0L3.18750667572021,0.562505722045898 9.99997043609619,7.31250715255737 16.8124732971191,0.562505722045898 18.1484050750732,7.16373324394226E-06 19.4374732971191,0.562505722045898 19.999979019165,1.89844000339508 19.4374732971191,3.18750357627869 12.6249732971191,9.99999904632568 19.4374732971191,16.8125038146973 19.999979019165,18.1484375 19.4374732971191,19.4375019073486 18.1015281677246,20 16.8124732971191,19.4375019073486 9.99997043609619,12.6250066757202 3.18750667572021,19.4375019073486 1.85155975818634,20 0.562504589557648,19.4375019073486 -3.72529029846191E-09,18.1015644073486 0.562504589557648,16.8125038146973 7.37500619888306,9.99999904632568 0.562504589557648,3.18750357627869 -3.72529029846191E-09,1.85156571865082 0.562504589557648,0.562505722045898 1.87498676776886,0z" Fill="{StaticResource BackrgoundBrush}"/>
         </Button>
         
     </Grid>

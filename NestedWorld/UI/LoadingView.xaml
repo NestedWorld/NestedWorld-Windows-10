@@ -7,11 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     >
+    <UserControl.Resources>
+        <Storyboard x:Name="LoadingAnnim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#4C616668"/>
         </Grid.Background>
-        <ProgressRing IsActive="true" x:Name="progressRing" Height="100" Width="100" Background="{x:Null}" Foreground="{StaticResource BackrgoundBrush}" />
+        <!--ProgressRing IsActive="true" x:Name="progressRing" Height="100" Width="100" Background="{x:Null}" Foreground="{StaticResource BackrgoundBrush}" /-->
+        <Image x:Name="image" Source="ms-appx:///Assets/nestedworldlogo_transparant.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <CompositeTransform ScaleX="0.5" ScaleY="0.5"/>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </UserControl>

@@ -14,14 +14,13 @@
             <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Battle/cityBG.png"/>
         </Grid.Background>
 
-        <Grid VerticalAlignment="Center">
-            <UI:AnimationCanvas x:Name="AnimationCanvas"/>
-            <BattleView:BattleCanvas x:Name="battleCanvas"/>
-        </Grid>
-        
+
+        <UI:AnimationCanvas x:Name="AnimationCanvas" VerticalAlignment="Center" />
+        <BattleView:BattleCanvas x:Name="battleCanvas" VerticalAlignment="Center"/>
+
         <BattleView:EnemieMonster Margin="5, 0, 5, 0" Grid.Row="0" VerticalAlignment="Top" x:Name="UIEnnemieMonster"/>
 
-       
+
 
 
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="5, 0, 5, 0">
@@ -30,24 +29,5 @@
         </StackPanel>
 
     </Grid>
-    <!--Grid Margin="0" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="170"/>
-            <RowDefinition Height="400"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <BattleView:EnemieMonster Grid.Row="0" VerticalAlignment="Top" x:Name="UIEnnemieMonster"/>
-
-        <Grid Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Center">
-            <BattleView:BattleCanvas  x:Name="battleCanvas"/>
-            <BattleView:AnnimationCanvas Visibility="Collapsed" x:Name="annimationCanvas"/>
-        </Grid>
-
-        <Grid Height="250" Grid.Row="2" VerticalAlignment="Bottom">
-            <BattleView:UserMonster Grid.Row="2" x:Name="UIUserMonster"/>
-            <BattleView:UserMonsterList x:Name="userMonsterList" Grid.Row="3" Margin="0, 0, 0, 5" VerticalAlignment="Bottom" Background="{StaticResource BackrgoundBrush}"/>
-        </Grid>
-    </-->
 </Page>

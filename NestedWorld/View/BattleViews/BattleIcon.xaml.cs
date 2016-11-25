@@ -31,18 +31,7 @@ namespace NestedWorld.View.BattleViews
         public double left { get { return 0; } set { Canvas.SetLeft(this, value); } }
         public double top { get { return 0; } set { Canvas.SetTop(this, value); } }
 
-        public bool IsActive
-        {
-            get { return _isActive; }
-            set
-            {
-                if (value)
-                    Active.Begin();
-                else
-                    UnActive.Begin();
-                _isActive = value;
-            }
-        }
+      
 
         public bool IsOnIt(Point point)
         {
@@ -50,7 +39,7 @@ namespace NestedWorld.View.BattleViews
                && ((Canvas.GetTop(this) - this.Height) < point.Y && (Canvas.GetTop(this) + this.Height) > point.Y);
         }
         public int number;
-        private bool _isActive;
+     
 
         public BattleIcon(string image = "", int number = 0)
         {

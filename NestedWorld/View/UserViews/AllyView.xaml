@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <Rectangle x:Name="rectangleMain" StrokeThickness="2"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Rectangle.Fill>
-                <ImageBrush Stretch="Fill" ImageSource="{Binding Path=Image}"/>
+                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Path=Image}"/>
             </Rectangle.Fill>
             <Rectangle.Stroke>
                 <SolidColorBrush Color="{Binding Path=color}"/>

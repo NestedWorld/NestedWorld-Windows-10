@@ -21,7 +21,8 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
-    <AppxPackageDir>C:\Users\lepet\Documents\build\nestedworld_1.7.0\</AppxPackageDir>
+    <AppxPackageDir>C:\Users\lepet\Documents\build\nestedworld_1.9.0\</AppxPackageDir>
+    <PackageCertificateThumbprint>4F63252C85A228CB1DAF9D4247FD8DFB0A3B0107</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -122,6 +123,7 @@
     <Content Include="Assets\Monster_min.png" />
     <Content Include="Assets\Map\position.png" />
     <Content Include="Assets\NestedWorldLogo.png" />
+    <Content Include="Assets\nestedworldlogo_transparant.png" />
     <Content Include="Assets\NewStoreLogo.scale-100.png" />
     <Content Include="Assets\NewStoreLogo.scale-125.png" />
     <Content Include="Assets\NewStoreLogo.scale-150.png" />
@@ -186,6 +188,8 @@
     <Content Include="Assets\Font\Aller_Rg.ttf" />
     <Content Include="Assets\Font\AllerDisplay.ttf" />
     <None Include="nestedworld.pfx" />
+    <None Include="NestedWorld_TemporaryKey.pfx" />
+    <None Include="NestedWorld_TemporaryKey.snk" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +269,9 @@
     </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MonsterPage.xaml.cs">
       <DependentUpon>MonsterPage.xaml</DependentUpon>
@@ -364,6 +371,7 @@
     <Compile Include="Utils\MapExtensions.cs" />
     <Compile Include="Utils\RandomValue.cs" />
     <Compile Include="Utils\StorageApplication.cs" />
+    <Compile Include="Utils\TimeSpamExtend.cs" />
     <Compile Include="ViewModel\ContentController.cs" />
     <Compile Include="ViewModel\HomePageController.cs" />
     <Compile Include="ViewModel\MonsterListViewModel.cs" />
@@ -707,6 +715,7 @@
     <Content Include="Assets\Type\grass.png" />
     <Content Include="Assets\Type\water.png" />
     <Content Include="DataModel\ShopData.xml" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -738,6 +747,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoadingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1311,7 +1324,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>nestedworld.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>NestedWorld_TemporaryKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
