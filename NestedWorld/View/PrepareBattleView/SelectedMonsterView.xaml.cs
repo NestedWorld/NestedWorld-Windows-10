@@ -29,7 +29,7 @@ namespace NestedWorld.View.PrepareBattleView
             }
             set
             {
-                
+
             }
         }
 
@@ -63,6 +63,18 @@ namespace NestedWorld.View.PrepareBattleView
                 item.isSelected = false;
             }
             sender.isSelected = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            selectedMonster = new Classes.ElementsGame.Monsters.MonsterList();
+            for (int i = 0; i < root.Children.Count; i++)
+            {
+                (root.Children[i] as SelectedMonsterItemView).DataContext = null;
+                (root.Children[i] as SelectedMonsterItemView).isSelected = false;
+            }
+            (root.Children[0] as SelectedMonsterItemView).isSelected = true;
+
         }
     }
 }

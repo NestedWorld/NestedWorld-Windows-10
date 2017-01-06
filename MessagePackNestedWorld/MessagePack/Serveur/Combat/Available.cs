@@ -32,7 +32,8 @@ namespace MessagePack.Serveur.Combat
                     var tmp = receiveMessage.GetStruct("user");
                     user = new Struct.User()
                     {
-                        Name = tmp.GetString("pseudo")
+                        Name = tmp.GetString("pseudo"),
+                        Id = Convert.ToInt32(tmp.GetByte("id"))
                     };
                 }
                 onCompled();

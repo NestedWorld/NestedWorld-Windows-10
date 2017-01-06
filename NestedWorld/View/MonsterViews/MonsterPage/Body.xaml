@@ -15,7 +15,7 @@
             <!--spec-->
             <local:MonsterSpecView x:Name="specView"/>
             <!--attack-->
-            <local:MontserAttackListView x:Name="attackList" Margin="10" Height="200"/>
+            <!--local:MontserAttackListView x:Name="attackList" Margin="10" Height="200"/-->
             <!--stat-->
 
         </StackPanel>

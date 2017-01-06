@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Navigation;
 using System;
 using NestedWorld.Utils;
 using MessagePack.Serveur.Combat;
+using NestedWorldNotificationLib.Notifications;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -51,6 +52,10 @@ namespace NestedWorld.Pages
             base.OnNavigatedTo(e);
             //  if (e.SourcePageType == typeof(MainPage))
             //    this.RegisterBackgroundTask();
+
+           
+
+
             init();
         }
 

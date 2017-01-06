@@ -594,7 +594,11 @@ namespace NestedWorld.Classes.Network
             try
             {
                 var ret = await request.GetJsonAsync();
-                ReturnObject = new ReturnObject() { Content = AttackList.LoadFromJson(ret.Object), ErrorCode = 0, Message = "" };
+                if (ret.code != System.Net.HttpStatusCode.OK)
+                    ReturnObject = new ReturnObject() { Content = "", ErrorCode = Convert.ToInt32(ret.code), Message = "" };
+                else
+                    ReturnObject = new ReturnObject() { Content = AttackList.LoadFromJson(ret.Object), ErrorCode = 0, Message = "" };
+
                 return ReturnObject;
             }
             catch (HttpRequestException HRException)
@@ -815,7 +819,7 @@ namespace NestedWorld.Classes.Network
             try
             {
                 var jsontmp = await request.GetJsonAsync();
-                ReturnObject = new ReturnObject() { Content = PortalList.LoadJson(jsontmp.Object), ErrorCode = 0, Message = ""};
+                ReturnObject = new ReturnObject() { Content = PortalList.LoadJson(jsontmp.Object), ErrorCode = 0, Message = "" };
             }
             catch (HttpRequestException HRException)
             {

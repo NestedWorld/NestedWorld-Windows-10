@@ -28,9 +28,18 @@ namespace NestedWorld.View.MonsterViews.MonsterPage
 
         private void MonsterAttackView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            Attack attack = (DataContext as Attack);
+            if (DataContext == null)
+                return;
+            try
+            {
+                Attack attack = (DataContext as Attack);
 
-            spriteAnnimation.DataContext = App.core.Resources.AttackSprite[attack.AttackRessourcesName];
+                spriteAnnimation.DataContext = App.core.Resources.AttackSprite[attack.AttackRessourcesName];
+            }
+            catch (Exception ex)
+            {
+                Utils.Log.Error("MonsterAttackView::datacontextChanged", ex);
+            }
         }
     }
 }

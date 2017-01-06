@@ -22,15 +22,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle x:Name="rectangleMain" StrokeThickness="2"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
-            <Rectangle.Fill>
+        <Ellipse x:Name="rectangleMain" StrokeThickness="2"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Stroke="{StaticResource DarkbackgroundBrush}">
+            <Ellipse.Fill>
                 <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Path=Image}"/>
-            </Rectangle.Fill>
-            <Rectangle.Stroke>
-                <SolidColorBrush Color="{Binding Path=color}"/>
-            </Rectangle.Stroke>
-        </Rectangle>
-
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="OnlineStatus" StrokeThickness="2"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Stroke="{StaticResource DarkbackgroundBrush}">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="#7F616668"/>
+            </Ellipse.Fill>
+        </Ellipse>
         <Ellipse Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="{StaticResource DarkbackgroundBrush}"/>
         <TextBlock Text="{Binding Path=Level}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 0, 10, 5" Foreground="{StaticResource BackrgoundBrush}"/>
         <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" FontSize="15" Foreground="{StaticResource ForgroundBrush}"/>

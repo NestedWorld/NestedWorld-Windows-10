@@ -30,9 +30,9 @@ namespace NestedWorld.View
         {
             monsterView.monsterList = App.core.monsterUserList;
             userView.userList = App.core.userList;
-            homeView.DataContext = App.core.user;
+            header.DataContext = App.core.user;
         }
-        
+
         private void homeView_OnAllyTapped()
         {
 
@@ -40,7 +40,6 @@ namespace NestedWorld.View
 
         private void homeView_OnAreaTaped()
         {
-            this.AreaTap.ShowHide();
         }
 
         private void homeView_OnCreditTaped()
@@ -52,5 +51,7 @@ namespace NestedWorld.View
         {
 
         }
+
+       
     }
 }

@@ -61,8 +61,8 @@ namespace NestedWorld.Classes.ElementsGame.Attack
                 JArray array = Jobject["attacks"].ToObject<JArray>();
                 foreach (JObject obj in array)
                 {
-                    int index = obj["id"].ToObject<int>();
-                    Utils.Log.Info("id", index);
+                    JObject info = obj["infos"].ToObject<JObject>();
+                    int index = info["id"].ToObject<int>();
                     Attack att = list[index];
                     ret.Add(att);
                 }

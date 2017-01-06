@@ -6,7 +6,7 @@ namespace NestedWorldHttp.Users
     public class UserPut : HttpRequest
     {
         public UserPut()
-            : base("/users/me/", RequestType.PUT)
+            : base("/users/me", RequestType.PUT)
         {
 
         }

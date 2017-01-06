@@ -9,84 +9,18 @@
     xmlns:tap="using:NestedWorld.View.HomeView.Tap"
     mc:Ignorable="d">
 
-    <!--RelativePanel-->
-    <Grid x:Name="grid"  Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <RelativePanel>
+        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" x:Name="grid"  Background="{StaticResource ApplicationPageBackgroundThemeBrush}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
 
-        <view:Header Height="200" VerticalAlignment="Top" x:FieldModifier="public" x:Name="homeView" OnAllyTapped="homeView_OnAllyTapped" OnAreaTaped="homeView_OnAreaTaped" OnCreditTaped="homeView_OnCreditTaped" OnMonsterTaped="homeView_OnMonsterTaped" />
-
-        <ScrollViewer Grid.Row="1">
-            <StackPanel>
-                <local:MonsterView x:FieldModifier="public"  Margin="5"  x:Name="monsterView" />
-                <local:UserView x:FieldModifier="public" Margin="5"  x:Name="userView" />
-            </StackPanel>
-        </ScrollViewer>
-
-        <Grid RenderTransformOrigin="0.5,0.5" >
-            <Grid.RenderTransform>
-                <CompositeTransform TranslateY="190"/>
-            </Grid.RenderTransform>
-            <!--INFO From tap-->
-            <tap:AreaTap x:Name="AreaTap" Visibility="Collapsed"/>
+            <RelativePanel>
+                <view:Header x:Name="header" Height="200" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" VerticalAlignment="Top" x:FieldModifier="public" OnAllyTapped="homeView_OnAllyTapped" OnAreaTaped="homeView_OnAreaTaped" OnCreditTaped="homeView_OnCreditTaped" OnMonsterTaped="homeView_OnMonsterTaped" />
+                <ScrollViewer RelativePanel.Below="header" Grid.Row="1" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                    <StackPanel>
+                        <local:MonsterView x:FieldModifier="public"  Margin="5"  x:Name="monsterView" />
+                        <local:UserView x:FieldModifier="public" Margin="5"  x:Name="userView" />
+                    </StackPanel>
+                </ScrollViewer>
+            </RelativePanel>
         </Grid>
-
-    </Grid>
-    <!--VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1080" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="monsterView.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="monsterView.(RelativePanel.AlignRightWithPanel)" Value="False"/>
-                        <Setter Target="userView.(RelativePanel.RightOf)" Value="monsterView"/>
-                        <Setter Target="userView.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
-                        <Setter Target="userView.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="userView.(RelativePanel.AlignTopWith)" Value="monsterView"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="monsterView.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="monsterView.(RelativePanel.AlignRightWithPanel)" Value="False"/>
-                        <Setter Target="userView.(RelativePanel.RightOf)" Value="monsterView"/>
-                        <Setter Target="userView.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
-                        <Setter Target="userView.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="userView.(RelativePanel.AlignTopWith)" Value="monsterView"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="548" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="monsterView.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="monsterView.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="userView.(RelativePanel.Below)" Value="monsterView"/>
-                        <Setter Target="userView.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="userView.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="monsterView.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="monsterView.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="userView.(RelativePanel.Below)" Value="monsterView"/>
-                        <Setter Target="userView.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="userView.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </>
-    </-->
+    </RelativePanel>
 </UserControl>

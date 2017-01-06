@@ -59,6 +59,8 @@ namespace NestedWorld.Classes.ElementsGame.Users
 
         internal static User GetFronJson(JObject obj)
         {
+
+
             JObject item = obj["user"].ToObject<JObject>();
             string avatar = item["avatar"].ToObject<string>() == null ? "ms-appx:///Assets/profilDefault.png" : item["avatar"].ToObject<string>();
             string name = item["pseudo"].ToObject<string>();

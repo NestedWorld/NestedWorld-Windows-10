@@ -23,6 +23,7 @@
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <AppxPackageDir>C:\Users\lepet\Documents\build\nestedworld_1.9.0\</AppxPackageDir>
     <PackageCertificateThumbprint>4F63252C85A228CB1DAF9D4247FD8DFB0A3B0107</PackageCertificateThumbprint>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -196,8 +197,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\DataBase\DataBase.cs" />
-    <Compile Include="Classes\DataBase\MonsterDataBase.cs" />
     <Compile Include="Classes\DesignUtilities\Resources.cs" />
     <Compile Include="Classes\DesignUtilities\Sprite.cs" />
     <Compile Include="Classes\DesignUtilities\SpriteDictionnary.cs" />
@@ -1304,6 +1303,14 @@
     <ProjectReference Include="..\NestedWorldHttp\NestedWorldHttp.csproj">
       <Project>{12ca764e-f367-4d26-b162-ddf1a5baf415}</Project>
       <Name>NestedWorldHttp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NestedWorldNotificationLib\NestedWorldNotificationLib.csproj">
+      <Project>{e4af001e-bd4b-476d-88d1-b92fb60268eb}</Project>
+      <Name>NestedWorldNotificationLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NestedWorldNotification\NestedWorldNotification.csproj">
+      <Project>{1be92314-cfeb-4d04-9cb3-6412d4348774}</Project>
+      <Name>NestedWorldNotification</Name>
     </ProjectReference>
     <ProjectReference Include="..\SocketLib\SocketLib.csproj">
       <Project>{d8f77536-bee0-4be3-9c75-935f88afa503}</Project>

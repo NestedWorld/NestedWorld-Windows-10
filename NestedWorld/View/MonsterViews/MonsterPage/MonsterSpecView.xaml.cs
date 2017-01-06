@@ -36,7 +36,7 @@ namespace NestedWorld.View.MonsterViews.MonsterPage
             AttackSpeSpec.DataContext = new Charac() { Name = "Attack Special", Value = monster.Attackeffect, ValueMax = 100 };
             DefSpec.DataContext = new Charac() { Name = "Defense", Value = monster.Defence, ValueMax = 100 };
             DefSpeSpec.DataContext = new Charac() { Name = "Defense Special", Value = monster.Defence, ValueMax = 100 };
-
+            SpeedSpec.DataContext = new Charac() { Name = "Speed", Value = monster.Speed, ValueMax = 100 };
         }
     }
 }

@@ -13,6 +13,7 @@
       
 
         <local:CharacView x:Name="lifeSpec"/>
+        <local:CharacView x:Name="SpeedSpec"/>
         <local:CharacView x:Name="AttackSpec"/>
         <local:CharacView x:Name="DefSpec"/>
         <local:CharacView x:Name="AttackSpeSpec"/>

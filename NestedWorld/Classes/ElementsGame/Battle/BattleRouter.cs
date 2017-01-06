@@ -1,5 +1,6 @@
 ﻿using NestedWorld.Classes.ElementsGame.Users;
 using NestedWorld.View.BattleViews.BattleList;
+using NestedWorldNotificationLib.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,22 +65,63 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             App.network.serveurMessageList["combat:available"].OnCompled += CombatAvalaible_OnCompled;
         }
 
-        private void CombatAvalaible_OnCompled(object value)
+        private async void CombatAvalaible_OnCompled(object value)
         {
+            NotificationToast toast = null;
             MessagePack.Serveur.Combat.Available av = value as MessagePack.Serveur.Combat.Available;
 
             if (av.origin == "wild-monster")
             {
                 WildBattle.Add(new Battle() { OpponentImage = App.core.monsterList[av.monster_id].Image, OpponentName = App.core.monsterList[av.monster_id].Name, BattleID = av.id, ContextBattle = Context.WILD, StateBattle = State.AVALAIBLE });
+                toast = new NotificationToast(ToastInputType.none)
+                {
+                    title = "A soul wants a fight",
+                    content = string.Format("{0} appears, You want to fight ?", App.core.monsterList[av.monster_id].Name),
+                    image = App.core.monsterList[av.monster_id].Image,
+                    notificationId = av.id
+                };
             }
             else if (av.origin == "duel")
             {
-                OppBattle.Add(new Battle() { OpponentImage = "", OpponentName = av.user.Name, BattleID = av.id, ContextBattle = Context.PVP, StateBattle = State.AVALAIBLE });
+                var ret = await App.network.GetUser(av.user.Id);
+                ret.ShowError();
+                User user = ret.Content as User;
+                OppBattle.Add(new Battle() { OpponentImage = user.Image, OpponentName = user.Name, BattleID = av.id, ContextBattle = Context.PVP, StateBattle = State.AVALAIBLE });
+                toast = new NotificationToast(ToastInputType.none)
+                {
+                    title = "A allie wants a fight",
+                    content = string.Format("{0} (level {1})challenges you, You want to fight ?", av.user.Name, 2),
+                    image = user.Image,
+                    notificationId = av.id
+                };
             }
             else
             {
-
+                toast = new NotificationToast(ToastInputType.none)
+                {
+                    title = "One of you portals is under attack",
+                    content = string.Format("your portal is attacked, protect it ?"),
+                    notificationId = av.id
+                };
             }
+
+
+
+            toast.Add(new NotificationAction()
+            {
+                Name = "okay-battle",
+                Text = "Go",
+                type = Microsoft.Toolkit.Uwp.Notifications.ToastActivationType.Background
+            });
+            toast.Add(new NotificationAction()
+            {
+                Name = "cancel-battle",
+                Text = "Nope",
+                type = Microsoft.Toolkit.Uwp.Notifications.ToastActivationType.Background
+            });
+
+
+            toast.Show();
         }
 
         public async Task<Battle> AddAndReturn(MessagePack.Serveur.Combat.Available avaible)

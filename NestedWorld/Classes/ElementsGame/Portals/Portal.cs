@@ -125,35 +125,62 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             };
         }
 
+        /*
+         * {
+            "captured": null,
+            "duration": null,
+            "position": [
+                3.0618454,
+                50.6350338
+            ],
+            "catching_end": null,
+            "created": "2017-01-06T16:04:10.186126+00:00",
+            "id": 363,
+            "type": "earth",
+            "distance": 7.76820071
+        },
+         */
+
         public static Portal LoadJson(JObject obj)
         {
-           
-            int id = obj["id"].ToObject<int>();
-            double longitude = obj["position"].ToObject<double[]>()[0];
-            double latitude = obj["position"].ToObject<double[]>()[1];
-            TypeEnum type = TypeEnum.WATHER;
-            switch (obj["type"].ToObject<string>())
+            try
             {
-                case ("fire"):
-                    type = TypeEnum.FIRE;
-                    break;
-                case ("plant"):
-                    type = TypeEnum.GRASS;
-                    break;
-                case ("electric"):
-                    type = TypeEnum.ELEC;
-                    break;
-                case ("water"):
-                    type = TypeEnum.WATHER;
-                    break;
-                case ("earth"):
-                    type = TypeEnum.DIRT;
-                    break;
+                int id = obj["id"].ToObject<int>();
+                double longitude = obj["position"].ToObject<double[]>()[0];
+                double latitude = obj["position"].ToObject<double[]>()[1];
+                TypeEnum type = TypeEnum.WATHER;
+                switch (obj["type"].ToObject<string>())
+                {
+                    case ("fire"):
+                        type = TypeEnum.FIRE;
+                        break;
+                    case ("plant"):
+                        type = TypeEnum.GRASS;
+                        break;
+                    case ("electric"):
+                        type = TypeEnum.ELEC;
+                        break;
+                    case ("water"):
+                        type = TypeEnum.WATHER;
+                        break;
+                    case ("earth"):
+                        type = TypeEnum.DIRT;
+                        break;
+                }
+                string name = obj["name"].ToObject<string>();
+                string distance = (obj["distance"].ToObject<double>() < 1.0 ? "less than 1 m" : obj["distance"].ToObject<double>().ToString() + " m");
+
+                return NewPortal(id, longitude, latitude, type, name, distance);
             }
-            string name = obj["name"].ToObject<string>();
-            string distance = (obj["distance"].ToObject<double>() < 1.0 ? "less than 1 m" : obj["distance"].ToObject<int>().ToString() + " m");
-      
-            return NewPortal(id, longitude, latitude, type, name, distance);
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                Utils.Log.Error("Portal::LoadJson", ex);
+            }
+            catch (System.Exception ex)
+            {
+                Utils.Log.Error("Portal::LoadJson", ex);
+            }
+            return null;
         }
     }
 }

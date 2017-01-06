@@ -41,14 +41,17 @@ namespace NestedWorld.View
 
         private async void DisplayPortal(double latitude, double longitude)
         {
-            App.core.PortalList.HideOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
+            App.core.PortalList?.HideOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
             App.core.PortalList = new Classes.ElementsGame.Portals.PortalList();
             var ret = await App.network.GetPortals(latitude, longitude);
             ret.ShowErrorOnApp();
             App.core.PortalList = ret.Content as PortalList;
-            this.PortalListView.DataContext = App.core.PortalList;
-            this.PortalListView.OnPortalSelected += mapControlView.focusOn;
-            App.core.PortalList.DisplayOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
+            if (App.core.PortalList != null)
+            {
+                this.PortalListView.DataContext = App.core.PortalList;
+                this.PortalListView.OnPortalSelected += mapControlView.focusOn;
+                App.core.PortalList.DisplayOnMap(App.core.MapController, mapControlView.PortalMapPoint_OnPortalSelected);
+            }
         }
 
         public async void Init()
@@ -60,12 +63,12 @@ namespace NestedWorld.View
 #pragma warning disable CS0618 // Type or member is obsolete
                 DisplayPortal(locate.Coordinate.Latitude, locate.Coordinate.Longitude);
 #pragma warning restore CS0618 // Type or member is obsolete
-                
+
             }
             catch (Exception ex)
             {
                 Utils.Log.Error("MapView::Init", ex);
-                await new MessageDialog("Please go to Settings > Privacy > location, and allow Nested World to access to your location", 
+                await new MessageDialog("Please go to Settings > Privacy > location, and allow Nested World to access to your location",
                     "You're not enable Nested World to access to your localisation").ShowAsync();
             }
         }

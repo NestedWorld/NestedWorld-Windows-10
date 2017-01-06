@@ -8,7 +8,7 @@ namespace NestedWorldHttp.Http.Users
 {
     public class Me : HttpRequest
     {
-        public Me() : base("/users/me/", RequestType.GET) { }
+        public Me() : base("/users/me", RequestType.GET) { }
 
         public void SetParam()
         {

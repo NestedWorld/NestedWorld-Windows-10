@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NestedWorld.Classes.ElementsGame.Users;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,24 @@ namespace NestedWorld.View.UserViews
         public AllyView()
         {
             this.InitializeComponent();
+            this.DataContextChanged += AllyView_DataContextChanged;
         }
 
-      
+        private void AllyView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        {
+            if (DataContext == null)
+                return;
+
+            try
+            {
+                this.OnlineStatus.Visibility = (DataContext as User).IsOnline ? Visibility.Collapsed : Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                Utils.Log.Error("AllyView::DataContextChanged", ex);
+            }
+        }
+
         private void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame root = Window.Current.Content as Frame;

@@ -34,7 +34,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         public int Attackeffect { get; private set; }
         public int Defence { get; private set; }
         public string Surname { get; private set; }
-
+        public int Speed { get; private set; }
         public int ID { get; private set; }
         public int UserID { get; private set; }
         public Attack.AttackList attackList { get; set; }
@@ -166,7 +166,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
                 int exp = jObject["experience"].ToObject<int>();
                 int level = jObject["level"].ToObject<int>();
                 string surname = jObject["surname"].ToObject<string>();
-
+                int speed = Infos["speed"].ToObject<int>();
                 Monster monster = App.core.monsterList[id];
                 App.core.monsterList[id].PlayerMonster = true;
                 if (monster.attackList == null)
@@ -181,6 +181,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
                     WildImage = monster.WildImage,
                     Type = monster.Type,
                     Level = level,
+                    Speed = speed,
                     Life = hp,
                     Exp = exp,
                     Attackeffect = attack,

@@ -1,4 +1,5 @@
-﻿using NestedWorld.Classes;
+﻿using Microsoft.QueryStringDotNET;
+using NestedWorld.Classes;
 using NestedWorld.Classes.Network;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -30,6 +32,8 @@ namespace NestedWorld
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         /// 
+
+#pragma warning disable CS8002
 
         public static Core core;
         public static Classes.Network.Network network;
@@ -54,7 +58,7 @@ namespace NestedWorld
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -80,6 +84,7 @@ namespace NestedWorld
                     //TODO: Load state from previously suspended application
                 }
 
+
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
@@ -89,6 +94,19 @@ namespace NestedWorld
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
+
+                BackgroundAccessStatus status = await BackgroundExecutionManager.RequestAccessAsync();
+
+                BackgroundTaskBuilder builder = new BackgroundTaskBuilder()
+                {
+                    Name = "NestedWorldNotifications",
+                    TaskEntryPoint = "NestedWorldNotification.NotificationActionBackgroundTask"
+                };
+
+                builder.SetTrigger(new ToastNotificationActionTrigger());
+
+                BackgroundTaskRegistration registration = builder.Register();
+
                 if (UserSession.ValideToken)
                 {
                     rootFrame.Navigate(typeof(Pages.LoadingPage), e.Arguments);
@@ -123,6 +141,25 @@ namespace NestedWorld
             //TODO: Save application state and stop any background activity
             UserSession.Delete();
             deferral.Complete();
+        }
+
+
+        protected override void OnActivated(IActivatedEventArgs e)
+        {
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            if (e is ToastNotificationActivatedEventArgs)
+            {
+                var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
+
+                // Parse the query string
+                QueryString args = QueryString.Parse(toastActivationArgs.Argument);
+
+                Utils.Log.Info("args => ", args);
+
+            }
+            Window.Current.Activate();
         }
     }
 }
