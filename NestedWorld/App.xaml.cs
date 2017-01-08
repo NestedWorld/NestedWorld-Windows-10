@@ -12,6 +12,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -106,7 +107,7 @@ namespace NestedWorld
                 builder.SetTrigger(new ToastNotificationActionTrigger());
 
                 BackgroundTaskRegistration registration = builder.Register();
-
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 500));
                 if (UserSession.ValideToken)
                 {
                     rootFrame.Navigate(typeof(Pages.LoadingPage), e.Arguments);

@@ -212,6 +212,39 @@ namespace NestedWorld.Classes.Network
 
         }
 
+        public async Task<ReturnObject> GetUserStat(int id = -1)
+        {
+            ReturnObject ReturnObject;
+            GetUserStats GetUserStats = new GetUserStats();
+            try
+            {
+                if (id == -1)
+                    GetUserStats.SetParam();
+                else
+                    GetUserStats.SetParam(id);
+                var ret = await GetUserStats.GetJsonAsync();
+                ReturnObject = new ReturnObject() { Content = ElementsGame.Users.Stats.LoadJson(ret.Object), ErrorCode = 0, Message = string.Empty };
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+
+            }
+            return ReturnObject;
+
+        }
+
         public async Task<ReturnObject> GetAllies()
         {
             ReturnObject ReturnObject;

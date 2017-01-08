@@ -237,6 +237,7 @@
     <Compile Include="Classes\ElementsGame\Shop\Shop.cs" />
     <Compile Include="Classes\ElementsGame\Stats\Charac.cs" />
     <Compile Include="Classes\ElementsGame\TypeEnum.cs" />
+    <Compile Include="Classes\ElementsGame\Users\Stats.cs" />
     <Compile Include="Classes\ElementsGame\Users\User.cs" />
     <Compile Include="Classes\ElementsGame\Users\UserList.cs" />
     <Compile Include="Classes\ElementsGame\Users\UserEnum.cs" />
@@ -666,6 +667,9 @@
     </Compile>
     <Compile Include="View\ProfileViews\StatiUserView.xaml.cs">
       <DependentUpon>StatiUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfileViews\StatsCombatView.xaml.cs">
+      <DependentUpon>StatsCombatView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RootView\InternetStatueView.xaml.cs">
       <DependentUpon>InternetStatueView.xaml</DependentUpon>
@@ -1254,6 +1258,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ProfileViews\StatsCombatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RootView\InternetStatueView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1296,6 +1304,10 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ArcControl\ArcControl.csproj">
+      <Project>{161838ea-4322-44f8-9f18-8640d8258b4e}</Project>
+      <Name>ArcControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MessagePackNestedWorld\MessagePackNestedWorld.csproj">
       <Project>{ec7adc26-bb01-4f53-b072-4402e61b8366}</Project>
       <Name>MessagePackNestedWorld</Name>
@@ -1311,6 +1323,10 @@
     <ProjectReference Include="..\NestedWorldNotification\NestedWorldNotification.csproj">
       <Project>{1be92314-cfeb-4d04-9cb3-6412d4348774}</Project>
       <Name>NestedWorldNotification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NestedWorldSocketIo\NestedWorldSocketIo.csproj">
+      <Project>{94ec8bab-5a39-4bff-ae61-24f13e7f81e6}</Project>
+      <Name>NestedWorldSocketIo</Name>
     </ProjectReference>
     <ProjectReference Include="..\SocketLib\SocketLib.csproj">
       <Project>{d8f77536-bee0-4be3-9c75-935f88afa503}</Project>

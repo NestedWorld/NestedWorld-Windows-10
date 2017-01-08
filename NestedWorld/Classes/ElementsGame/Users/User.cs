@@ -12,7 +12,10 @@ namespace NestedWorld.Classes.ElementsGame.Users
 {
     public class User
     {
-      
+        private string avatar;
+        private bool online;
+
+        public int id { get; private set; }
         public string Name { get; private set; }
         public string Image { get; private set; }
         public string Background { get; private set; }
@@ -57,6 +60,16 @@ namespace NestedWorld.Classes.ElementsGame.Users
             Background = background;
         }
 
+        public User(int id, string name, string avatar, string background, bool online, int level)
+        {
+            this.id = id;
+            Name = name;
+            this.avatar = avatar;
+            Background = background;
+            this.online = online;
+            Level = level;
+        }
+
         internal static User GetFronJson(JObject obj)
         {
 
@@ -67,7 +80,8 @@ namespace NestedWorld.Classes.ElementsGame.Users
             string background = item["background"].ToObject<string>() == null ? "ms-appx:///Assets/NestedWorldLogo.png" : item["background"].ToObject<string>();
             int level = item["level"].ToObject<int>();
             bool online = item["is_connected"].ToObject<bool>();
-            return new User(name, avatar, background, online, level);
+            int id = item["id"].ToObject<int>();
+            return new User(id, name, avatar, background, online, level);
         }
     }
 }

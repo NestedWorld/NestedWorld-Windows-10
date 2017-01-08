@@ -32,8 +32,10 @@ namespace NestedWorld.Pages
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Classes.ElementsGame.Users.Stats stats = null;
+
             try
             {
                 if (e.Parameter == null)
@@ -42,6 +44,11 @@ namespace NestedWorld.Pages
                     this.DataContext = App.core.user;
                     PlayerCommandBar.Visibility = Visibility.Visible;
                     UserCommandBar.Visibility = Visibility.Collapsed;
+
+                    var ret = await App.network.GetUserStat();
+                    ret.ShowErrorOnApp();
+
+                    stats = ret.Content as Classes.ElementsGame.Users.Stats;
                 }
                 else
                 {
@@ -50,7 +57,15 @@ namespace NestedWorld.Pages
                     mainView.DataContext = user;
                     PlayerCommandBar.Visibility = Visibility.Collapsed;
                     UserCommandBar.Visibility = Visibility.Visible;
+                    var ret = await App.network.GetUserStat(user.id);
+                    ret.ShowErrorOnApp();
+                    stats = ret.Content as Classes.ElementsGame.Users.Stats;
                 }
+                statsTotal.SetValue(stats.Defeats.total, stats.Victories.total);
+                statsPVE.SetValue(stats.Defeats.pve, stats.Victories.pve);
+                statsPVP.SetValue(stats.Defeats.pvp, stats.Victories.pvp);
+                statsPortals.SetValue(stats.Defeats.portals, stats.Victories.portals);
+                monsterStats.Stats = stats.Monsters;
             }
             catch (Exception ex)
             {
@@ -65,9 +80,9 @@ namespace NestedWorld.Pages
                     a.Handled = true;
                 }
             };
-            battleStats.DataContext = Stats.NewStat("Battle Statstics", 20, 1, 15);
+           /* battleStats.DataContext = Stats.NewStat("Battle Statstics", 20, 1, 15);
             catchStats.DataContext = Stats.NewStat("Catch Statistics", 40, 2, 15);
-            areaStats.DataContext = Stats.NewStat("Areas Statistics", 10, 10, 10);
+            areaStats.DataContext = Stats.NewStat("Areas Statistics", 10, 10, 10);*/
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)

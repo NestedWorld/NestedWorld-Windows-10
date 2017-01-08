@@ -8,79 +8,58 @@
     xmlns:View="using:NestedWorld.View.ProfileViews"
     mc:Ignorable="d">
 
-    <RelativePanel>
-        <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
-            <Grid.Background>
-                <SolidColorBrush Color="#FFEEEEEE"/>
-            </Grid.Background>
+    <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+        <Grid.Background>
+            <SolidColorBrush Color="#FFEEEEEE"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <View:MainView x:Name="mainView" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+        <ScrollViewer Grid.Row="1" >
 
-            <RelativePanel>
-                <View:MainView x:Name="mainView" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
-                <ScrollViewer RelativePanel.AlignLeftWith="mainView" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="mainView" RelativePanel.AlignHorizontalCenterWithPanel="True">
-                    <RelativePanel>
-                        <StackPanel x:Name="firstBlock"  RelativePanel.AlignHorizontalCenterWithPanel="True" >
-                            <View:StatiUserView x:Name="battleStats" Margin="10"/>
-                            <View:StatiUserView x:Name="catchStats" Margin="10"/>
-                            <View:StatiUserView x:Name="areaStats"  Margin="10"/>
-                        </StackPanel>
-                        <StackPanel x:Name="secondBlock" RelativePanel.Below="firstBlock" RelativePanel.AlignHorizontalCenterWithPanel="True">
-                            <View:MonsterStat x:Name="monsterStats" Margin="10"/>
-                        </StackPanel>
-                    </RelativePanel>
-                </ScrollViewer>
-            </RelativePanel>
+            <StackPanel x:Name="firstBlock">
+                <Grid HorizontalAlignment="Center" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <View:StatsCombatView Grid.Column="0" title="Total" x:Name="statsTotal" Margin="5" HorizontalAlignment="Center"/>
+                    <View:StatsCombatView Grid.Column="1" title="PVP" x:Name="statsPVP" Margin="5" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid  HorizontalAlignment="Center" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <View:StatsCombatView Grid.Column="0" title="PVE" x:Name="statsPVE" Margin="5" HorizontalAlignment="Center"/>
+                    <View:StatsCombatView Grid.Column="1" title="Portals" x:Name="statsPortals" Margin="5" HorizontalAlignment="Center"/>
+                </Grid>
+                <View:MonsterStat x:Name="monsterStats"/>
+            </StackPanel>
+        </ScrollViewer>
 
-            <CommandBar x:Name="PlayerCommandBar" Background="{StaticResource BackrgoundBrush}" VerticalAlignment="Bottom">
-                <AppBarButton Label="Edit" Icon="Edit" Click="AppBarButton_Click"/>
-            </CommandBar>
+        <CommandBar Grid.Row="1" x:Name="PlayerCommandBar" Background="{StaticResource BackrgoundBrush}" VerticalAlignment="Bottom">
+            <AppBarButton Label="Edit" Icon="Edit" Click="AppBarButton_Click"/>
+        </CommandBar>
 
-            <CommandBar Background="{StaticResource BackrgoundBrush}" x:Name="UserCommandBar" VerticalAlignment="Bottom">
-                <AppBarButton Click="StartAttack" Label="Attack" Foreground="{StaticResource ForgroundBrush}">
-                    <AppBarButton.Icon>
-                        <PathIcon HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0.267801582813263,0L2.72465944290161,0.314998298883438 9.96843338012695,5.22812271118164 17.2128162384033,0.251874625682831 19.6690654754639,0 19.2284297943115,1.70062828063965 11.9840459823608,6.67686653137207 15.3859577178955,9.0081205368042 16.1415729522705,8.50374221801758 18.787181854248,7.87374591827393 15.8265562057495,9.88999176025391 18.787181854248,11.9056186676025 19.6690654754639,12.1574926376343 20,12.7243661880493 19.6690654754639,13.29123878479 18.8503170013428,13.5431137084961 18.031566619873,13.29123878479 17.7165489196777,12.6612424850464 14.6928262710571,10.6456155776978 11.73219871521,12.6612424850464 12.6140441894531,10.8343667984009 13.3703079223633,10.3306169509888 9.96843338012695,8.06311702728271 6.56716966629028,10.3937406539917 7.3228235244751,10.8974905014038 8.20466899871826,12.7243661880493 5.24404096603394,10.7087392807007 2.28341293334961,12.7243661880493 1.96843314170837,13.354362487793 1.14968419075012,13.606237411499 0.330934852361679,13.354362487793 9.31322574615479E-09,12.7874889373779 0.330934852361679,12.2206163406372 0.669284522533417,11.9686651229858 1.14968419075012,11.9056186676025 4.11031150817871,9.88999176025391 1.14968419075012,7.81124210357666 3.7952938079834,8.44123840332031 4.55155801773071,8.94499683380127 7.95282220840454,6.61437225341797 0.645914673805237,1.70062828063965 0.267801582813263,0z" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
+        <CommandBar Grid.Row="1" Background="{StaticResource BackrgoundBrush}" x:Name="UserCommandBar" VerticalAlignment="Bottom">
+            <AppBarButton Click="StartAttack" Label="Attack" Foreground="{StaticResource ForgroundBrush}">
+                <AppBarButton.Icon>
+                    <PathIcon HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0.267801582813263,0L2.72465944290161,0.314998298883438 9.96843338012695,5.22812271118164 17.2128162384033,0.251874625682831 19.6690654754639,0 19.2284297943115,1.70062828063965 11.9840459823608,6.67686653137207 15.3859577178955,9.0081205368042 16.1415729522705,8.50374221801758 18.787181854248,7.87374591827393 15.8265562057495,9.88999176025391 18.787181854248,11.9056186676025 19.6690654754639,12.1574926376343 20,12.7243661880493 19.6690654754639,13.29123878479 18.8503170013428,13.5431137084961 18.031566619873,13.29123878479 17.7165489196777,12.6612424850464 14.6928262710571,10.6456155776978 11.73219871521,12.6612424850464 12.6140441894531,10.8343667984009 13.3703079223633,10.3306169509888 9.96843338012695,8.06311702728271 6.56716966629028,10.3937406539917 7.3228235244751,10.8974905014038 8.20466899871826,12.7243661880493 5.24404096603394,10.7087392807007 2.28341293334961,12.7243661880493 1.96843314170837,13.354362487793 1.14968419075012,13.606237411499 0.330934852361679,13.354362487793 9.31322574615479E-09,12.7874889373779 0.330934852361679,12.2206163406372 0.669284522533417,11.9686651229858 1.14968419075012,11.9056186676025 4.11031150817871,9.88999176025391 1.14968419075012,7.81124210357666 3.7952938079834,8.44123840332031 4.55155801773071,8.94499683380127 7.95282220840454,6.61437225341797 0.645914673805237,1.70062828063965 0.267801582813263,0z" />
+                </AppBarButton.Icon>
+            </AppBarButton>
 
-                <AppBarButton  Foreground="{StaticResource ForgroundBrush}">
-                    <AppBarButton.Icon>
-                        <PathIcon HorizontalAlignment="Center" VerticalAlignment="Center" Data="M1.00000381469727,11.375L6.9999885559082,14.1249980926514 5.37500381469727,15.2500095367432 7.55468130111694,16.5781307220459 10.0625038146973,17.0625076293945 12.447265625,16.6709060668945 14.5156240463257,15.5703182220459 16.0917930603027,13.8720750808716 16.9999885559082,11.6875019073486 17.1249961853027,11.4375038146973 20,11.4375038146973 19.8749923706055,11.9374980926514 18.6845664978027,15.1357412338257 16.4921855926514,17.6015625 13.5380859375,19.1884765625 10.0625038146973,19.75 8.05272960662842,19.5546894073486 6.17186546325684,18.9843807220459 2.9374885559082,16.8125114440918 1.5625,17.7500114440918 1.00000381469727,11.375z M9.93749618530273,0L11.9472599029541,0.194335699081421 13.8281173706055,0.757811367511749 17.0624923706055,2.87499523162842 18.3749961853027,1.87500059604645 18.9374923706055,8.12500190734863 12.9374885559082,5.75 14.5624923706055,4.62499713897705 12.3828077316284,3.328120470047 9.87499237060547,2.87499523162842 7.49023008346558,3.28612923622131 5.42186975479126,4.42968606948853 3.84569501876831,6.17089796066284 2.9374885559082,8.37499809265137 2.8125,8.93750381469727 0,8.93750381469727 0.124988555908203,8.12500190734863 1.32421231269836,4.87793111801147 3.53124380111694,2.30468821525574 6.48827457427979,0.610351800918579 9.93749618530273,0z" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar>
+            <AppBarButton  Foreground="{StaticResource ForgroundBrush}">
+                <AppBarButton.Icon>
+                    <PathIcon HorizontalAlignment="Center" VerticalAlignment="Center" Data="M1.00000381469727,11.375L6.9999885559082,14.1249980926514 5.37500381469727,15.2500095367432 7.55468130111694,16.5781307220459 10.0625038146973,17.0625076293945 12.447265625,16.6709060668945 14.5156240463257,15.5703182220459 16.0917930603027,13.8720750808716 16.9999885559082,11.6875019073486 17.1249961853027,11.4375038146973 20,11.4375038146973 19.8749923706055,11.9374980926514 18.6845664978027,15.1357412338257 16.4921855926514,17.6015625 13.5380859375,19.1884765625 10.0625038146973,19.75 8.05272960662842,19.5546894073486 6.17186546325684,18.9843807220459 2.9374885559082,16.8125114440918 1.5625,17.7500114440918 1.00000381469727,11.375z M9.93749618530273,0L11.9472599029541,0.194335699081421 13.8281173706055,0.757811367511749 17.0624923706055,2.87499523162842 18.3749961853027,1.87500059604645 18.9374923706055,8.12500190734863 12.9374885559082,5.75 14.5624923706055,4.62499713897705 12.3828077316284,3.328120470047 9.87499237060547,2.87499523162842 7.49023008346558,3.28612923622131 5.42186975479126,4.42968606948853 3.84569501876831,6.17089796066284 2.9374885559082,8.37499809265137 2.8125,8.93750381469727 0,8.93750381469727 0.124988555908203,8.12500190734863 1.32421231269836,4.87793111801147 3.53124380111694,2.30468821525574 6.48827457427979,0.610351800918579 9.93749618530273,0z" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
 
-            <View:EditProfileView Height="500" Width="400" x:Name="EditProfileView" OnCompled="EditProfileView_OnCompled"/>
+        <View:EditProfileView Visibility="Collapsed" Height="500" Width="400" x:Name="EditProfileView" OnCompled="EditProfileView_OnCompled"/>
 
-        </Grid>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="firstBlock.Orientation" Value="Horizontal"/>
-                        <Setter Target="secondBlock.Orientation" Value="Horizontal"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="548"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="firstBlock.Orientation" Value="Vertical"/>
-                        <Setter Target="secondBlock.Orientation" Value="Vertical"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="firstBlock.Orientation" Value="Vertical"/>
-                        <Setter Target="secondBlock.Orientation" Value="Vertical"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-    </RelativePanel>
+    </Grid>
+
 </Page>

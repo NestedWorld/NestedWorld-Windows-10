@@ -21,7 +21,11 @@ namespace NestedWorld.Classes.ElementsGame.Portals
 
     public class Portal
     {
+        public static DateTime DEFFAULTDATETIME = DateTime.ParseExact("2000-01-01 00:00:00", "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
         public Monster monster { get; set; }
+
+        public DateTime catchEnd { get; set;}
 
         public int ID { get; set; }
         public double longitude { get; set; }
@@ -111,7 +115,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             set { }
         }
 
-        public static Portal NewPortal(int Id, double longitude, double latitude, TypeEnum type, string name, string distance)
+        public static Portal NewPortal(int Id, double longitude, double latitude, TypeEnum type, string name, string distance, DateTime end)
         {
             return new Portal()
             {
@@ -121,25 +125,10 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 type = type,
                 pmp = new PortalMapPoint(),
                 Name = name,
-                distance = distance
+                distance = distance,
+                catchEnd = end
             };
         }
-
-        /*
-         * {
-            "captured": null,
-            "duration": null,
-            "position": [
-                3.0618454,
-                50.6350338
-            ],
-            "catching_end": null,
-            "created": "2017-01-06T16:04:10.186126+00:00",
-            "id": 363,
-            "type": "earth",
-            "distance": 7.76820071
-        },
-         */
 
         public static Portal LoadJson(JObject obj)
         {
@@ -169,8 +158,16 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 }
                 string name = obj["name"].ToObject<string>();
                 string distance = (obj["distance"].ToObject<double>() < 1.0 ? "less than 1 m" : obj["distance"].ToObject<double>().ToString() + " m");
+                string catching_endTmp = obj["catching_end"].ToObject<string>();
 
-                return NewPortal(id, longitude, latitude, type, name, distance);
+                DateTime catching_end = DEFFAULTDATETIME;
+                if (catching_endTmp != null)
+                {
+                    catching_end = DateTime.ParseExact(catching_endTmp, "", System.Globalization.CultureInfo.InvariantCulture);
+                }
+           //     obj["catching_end"].ToObject<string>() == null ? null : Convert.ToDateTime(obj["catching_end"].ToObject<string>())) ;
+                Utils.Log.Info(catching_endTmp);
+                return NewPortal(id, longitude, latitude, type, name, distance, catching_end);
             }
             catch (Newtonsoft.Json.JsonException ex)
             {

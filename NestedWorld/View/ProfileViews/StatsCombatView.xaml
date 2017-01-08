@@ -1,0 +1,26 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.ProfileViews.StatsCombatView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.ProfileViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:arcControl="using:ArcControl"
+    mc:Ignorable="d"
+    Height="140"
+    Width="200">
+
+    <Grid Background="{StaticResource BackrgoundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding titlestring}" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0"/>
+        <arcControl:Arc Grid.Row="1" Radius="30" Fill="Green" PercentValue="{Binding vicporcent}" Thickness="15" Margin="10" />
+        <arcControl:Arc Grid.Row="1" Radius="30" Fill="red" PercentValue="{Binding defporcent}" Thickness="15" Margin="10" RenderTransformOrigin="0.5,0.5" >
+            <arcControl:Arc.RenderTransform>
+                <CompositeTransform Rotation="{Binding defrotate}"/>
+            </arcControl:Arc.RenderTransform>
+        </arcControl:Arc>
+    </Grid>
+</UserControl>

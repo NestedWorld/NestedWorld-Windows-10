@@ -24,7 +24,7 @@ namespace NestedWorld
             this.InitializeComponent();
             UI.TitleBarCustom.ApplyToContainerMainPage();
 
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 500));
+           
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -6,44 +6,115 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:arcControl="using:ArcControl"
     Height="400"
     Width="400">
     <UserControl.Resources>
-        <!--telerik:ChartPalette x:Key="CustomPalette">
-            <telerik:ChartPalette.FillEntries>
-                <telerik:PaletteEntryCollection>
-                    <SolidColorBrush Color="{StaticResource FireColor}"/>
-                    <SolidColorBrush Color="{StaticResource WaterColor}"/>
-                    <SolidColorBrush Color="{StaticResource GrassColor}"/>
-                    <SolidColorBrush Color="{StaticResource DirtColor}"/>
-                    <SolidColorBrush Color="{StaticResource ElecColor}"/>
-                </telerik:PaletteEntryCollection>
-            </telerik:ChartPalette.FillEntries>
-            <telerik:ChartPalette.StrokeEntries>
-                <telerik:PaletteEntryCollection>
-                    <SolidColorBrush Color="{StaticResource background}"/>
-                </telerik:PaletteEntryCollection>
-            </telerik:ChartPalette.StrokeEntries>
-        </-->
+
     </UserControl.Resources>
     <Grid Background="{StaticResource BackrgoundBrush}">
-        <TextBlock Text="Monsters Type" Margin="10" FontSize="20"/>
-        <!--telerik:RadPieChart x:Name="mychart" Width="200" Height="200" ClipToBounds="False" Palette="{StaticResource CustomPalette}">
-            <telerik:DoughnutSeries ShowLabels="True">
-                <telerik:DoughnutSeries.ValueBinding>
-                    <telerik:PropertyNameDataPointBinding PropertyName="Value"/>
-                </telerik:DoughnutSeries.ValueBinding>
-                <telerik:DoughnutSeries.LabelDefinitions>
-                    <telerik:ChartSeriesLabelDefinition HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <telerik:ChartSeriesLabelDefinition.Template>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding DataItem.LabelProperty}" Margin="5" FontSize="10" Foreground="{StaticResource ForgroundBrush}"/>
-                            </DataTemplate>
-                        </telerik:ChartSeriesLabelDefinition.Template>
-                    </telerik:ChartSeriesLabelDefinition>
-                </telerik:DoughnutSeries.LabelDefinitions>
-            </telerik:DoughnutSeries>
-        </-->
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Monsters Type" Margin="10" FontSize="20"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Height="60" Width="60" Stroke="{StaticResource WaterBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Uniform" ImageSource="ms-appx:///Assets/Type/water.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Height="60" Width="60" Stroke="{StaticResource FireBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Uniform" ImageSource="ms-appx:///Assets/Type/fire.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Height="60" Width="60" Stroke="{StaticResource DirtBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Uniform" ImageSource="ms-appx:///Assets/Type/dirt.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Height="60" Width="60" Stroke="{StaticResource GrassBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Uniform" ImageSource="ms-appx:///Assets/Type/grass.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Grid.Column="2" Grid.RowSpan="2" Height="60" Width="60" Stroke="{StaticResource ElectBrush}">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Uniform" ImageSource="ms-appx:///Assets/Type/elec.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <arcControl:Arc Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Radius="30" Fill="{StaticResource WaterColor}" PercentValue="{Binding waterPorcent}" Thickness="5" Margin="10" RenderTransformOrigin="0.5,0.5" >
+                <arcControl:Arc.RenderTransform>
+                    <CompositeTransform Rotation="-5"/>
+                </arcControl:Arc.RenderTransform>
+            </arcControl:Arc>
+            <TextBlock Text="{Binding waterValue}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform TranslateY="-40"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+
+            <arcControl:Arc Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Radius="30" Fill="{StaticResource FireColor}" PercentValue="{Binding firePorcent}" Thickness="5" Margin="10" RenderTransformOrigin="0.5,0.5" >
+                <arcControl:Arc.RenderTransform>
+                    <CompositeTransform Rotation="-5"/>
+                </arcControl:Arc.RenderTransform>
+            </arcControl:Arc>
+            <TextBlock Text="{Binding fireValue}" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform TranslateY="-40"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+
+            <arcControl:Arc Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Radius="30" Fill="{StaticResource DirtColor}" PercentValue="{Binding dirtPorcent}" Thickness="5" Margin="10" RenderTransformOrigin="0.5,0.5" >
+                <arcControl:Arc.RenderTransform>
+                    <CompositeTransform Rotation="-5"/>
+                </arcControl:Arc.RenderTransform>
+            </arcControl:Arc>
+            <TextBlock Text="{Binding dirtValue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform TranslateY="-40"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+            <arcControl:Arc Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Radius="30" Fill="{StaticResource ElecColor}" PercentValue="{Binding elecPorcent}" Thickness="5" Margin="10" RenderTransformOrigin="0.5,0.5" >
+                <arcControl:Arc.RenderTransform>
+                    <CompositeTransform Rotation="-5"/>
+                </arcControl:Arc.RenderTransform>
+            </arcControl:Arc>
+            <TextBlock Text="{Binding elecValue}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform TranslateY="-40"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+            <arcControl:Arc Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Radius="30" Fill="{StaticResource GrassColor}" PercentValue="{Binding grassPorcent}" Thickness="5" Margin="10" RenderTransformOrigin="0.5,0.5" >
+                <arcControl:Arc.RenderTransform>
+                    <CompositeTransform Rotation="-5"/>
+                </arcControl:Arc.RenderTransform>
+            </arcControl:Arc>
+            <TextBlock Text="{Binding grassValue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform TranslateY="-40"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+        </Grid>
     </Grid>
 </UserControl>

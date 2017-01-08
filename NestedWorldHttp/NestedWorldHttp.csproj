@@ -104,6 +104,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="NestedWorldHttp_key.snk" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +128,7 @@
     <Compile Include="Http\Places\RegionMonster.cs" />
     <Compile Include="Http\Places\RegionsGet.cs" />
     <Compile Include="Http\ReturnObject.cs" />
+    <Compile Include="Http\Users\GetUserStats.cs" />
     <Compile Include="Http\Users\GetUserId.cs" />
     <Compile Include="Http\Users\Me.cs" />
     <Compile Include="Http\Users\UserFriendsGet.cs" />
@@ -140,6 +142,12 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>NestedWorldHttp_key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -53,7 +53,7 @@ namespace NestedWorldNotificationLib.Notifications
 
                         AppLogoOverride = new ToastGenericAppLogo()
                         {
-                            Source = this.image,
+                            Source = this.image == null ? "ms-appx:///Assets/NestedWorldLogo.png" : this.image,
                             HintCrop = ToastGenericAppLogoCrop.Default,
 
                         }
