@@ -23,10 +23,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <local:SelectedMonsterItemView Height="75" Width="75" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
-            <local:SelectedMonsterItemView Height="75" Width="75" Grid.Column="1" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
-            <local:SelectedMonsterItemView Height="75" Width="75"  Grid.Column="2" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
-            <local:SelectedMonsterItemView Height="75" Width="75" Grid.Column="3" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+            <local:SelectedMonsterItemView Height="65" Width="65" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+            <local:SelectedMonsterItemView Height="65" Width="65" Grid.Column="1" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+            <local:SelectedMonsterItemView Height="65" Width="65"  Grid.Column="2" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
+            <local:SelectedMonsterItemView Height="65" Width="65" Grid.Column="3" OnSelectedEvent="SelectedMonsterItemView_OnSelectedEvent"/>
         </Grid>
 
         <Button Click="Button_Click" Grid.Row="1" Grid.Column="3" Height="50" Width="50" HorizontalAlignment="Right" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">

@@ -17,8 +17,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <View:MainView x:Name="mainView" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
-        <ScrollViewer Grid.Row="1" >
 
+
+        <ScrollViewer Grid.Row="1">
             <StackPanel x:Name="firstBlock">
                 <Grid HorizontalAlignment="Center" Margin="5">
                     <Grid.ColumnDefinitions>
@@ -40,6 +41,7 @@
             </StackPanel>
         </ScrollViewer>
 
+        
         <CommandBar Grid.Row="1" x:Name="PlayerCommandBar" Background="{StaticResource BackrgoundBrush}" VerticalAlignment="Bottom">
             <AppBarButton Label="Edit" Icon="Edit" Click="AppBarButton_Click"/>
         </CommandBar>
@@ -58,7 +60,7 @@
             </AppBarButton>
         </CommandBar>
 
-        <View:EditProfileView Visibility="Collapsed" Height="500" Width="400" x:Name="EditProfileView" OnCompled="EditProfileView_OnCompled"/>
+        <View:EditProfileView Grid.RowSpan="2" Visibility="Collapsed" x:Name="EditProfileView" OnCompled="EditProfileView_OnCompled"/>
 
     </Grid>
 

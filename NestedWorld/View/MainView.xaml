@@ -13,14 +13,15 @@
         <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" x:Name="grid"  Background="{StaticResource ApplicationPageBackgroundThemeBrush}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
 
             <RelativePanel>
-                <view:Header x:Name="header" Height="200" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" VerticalAlignment="Top" x:FieldModifier="public" OnAllyTapped="homeView_OnAllyTapped" OnAreaTaped="homeView_OnAreaTaped" OnCreditTaped="homeView_OnCreditTaped" OnMonsterTaped="homeView_OnMonsterTaped" />
+                <view:Header x:Name="header" Height="200" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" VerticalAlignment="Top" x:FieldModifier="public"/>
                 <ScrollViewer RelativePanel.Below="header" Grid.Row="1" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
                     <StackPanel>
                         <local:MonsterView x:FieldModifier="public"  Margin="5"  x:Name="monsterView" />
-                        <local:UserView x:FieldModifier="public" Margin="5"  x:Name="userView" />
+                        <local:UserView x:FieldModifier="public" Margin="5" Add="userView_Add" x:Name="userView" />
                     </StackPanel>
                 </ScrollViewer>
             </RelativePanel>
+            <view:AddAllyView x:Name="addAllyView" Done="addAllyView_Done"/>
         </Grid>
     </RelativePanel>
 </UserControl>

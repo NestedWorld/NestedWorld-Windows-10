@@ -21,9 +21,5 @@
                 <ImageBrush ImageSource="{Binding Path=Image}"/>
             </Ellipse.Fill>
         </Ellipse>
-
-        <Grid Grid.Column="1">
-            <TextBlock HorizontalAlignment="Left" Margin="5, 0" VerticalAlignment="Center" Text="{Binding Path=Name}" Foreground="{StaticResource BackrgoundBrush}"/>
-        </Grid>
     </Grid>
 </UserControl>

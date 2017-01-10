@@ -6,23 +6,39 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:view="using:NestedWorld.View.ShopViews"
-    xmlns:ui="using:NestedWorld.UI"
+    xmlns:ui="using:NestedWorld.UI"             
+    xmlns:exchange="using:NestedWorld.View.ExchangeViews"
     mc:Ignorable="d">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="1">
-            <StackPanel>
-                <view:ShopMeniItem x:Name="worldexchange"/>
-                <view:ShopMeniItem x:Name="item2"/>
-                <view:ShopMeniItem x:Name="item3"/>
-                <view:ShopMeniItem x:Name="item4"/>
-            </StackPanel>
-        </ScrollViewer>
-        
-      
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Tapped="Grid_Tapped" BorderBrush="{StaticResource DarkApplicationbackgroundBrush}" BorderThickness="1">
+                <Image Source="ms-appx:///Assets/back.png" Stretch="UniformToFill"/>
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#80686861"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Exchange" Foreground="{StaticResource BackrgoundBrush}"/>
+            </Grid>
+
+            <Grid Grid.Row="1" BorderBrush="{StaticResource DarkApplicationbackgroundBrush}" BorderThickness="1">
+               <Rectangle>
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#804E656E"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Get credit" Foreground="{StaticResource BackrgoundBrush}"/>
+            </Grid>
+        </Grid>
+       
+        <exchange:ExchangeView x:Name="exchangeView" Visibility="Collapsed"/>
+
     </Grid>
 
 </UserControl>

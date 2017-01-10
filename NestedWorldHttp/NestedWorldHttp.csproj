@@ -113,6 +113,9 @@
     <Compile Include="Http\Auth\Logout.cs" />
     <Compile Include="Http\Auth\Register.cs" />
     <Compile Include="Http\Auth\ResetPassword.cs" />
+    <Compile Include="Http\Exchange\GetExchanges.cs" />
+    <Compile Include="Http\Exchange\PostEchangesAccept.cs" />
+    <Compile Include="Http\Exchange\PostExchanges.cs" />
     <Compile Include="Http\HttpRequest.cs" />
     <Compile Include="Http\Inventory\ObjectGet.cs" />
     <Compile Include="Http\Inventory\UserInventory.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="Http\Monster\MonsterIDGet.cs" />
     <Compile Include="Http\Monster\MonsterIDPost.cs" />
     <Compile Include="Http\Monster\Monsters.cs" />
+    <Compile Include="Http\Monster\PutUserMonster.cs" />
     <Compile Include="Http\Monster\UsersMonster.cs" />
     <Compile Include="Http\Places\PlaceGet.cs" />
     <Compile Include="Http\Places\PlaceMonster.cs" />

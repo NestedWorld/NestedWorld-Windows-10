@@ -15,22 +15,13 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace NestedWorld.View.HomeView
+namespace NestedWorld.View.ExchangeViews
 {
-    public sealed partial class Header : UserControl
+    public sealed partial class MonsterExchangeView : UserControl
     {
-   
-
-        public Header()
+        public MonsterExchangeView()
         {
             this.InitializeComponent();
-        }
-
-       
-        private void Grid_Tapped_1(object sender, TappedRoutedEventArgs e)
-        {
-            Frame root = Window.Current.Content as Frame;
-            root.Navigate(typeof(Pages.ProfilePage));
         }
     }
 }

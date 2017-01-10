@@ -72,5 +72,18 @@ namespace NestedWorld.Pages
                 e.Handled = true;
             }
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.SurnameView.Show();
+        }
+
+        private void SurnameView_Done(Monster monster)
+        {
+            this.SurnameView.Hide();
+            if (monster == null)
+                return;
+            this.DataContext = monster;
+        }
     }
 }

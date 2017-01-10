@@ -180,7 +180,7 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
         }
         #endregion
 
-        private Monster Get(int id)
+        public Monster Get(int id)
         {
             var query = from monster in monsterList where monster.ID == id select monster;
 

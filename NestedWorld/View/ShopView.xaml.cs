@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace NestedWorld.View
 {
-  
+
     public sealed partial class ShopView : UserControl
     {
         public ShopView()
@@ -15,10 +15,11 @@ namespace NestedWorld.View
 
         public void Init()
         {
-            worldexchange.DataContext = new ShopMenu() { Name = "World Exchange", image = "ms-appx:///Assets/Shop/worldechange.jpg" };
-            item2.DataContext = new ShopMenu() { Name = "Allies Exchange", image = "ms-appx:///Assets/Shop/alliesexchange.png" };
-            item3.DataContext = new ShopMenu() { Name = "Nested Shop", image = "ms-appx:///Assets/NestedWorldLogo.png" };
+        }
 
+        private void Grid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            this.exchangeView.Show();
         }
     }
 }

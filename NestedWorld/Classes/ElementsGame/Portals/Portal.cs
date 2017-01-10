@@ -25,7 +25,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
 
         public Monster monster { get; set; }
 
-        public DateTime catchEnd { get; set;}
+        public DateTime catchEnd { get; set; }
 
         public int ID { get; set; }
         public double longitude { get; set; }
@@ -165,8 +165,6 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 {
                     catching_end = DateTime.ParseExact(catching_endTmp, "", System.Globalization.CultureInfo.InvariantCulture);
                 }
-           //     obj["catching_end"].ToObject<string>() == null ? null : Convert.ToDateTime(obj["catching_end"].ToObject<string>())) ;
-                Utils.Log.Info(catching_endTmp);
                 return NewPortal(id, longitude, latitude, type, name, distance, catching_end);
             }
             catch (Newtonsoft.Json.JsonException ex)

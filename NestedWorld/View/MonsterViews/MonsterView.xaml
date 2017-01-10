@@ -11,25 +11,25 @@
     Width="400"
     Height="200">
     <Grid Width="400" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource BackrgoundBrush}">
-        <Grid Height="125" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="root">
+        <Grid Height="120" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="root">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Ellipse Margin="2" x:Name="rectangleMain" Stroke="{StaticResource ForgroundBrush}">
+            <Ellipse Margin="2" Height="100" Width="100" x:Name="rectangleMain" Stroke="{StaticResource ForgroundBrush}">
                 <Ellipse.Fill>
                     <ImageBrush Stretch="Fill" ImageSource="{Binding Path=Image}"/>
                 </Ellipse.Fill>
             </Ellipse>
-            <Ellipse Grid.Row="0" Width="20" Height="20" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stroke="{StaticResource ForgroundBrush}">
+            <Ellipse Grid.Row="0" Width="20" Height="20" Margin="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stroke="{StaticResource ForgroundBrush}">
                 <Ellipse.Fill>
                     <ImageBrush Stretch="Fill" ImageSource="{Binding Path=ImageType}"/>
                 </Ellipse.Fill>
             </Ellipse>
 
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-                <TextBlock Margin="10, 5, 0, 0" Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" FontSize="10" Foreground="{StaticResource ForgroundBrush}" />
-                <Grid Margin="10, 5, 0, 0">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1">
+                <TextBlock Text="{Binding Path=Name}" Style="{StaticResource TextBlockStyleOne}" FontSize="15" Foreground="{StaticResource ForgroundBrush}" />
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -38,22 +38,17 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                      
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Hp" FontSize="10" Grid.Column="0" Grid.Row="0" Foreground="{StaticResource ForgroundBrush}"/>
                     <TextBlock Text="Att" FontSize="10" Grid.Column="0" Grid.Row="1" Foreground="{StaticResource ForgroundBrush}"/>
                     <TextBlock Text="Def" FontSize="10" Grid.Column="0" Grid.Row="2" Foreground="{StaticResource ForgroundBrush}"/>
-                    <TextBlock Text="AttSp" FontSize="10" Grid.Column="0" Grid.Row="3" Foreground="{StaticResource ForgroundBrush}"/>
-                    <TextBlock Text="DeffSp" FontSize="10" Grid.Column="0" Grid.Row="4" Foreground="{StaticResource ForgroundBrush}"/>
-
-                    <TextBlock Text="{Binding Path=Life}" HorizontalAlignment="Right" FontSize="10" Grid.Column="1" Grid.Row="0" Foreground="{StaticResource ForgroundBrush}"/>
-                    <TextBlock Text="{Binding Path=Attackeffect}" HorizontalAlignment="Right" FontSize="10" Grid.Column="1" Grid.Row="1" Foreground="{StaticResource ForgroundBrush}"/>
-                    <TextBlock Text="{Binding Path=Defence}" HorizontalAlignment="Right" FontSize="10" Grid.Column="1" Grid.Row="2" Foreground="{StaticResource ForgroundBrush}"/>
-                    <TextBlock Text="{Binding Path=Attackeffect}" HorizontalAlignment="Right" FontSize="10" Grid.Column="1" Grid.Row="3" Foreground="{StaticResource ForgroundBrush}"/>
-                    <TextBlock Text="{Binding Path=Defence}" HorizontalAlignment="Right" FontSize="10" Grid.Column="1" Grid.Row="4" Foreground="{StaticResource ForgroundBrush}"/>
-
+             
+                    <TextBlock Text="{Binding Path=Life}" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Grid.Row="0" Foreground="{StaticResource ForgroundBrush}"/>
+                    <TextBlock Text="{Binding Path=Attackeffect}" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Grid.Row="1" Foreground="{StaticResource ForgroundBrush}"/>
+                    <TextBlock Text="{Binding Path=Defence}" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Grid.Row="2" Foreground="{StaticResource ForgroundBrush}"/>
+                
                 </Grid>
 
 

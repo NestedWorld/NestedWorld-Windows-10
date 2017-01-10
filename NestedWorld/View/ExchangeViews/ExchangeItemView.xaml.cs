@@ -1,4 +1,4 @@
-﻿using NestedWorld.Classes.ElementsGame.Monsters;
+﻿using NestedWorld.Classes.ElementsGame.Exchanges;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,20 +16,26 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace NestedWorld.View.MonsterViews.MonsterPage
+namespace NestedWorld.View.ExchangeViews
 {
-    public sealed partial class MontserAttackListView : UserControl
+    public sealed partial class ExchangeItemView : UserControl
     {
-        public MontserAttackListView()
+        public ExchangeItemView()
         {
             this.InitializeComponent();
-            this.DataContextChanged += MontserAttackListView_DataContextChanged;
         }
 
-        private void MontserAttackListView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            Monster monster = (DataContext as Monster);
-            attackList.DataContext = monster.attackList.list.Values;
+            Exchange exchange = (this.DataContext as Exchange);
+
+            if (App.core.monsterUserList.Get(exchange.MonsterIdAsk) != null)
+            {
+                exchange.UserMonsterSend = App.core.monsterUserList[exchange.MonsterIdAsk];
+                var ret = await App.network.AcceptEchange(exchange);
+            }
+
+           
         }
     }
 }

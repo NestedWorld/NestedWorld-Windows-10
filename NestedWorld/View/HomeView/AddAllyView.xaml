@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="NestedWorld.View.HomeView.AddAllyView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NestedWorld.View.HomeView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+   >
+
+    <Grid Tapped="Grid_Tapped"  Background="{StaticResource BattleBrushGrey}">
+        <Grid Height="75" Width="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.RowSpan="2" Fill="{StaticResource BackrgoundBrush}" RadiusX="2" RadiusY="2">
+
+            </Rectangle>
+
+            <Grid Grid.ColumnSpan="2" Background="{StaticResource DarkApplicationbackgroundBrush}">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Add a ally" Foreground="{StaticResource BackrgoundBrush}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="Entry" PlaceholderText="Enter a name" Style="{StaticResource TextBoxStyleLogin}" Margin="10, 0"></TextBox>
+                <Button Click="Button_Click"  Grid.Column="1" Style="{StaticResource ButtonStyleCircle}" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource BleuTwoBrush}" RenderTransformOrigin="0.5,0.5">
+                    <Path Data="M2,21L23,12L2,3V10L17,12L2,14V21Z" Fill="{StaticResource BackrgoundBrush}" RenderTransformOrigin="0.5,0.5" >
+                        <Path.RenderTransform>
+                            <CompositeTransform TranslateY="-2"/>
+                        </Path.RenderTransform>
+                    </Path>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

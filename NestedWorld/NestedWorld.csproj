@@ -104,6 +104,7 @@
     <Content Include="Assets\Attack\final.png" />
     <Content Include="Assets\Attack\finalAir.png" />
     <Content Include="Assets\Attack\finalElec.png" />
+    <Content Include="Assets\back.png" />
     <Content Include="Assets\Battle\cityBG.png" />
     <Content Include="Assets\disk.png" />
     <Content Include="Assets\Effect\finalHeal.png" />
@@ -218,6 +219,8 @@
     <Compile Include="Classes\ElementsGame\Battle\Paterns\DefenceSpePatern.cs" />
     <Compile Include="Classes\ElementsGame\Battle\Paterns\DefencePatern.cs" />
     <Compile Include="Classes\ElementsGame\Battle\Paterns\UseToolsPatern.cs" />
+    <Compile Include="Classes\ElementsGame\Exchanges\Exchange.cs" />
+    <Compile Include="Classes\ElementsGame\Exchanges\ExchangeList.cs" />
     <Compile Include="Classes\ElementsGame\Item\Inventory.cs" />
     <Compile Include="Classes\ElementsGame\Item\InventoryObject.cs" />
     <Compile Include="Classes\ElementsGame\Item\ItemList.cs" />
@@ -463,6 +466,18 @@
     <Compile Include="View\EventView.xaml.cs">
       <DependentUpon>EventView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ExchangeViews\ExchangeItemView.xaml.cs">
+      <DependentUpon>ExchangeItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExchangeViews\ExchangeListView.xaml.cs">
+      <DependentUpon>ExchangeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExchangeViews\ExchangeView.xaml.cs">
+      <DependentUpon>ExchangeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExchangeViews\MonsterExchangeView.xaml.cs">
+      <DependentUpon>MonsterExchangeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GardenViews\GardenElementListView.xaml.cs">
       <DependentUpon>GardenElementListView.xaml</DependentUpon>
     </Compile>
@@ -471,6 +486,9 @@
     </Compile>
     <Compile Include="View\GardenViews\GardenItem.xaml.cs">
       <DependentUpon>GardenItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView\AddAllyView.xaml.cs">
+      <DependentUpon>AddAllyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
@@ -592,6 +610,9 @@
     </Compile>
     <Compile Include="View\MonsterViews\MonsterPage\MontserAttackListView.xaml.cs">
       <DependentUpon>MontserAttackListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MonsterViews\MonsterPage\UpdateSurnameView.xaml.cs">
+      <DependentUpon>UpdateSurnameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MonsterViews\MonsterSoloView.xaml.cs">
       <DependentUpon>MonsterSoloView.xaml</DependentUpon>
@@ -986,6 +1007,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ExchangeViews\ExchangeItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExchangeViews\ExchangeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExchangeViews\ExchangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExchangeViews\MonsterExchangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\GardenViews\GardenElementListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -995,6 +1032,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GardenViews\GardenItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView\AddAllyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1155,6 +1196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MonsterViews\MonsterPage\MontserAttackListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MonsterViews\MonsterPage\UpdateSurnameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

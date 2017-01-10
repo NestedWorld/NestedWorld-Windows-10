@@ -10,7 +10,7 @@
     d:DesignWidth="50">
 
     <Grid Tapped="Grid_Tapped">
-        <Ellipse Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource ForgroundBrush}"/>
+        <Ellipse  Fill="{StaticResource BackrgoundBrush}" Stroke="{StaticResource ForgroundBrush}" x:Name="item"/>
         <Ellipse>
             <Ellipse.Stroke>
                 <SolidColorBrush Color="{Binding Path=Brush}"/>

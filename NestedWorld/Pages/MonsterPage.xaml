@@ -12,10 +12,19 @@
     mc:Ignorable="d"
     Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <pages:Header x:Name="header" Background="{StaticResource DarkApplicationbackgroundBrush}"/>
-        <pages:Body x:Name="body" Margin="10" Background="{StaticResource BackrgoundBrush}"/>
-        <pages:Footer x:Name="footer"/>
-    </StackPanel>
-    
+    <Grid>
+
+        <StackPanel Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+            <pages:Header x:Name="header" Background="{StaticResource DarkApplicationbackgroundBrush}"/>
+            <pages:Body x:Name="body" Margin="10" Background="{StaticResource BackrgoundBrush}"/>
+            <pages:Footer x:Name="footer"/>
+        </StackPanel>
+
+        <pages:UpdateSurnameView x:Name="SurnameView" Visibility="Collapsed" Done="SurnameView_Done"/>
+
+        <CommandBar Background="{StaticResource BackrgoundBrush}" VerticalAlignment="Bottom">
+            <AppBarButton Label="Edit" Icon="Edit" Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Grid>
+
 </Page>

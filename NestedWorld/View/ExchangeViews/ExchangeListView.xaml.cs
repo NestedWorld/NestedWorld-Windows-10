@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NestedWorld.Classes.ElementsGame.Exchanges;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,36 +16,23 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace NestedWorld.View
+namespace NestedWorld.View.ExchangeViews
 {
-    public sealed partial class MainView : UserControl
+    public sealed partial class ExchangeListView : UserControl
     {
-        public MainView()
+        public ExchangeListView()
         {
             this.InitializeComponent();
+            this.DataContextChanged += ExchangeListView_DataContextChanged;
 
         }
 
-
-        public void Init()
+        private void ExchangeListView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            monsterView.monsterList = App.core.monsterUserList;
-            userView.userList = App.core.userList;
-            header.DataContext = App.core.user;
-        }
+            if (DataContext == null)
+                return;
 
-
-
-        private void addAllyView_Done(bool success)
-        {
-            this.addAllyView.Hide();
-            if (success)
-                userView.userList = App.core.userList;
-        }
-
-        private void userView_Add()
-        {
-            this.addAllyView.Show();
+            exchangeFlipView.DataContext = (DataContext as ExchangeList).content;
         }
     }
 }

@@ -72,16 +72,6 @@ namespace NestedWorld.Classes.ElementsGame.Session
             await App.core.Init();
 
             UI.TitleBarCustom.ApplyToContainerHomePage();
-            NestedWorldSocketIo.SocketIo io = new NestedWorldSocketIo.SocketIo("localhost:3000");
-
-            io.Add("new message", (object data) =>
-            {
-                Utils.Log.Info(data);
-            });
-
-            io.Connect();
-            io.Send("new message", "hello");
-
             if (redirect)
                 root.Navigate(typeof(Pages.HomePage));
             return ret;

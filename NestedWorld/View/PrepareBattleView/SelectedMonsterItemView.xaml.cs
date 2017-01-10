@@ -20,7 +20,8 @@ namespace NestedWorld.View.PrepareBattleView
     public sealed partial class SelectedMonsterItemView : UserControl
     {
 
-        private const double select = 60;
+        private const double select = 5;
+        private const double unselect = 1;
 
         private bool _isSelected;
 
@@ -37,13 +38,12 @@ namespace NestedWorld.View.PrepareBattleView
 
                 if (value)
                 {
-                    this.Width = select * 1.5;
-                    this.Height = select * 1.5;
+                    item.StrokeThickness = select;
                 }
                 else
                 {
-                    this.Width = select;
-                    this.Height = select;
+                    item.StrokeThickness = unselect;
+
                 }
             }
         }

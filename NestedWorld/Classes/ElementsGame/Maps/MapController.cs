@@ -77,7 +77,7 @@ namespace NestedWorld.Classes.ElementsGame.Maps
             this.canUse = canUse;
 
             geolocator = new Geolocator();
-            geolocator.MovementThreshold = 10;
+            geolocator.MovementThreshold = 30;
             geolocator.DesiredAccuracy = PositionAccuracy.Default;
             _mapControl = null;
             pmp = new PlayerMapPoint();

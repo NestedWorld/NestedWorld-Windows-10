@@ -23,6 +23,8 @@ using NestedWorldHttp.Http.Users;
 using NestedWorld.Classes.ElementsGame.Item;
 using NestedWorldHttp.Http.Places;
 using NestedWorld.Classes.ElementsGame.Portals;
+using NestedWorldHttp.Http.Monster;
+using NestedWorld.Classes.ElementsGame.Exchanges;
 
 namespace NestedWorld.Classes.Network
 {
@@ -158,6 +160,43 @@ namespace NestedWorld.Classes.Network
                 if (ret.code == System.Net.HttpStatusCode.OK)
                 {
                     ReturnObject = new ReturnObject() { Content = UserInfo.GetUserInfoFromJson(ret.Object), ErrorCode = 0, Message = ret.Object["message"].ToObject<string>() };
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = null, ErrorCode = 1, Message = "Error updating user info" };
+                }
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+            }
+            return ReturnObject;
+        }
+
+        public async Task<ReturnObject> UpdateMonsterInfo(int id, string surname)
+        {
+            ReturnObject ReturnObject;
+            PutUserMonster up = new PutUserMonster();
+
+            try
+            {
+                up.SetParam(id, surname);
+                var ret = await up.GetJsonAsync();
+
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    ReturnObject = new ReturnObject() { Content = Monster.GetUserMonster(ret.Object), ErrorCode = 0, Message = ret.Object["message"].ToObject<string>() };
                 }
                 else
                 {
@@ -355,8 +394,8 @@ namespace NestedWorld.Classes.Network
         {
             ReturnObject ReturnObject;
 
-            UserFriendsPost userFriendsGet = new UserFriendsPost();
-            userFriendsGet.SetParam(pseudo);
+            UserFriendsPost userFriendsPost = new UserFriendsPost();
+            userFriendsPost.SetParam(pseudo);
             if (App.core.Offline)
                 return new ReturnObject()
                 {
@@ -366,9 +405,16 @@ namespace NestedWorld.Classes.Network
                 };
             try
             {
-                var ret = await userFriendsGet.GetJsonAsync();
+                var ret = await userFriendsPost.GetJsonAsync();
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    return await this.GetAllies();
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = ret, ErrorCode = 1, Message = string.Empty };
 
-                ReturnObject = new ReturnObject() { Content = ret, ErrorCode = 0, Message = string.Empty };
+                }
             }
             catch (HttpRequestException HRException)
             {
@@ -607,6 +653,124 @@ namespace NestedWorld.Classes.Network
 
         #region Attacks
 
+
+        #region exchange
+
+        public async Task<ReturnObject> GetExchange()
+        {
+            ReturnObject ReturnObject;
+            NestedWorldHttp.Http.Exchange.GetExchanges getExchanges = new NestedWorldHttp.Http.Exchange.GetExchanges();
+
+            try
+            {
+                getExchanges.SetParam();
+                var ret = await getExchanges.GetJsonAsync();
+
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    ReturnObject = new ReturnObject() { Content = ExchangeList.LoadJson(ret.Object), ErrorCode = 0, Message = "" };
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = null, ErrorCode = 1, Message = "Error updating user info" };
+                }
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+            }
+            return ReturnObject;
+        }
+
+        public async Task<ReturnObject> PostEchange(Exchange exchange)
+        {
+            ReturnObject ReturnObject;
+            NestedWorldHttp.Http.Exchange.PostExchanges postExchanges = new NestedWorldHttp.Http.Exchange.PostExchanges();
+
+            try
+            {
+                postExchanges.SetParam(exchange.MonsterIdSend, exchange.MonsterIdAsk, exchange.UserMonsterSend.UserID);
+                var ret = await postExchanges.GetJsonAsync();
+
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    ReturnObject = new ReturnObject() { Content = Exchange.LoadJson(ret.Object), ErrorCode = 0, Message = "" };
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = null, ErrorCode = 1, Message = "Error updating user info" };
+                }
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+            }
+            return ReturnObject;
+        }
+
+        public async Task<ReturnObject> AcceptEchange(Exchange exchange)
+        {
+            ReturnObject ReturnObject;
+            NestedWorldHttp.Http.Exchange.PostEchangesAccept postExchanges = new NestedWorldHttp.Http.Exchange.PostEchangesAccept();
+
+            try
+            {
+                postExchanges.SetParam(exchange.Id, exchange.UserMonsterSend.UserID);
+                var ret = await postExchanges.GetJsonAsync();
+
+                if (ret.code == System.Net.HttpStatusCode.OK)
+                {
+                    ReturnObject = new ReturnObject() { Content = ret.Object, ErrorCode = 0, Message = "" };
+                }
+                else
+                {
+                    ReturnObject = new ReturnObject() { Content = null, ErrorCode = 1, Message = "Error updating user info" };
+                }
+            }
+            catch (HttpRequestException HRException)
+            {
+                Debug.WriteLine(HRException);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = HRException.HResult, Message = "HttpRequestException : " + HRException.Message };
+            }
+            catch (Newtonsoft.Json.JsonException jEx)
+            {
+                Debug.WriteLine(jEx);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = jEx.HResult, Message = "JsonException : " + jEx.Message };
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReturnObject = new ReturnObject() { Content = null, ErrorCode = ex.HResult, Message = "Exception : " + ex.Message };
+            }
+            return ReturnObject;
+        }
+
+    
+
+
+        #endregion
         public async Task<ReturnObject> GetAttack()
         {
             ReturnObject ReturnObject;

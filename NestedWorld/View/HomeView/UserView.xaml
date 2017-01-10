@@ -34,7 +34,6 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <popup:AddAllyPopUp x:Name="AddAllyPopUp" Grid.RowSpan="2" VerticalAlignment="Top"/>
-
+      
     </Grid>
 </UserControl>

@@ -3,11 +3,14 @@ using MessagePack.Serveur.Chat;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using System;
+using NestedWorldSocketIo;
 namespace NestedWorld.Classes.ElementsGame.Chat
 {
     public class ChatCore
     {
+
+        private SocketIo socketIo;
         private List<Channel> _list;
 
         public ObservableCollection<Channel> List
@@ -28,6 +31,21 @@ namespace NestedWorld.Classes.ElementsGame.Chat
             }
         }
 
+        private void LeftChannel(Channel channelSelected)
+        {
+
+        }
+
+        public void JoinChannel(Channel channel)
+        {
+
+        }
+
+        public void SendMessage(string message)
+        {
+
+        }
+
         //public popup
 
         public ChatCore()
@@ -38,58 +56,20 @@ namespace NestedWorld.Classes.ElementsGame.Chat
 
         public void Init()
         {
+
             _list = new List<Channel>(App.core.userList.GetChannelAllies());
 
-            if (App.core.Offline)
-            {
-                for (int i = 1; i < 11; i++)
-                    _list.Add(new Channel("Test" + i.ToString()));
-            }
-            App.network.serveurMessageList["chat:user-joined"].OnCompled += User_Joinded;
-            App.network.serveurMessageList["chat:user-parted"].OnCompled += User_Parteded;
-            App.network.serveurMessageList["chat:message-received"].OnCompled += Receive_message;
-        }
+            socketIo = new SocketIo("localhost:4241");
 
-        public void JoinChannel(Channel channel)
-        {
-            var tmp = MessagePack.Client.Chat.JoinChannel.Join(channel.Name);
-            App.network.SendRequest(tmp);
-        }
+           
 
-        public void LeftChannel(Channel channel)
-        {
-            if (channel != null)
-                App.network.SendRequest(PartChannel.Part(channel.Name));
-        }
+            socketIo.Connect();
 
-        public void SendMessage(string message)
-        {
-            App.network.SendRequest(MessagePack.Client.Chat.SendMessage.Send(ChannelSelect.Name, message));
+            socketIo.Send("subscribe", "test");
+            socketIo.Send("send message", "hello");
+
         }
 
 
-        private void User_Joinded(object value)
-        {
-            UserJoin Uj = value as UserJoin;
-        }
-
-        private void User_Parteded(object value)
-        {
-            UserPart Up = value as UserPart;
-        }
-
-        private void Receive_message(object value)
-        {
-            MessageReceived mr = value as MessageReceived;
-
-            App.core.notificationInternal.SendNotification(Notification.NotificationType.MESSAGE,
-                new Notification.MessageReceiveNotification()
-                {
-                    Message = mr.message,
-                    Channel = mr.channel,
-                    UserName = App.core.userList.userList[0].Name,
-                    UserImage = App.core.userList.userList[0].Image
-                });
-        }
     }
 }

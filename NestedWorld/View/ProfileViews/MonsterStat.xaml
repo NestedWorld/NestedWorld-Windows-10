@@ -109,7 +109,7 @@
                     <CompositeTransform Rotation="-5"/>
                 </arcControl:Arc.RenderTransform>
             </arcControl:Arc>
-            <TextBlock Text="{Binding grassValue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock Text="{Binding grassValue}" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
                 <TextBlock.RenderTransform>
                     <CompositeTransform TranslateY="-40"/>
                 </TextBlock.RenderTransform>

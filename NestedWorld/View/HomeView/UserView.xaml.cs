@@ -21,12 +21,16 @@ namespace NestedWorld.View
 {
     public sealed partial class UserView : UserControl
     {
+
+        public delegate void AddUser();
+        public event AddUser Add;
         public UserList userList
         {
             get { return null; }
             set
             {
-                userGridView.DataContext = new ObservableCollection<User>(value.userList);
+                if (value.userList != null)
+                    userGridView.DataContext = new ObservableCollection<User>(value.userList);
             }
         }
         public UserView()
@@ -36,7 +40,7 @@ namespace NestedWorld.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddAllyPopUp.Show();
+            this.Add?.Invoke();
         }
     }
 }

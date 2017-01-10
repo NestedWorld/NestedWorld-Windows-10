@@ -109,12 +109,7 @@
                 </TextBlock>
             </StackPanel>
 
-            <Grid x:Name="credit" Tapped="Grid_Tapped" Background="#00000000"/>
-            <Grid x:Name="monster" Grid.Column="1" Tapped="Grid_Tapped" Background="#00000000"/>
-            <Grid x:Name="area" Grid.Column="2" Tapped="Grid_Tapped" Background="#00000000"/>
-            <Grid x:Name="ally" Grid.Column="3" Tapped="Grid_Tapped" Background="#00000000"/>
-
-
+       
         </Grid>
         <Grid Grid.ColumnSpan="2" Tapped="Grid_Tapped_1" Background="#00000000"/>
 

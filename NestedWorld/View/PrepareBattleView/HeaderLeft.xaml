@@ -22,8 +22,6 @@
             </Ellipse.Fill>
         </Ellipse>
 
-        <Grid Grid.Column="1">
-            <TextBlock HorizontalAlignment="Right" Margin="5, 0" VerticalAlignment="Center" Text="{Binding Path=name}" Foreground="{StaticResource BackrgoundBrush}"/>
-        </Grid>
+    
     </Grid>
 </UserControl>

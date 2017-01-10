@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="39815CaronThomas.NestedWorld" Publisher="CN=thomas caron" Version="1.0.10.0" />
+  <Identity Name="39815CaronThomas.NestedWorld" Publisher="CN=thomas caron" Version="1.0.11.0" />
   <mp:PhoneIdentity PhoneProductId="fe724577-c7a2-4fb8-9bd8-a66c97686cfc" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Nested World</DisplayName>
@@ -24,17 +24,11 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-
-        <Extension
-          Category="windows.backgroundTasks"
-          EntryPoint="NestedWorldNotification.NotificationActionBackgroundTask">
-
+        <Extension Category="windows.backgroundTasks" EntryPoint="NestedWorldNotification.NotificationActionBackgroundTask">
           <BackgroundTasks>
             <Task Type="systemEvent" />
           </BackgroundTasks>
-
         </Extension>
-
       </Extensions>
     </Application>
   </Applications>
