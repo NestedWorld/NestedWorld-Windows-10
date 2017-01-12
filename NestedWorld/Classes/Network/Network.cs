@@ -58,7 +58,7 @@ namespace NestedWorld.Classes.Network
             {
                 hostname = "eip.kokakiwi.net",
                 //hostname="localhost",
-                port = 6465,
+                port = 6466,
                 offline = App.core.Offline,
 
             });

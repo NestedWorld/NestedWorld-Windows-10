@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Click="HamburgerButton_Click"  Height="50" Width="50" x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="{StaticResource ForgroundBrush}" HorizontalAlignment="Left" Background="{StaticResource BackrgoundBrush}"/>
+        <Button Click="HamburgerButton_Click" Visibility="Collapsed"  Height="50" Width="50" x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="{StaticResource ForgroundBrush}" HorizontalAlignment="Left" Background="{StaticResource BackrgoundBrush}"/>
         <TextBox VerticalAlignment="Center" Width="200" Grid.Column="1" TextChanged="TextBox_TextChanged"  PlaceholderText="Search" Margin="25, 0" HorizontalAlignment="Right" BorderBrush="{StaticResource BackrgoundBrush}" Background="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
 
     </Grid>

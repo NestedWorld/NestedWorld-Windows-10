@@ -67,7 +67,18 @@ namespace NestedWorld.View.MapViews.PortalView
 
         private void Tmp_OnSuccess(MessagePack.Serveur.ResultRequest result)
         {
-            
+            string state = result.Content.GetString("state");
+            if (state == "vacant")
+            {
+                Utils.Log.Info(state);
+            }
+            else if (state == "occupied")
+            {
+                Utils.Log.Info(state);
+
+                var userStruct = result.Content.GetStruct("owner");
+                var monsterStruct = result.Content.GetStruct("monster");
+            }
         }
     }
 }

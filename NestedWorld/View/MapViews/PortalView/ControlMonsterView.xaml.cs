@@ -15,11 +15,11 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace NestedWorld.View.ItemsViews.ItemsTab
+namespace NestedWorld.View.MapViews.PortalView
 {
-    public sealed partial class Body : UserControl
+    public sealed partial class ControlMonsterView : UserControl
     {
-        public Body()
+        public ControlMonsterView()
         {
             this.InitializeComponent();
         }

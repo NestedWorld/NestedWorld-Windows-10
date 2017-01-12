@@ -19,7 +19,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
 
         private List<Patern> paternList;
 
-        public Start start { get { return _start; } set { _start = value; this.round = value.first; } }
+        public Start start { get { return _start; } set { _start = value; this.round = true; } }
         public int combatID;
         private Monster _ennemieMonster;
         private Start _start;
@@ -130,25 +130,22 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         private void AttackReceiveEvent(object value)
         {
             AttackReceived attackReceived = value as AttackReceived;
-            Utils.Log.Info(attackReceived.Monster);
             try
             {
-                if (attackReceived.Monster.Id == start.OppomentMonster.Id)
+                if (attackReceived.Target.Id == start.OppomentMonster.Id)
                 {
-                    //oppoment monster send;
-                    this.round = true;
-                    UserMonster = UserMonster.FromStruct(attackReceived.Target);
-                    EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Monster);
-                    annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
-                }
-                else if (attackReceived.Monster.Id == start.UserMonster.Id)
-                {
-                    this.round = false;
+                    // attack send;
                     UserMonster = UserMonster.FromStruct(attackReceived.Monster);
                     EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Target);
-                    annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
                 }
-
+                else
+                {
+                    // attack receive;
+                    UserMonster = UserMonster.FromStruct(attackReceived.Target);
+                    EnnemieMonster = EnnemieMonster.FromStruct(attackReceived.Monster);
+                }
+                annimationCanvas.Sprite = App.core.Resources.AttackSprite[App.core.attackList.list[attackReceived.Attack].AttackRessourcesName];
+              
                 //TODO : tmp code; 
                 if (EnnemieMonster.Life <= 0)
                 {
@@ -213,7 +210,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         {
 
             double PidivTwo = (Math.PI / 2);
-            double alpha = (2 * Math.PI) / 6;
+            double alpha = (2 * Math.PI) / iconList.Count;
 
             double centerX = height / 2;
             double centerY = width / 2;

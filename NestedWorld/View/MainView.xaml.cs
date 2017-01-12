@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NestedWorld.Classes.ElementsGame.Monsters;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,8 +27,11 @@ namespace NestedWorld.View
         }
 
 
-        public void Init()
+        public async void Init()
         {
+            var req = await App.network.GetUserMonster();
+            req.ShowError();
+            App.core.monsterUserList = req.Content as MonsterList;
             monsterView.monsterList = App.core.monsterUserList;
             userView.userList = App.core.userList;
             header.DataContext = App.core.user;

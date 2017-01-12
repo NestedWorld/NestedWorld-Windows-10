@@ -16,13 +16,6 @@
         </Grid.RowDefinitions>
         <monsterViewTab:Banner OnPannelOpenClose="Banner_OnPannelOpenClose" OnSearch="Banner_OnSearch"/>
 
-        <SplitView Grid.Row="1" x:Name="splitViewOption" IsPaneOpen="False"  OpenPaneLength="250" DisplayMode="Overlay" CompactPaneLength="50">
-            <SplitView.Pane>
-                <monsterViewTab:Menu/>
-            </SplitView.Pane>
-            <SplitView.Content>
-                <monsterViewTab:Content/>
-            </SplitView.Content>
-        </SplitView>
+        <monsterViewTab:Content Grid.Row="1"/>
     </Grid>
 </UserControl>

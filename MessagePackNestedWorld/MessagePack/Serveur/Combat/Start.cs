@@ -44,7 +44,7 @@ namespace MessagePack.Serveur.Combat
                     Id = Convert.ToInt32(tmpUserMonster.GetByte("id")),
                     Name = tmpUserMonster.GetString("name"),
                     Monster_Id = Convert.ToInt32(tmpUserMonster.GetByte("monster_id")),
-                    user_monster_id = Convert.ToInt32(tmpUserMonster.GetByte("user_monster_id")),
+                  //  user_monster_id = Convert.ToInt32(tmpUserMonster.GetByte("user_monster_id")),
                     Hp = Convert.ToInt32(tmpUserMonster.GetByte("hp")),
                     Level = Convert.ToInt32(tmpUserMonster.GetByte("level")),
                 };

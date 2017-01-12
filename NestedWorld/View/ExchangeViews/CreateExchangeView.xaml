@@ -1,12 +1,17 @@
-﻿<UserControl x:Name="userControl"
-    x:Class="NestedWorld.View.MapViews.PortalView.PortalMainView"
+﻿<UserControl
+    x:Name="userControl"
+    x:Class="NestedWorld.View.ExchangeViews.CreateExchangeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:NestedWorld.View.MapViews.PortalView"
+    xmlns:local="using:NestedWorld.View.ExchangeViews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" RenderTransformOrigin="0.5,0.5"
-   >
+    xmlns:item="using:NestedWorld.View.ItemsViews.ItemsTab"
+    xmlns:monster="using:NestedWorld.View.MonsterViews.MonsterTab"
+    mc:Ignorable="d" RenderTransformOrigin="0.5,0.5">
+    <UserControl.RenderTransform>
+        <CompositeTransform/>
+    </UserControl.RenderTransform>
     <UserControl.Resources>
         <Storyboard x:Name="ShowAnnimation">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="userControl">
@@ -39,27 +44,38 @@
             </DoubleAnimation>
         </Storyboard>
     </UserControl.Resources>
-    <UserControl.RenderTransform>
-        <CompositeTransform/>
-    </UserControl.RenderTransform>
 
-    <Grid Background="{StaticResource DarkApplicationbackgroundBrush}">
+
+    <Grid Background="{StaticResource DarkApplicationbackgroundBrush}" RenderTransformOrigin="0.5,0.5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Path=Title}" Foreground="{StaticResource BackrgoundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center"/>
 
-        <TextBlock Text="{Binding Path=Name}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="{StaticResource BackrgoundBrush}" />
+        <TextBlock Text="Propose an exchange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="{StaticResource BackrgoundBrush}"/>
 
-        <local:MonsterCircleView Grid.Row="1" OnMonsterSelected="MonsterCircleView_OnMonsterSelected"/>
+        <Grid Grid.Row="1" Background="{StaticResource BackrgoundBrush}" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <local:ControlMonsterView Grid.Row="1" DataContext="{Binding Path=monster}"/>
+            <local:CreateExchangeSelectMonsterView x:Name="userMonsertList" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <local:CreateExchangeSelectMonsterView x:Name="monsertList" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <Button Click="Button_Click" Grid.Row="2" HorizontalAlignment="Center" Height="40" Width="200" VerticalAlignment="Center" Background="{StaticResource BleuTwoBrush}">
-            <TextBlock Text="Done" Foreground="{StaticResource BackrgoundBrush}"/>
+            <Button Click="Button_Click_1" Style="{StaticResource ButtonStyleCircle}" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="40" Background="{StaticResource BleuTwoBrush}">
+                <Path Data="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" Fill="{StaticResource BackrgoundBrush}" RenderTransformOrigin="0.5,0.5" >
+                    <Path.RenderTransform>
+                        <CompositeTransform TranslateX="-1" TranslateY="-2"/>
+                    </Path.RenderTransform>
+                </Path>
+            </Button>
+        </Grid>
+
+        <Button Click="Button_Click" Grid.Row="2"  Width="260" HorizontalAlignment="Center" Height="50" Background="{StaticResource BleuTwoBrush}">
+            <TextBlock FontSize="20" Text="Done" Foreground="{StaticResource BackrgoundBrush}"/>
         </Button>
-
     </Grid>
+
 </UserControl>

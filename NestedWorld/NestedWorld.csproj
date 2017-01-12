@@ -373,6 +373,7 @@
     <Compile Include="Utils\MapElementData.cs" />
     <Compile Include="Utils\MapExtensions.cs" />
     <Compile Include="Utils\RandomValue.cs" />
+    <Compile Include="Utils\RFC33.cs" />
     <Compile Include="Utils\StorageApplication.cs" />
     <Compile Include="Utils\TimeSpamExtend.cs" />
     <Compile Include="ViewModel\ContentController.cs" />
@@ -466,6 +467,12 @@
     <Compile Include="View\EventView.xaml.cs">
       <DependentUpon>EventView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ExchangeViews\CreateExchangeSelectMonsterView.xaml.cs">
+      <DependentUpon>CreateExchangeSelectMonsterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExchangeViews\CreateExchangeView.xaml.cs">
+      <DependentUpon>CreateExchangeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExchangeViews\ExchangeItemView.xaml.cs">
       <DependentUpon>ExchangeItemView.xaml</DependentUpon>
     </Compile>
@@ -477,6 +484,9 @@
     </Compile>
     <Compile Include="View\ExchangeViews\MonsterExchangeView.xaml.cs">
       <DependentUpon>MonsterExchangeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExchangeViews\SelectMonsterExchangeItem.xaml.cs">
+      <DependentUpon>SelectMonsterExchangeItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GardenViews\GardenElementListView.xaml.cs">
       <DependentUpon>GardenElementListView.xaml</DependentUpon>
@@ -495,9 +505,6 @@
     </Compile>
     <Compile Include="View\HomeView\Tap\AreaTap.xaml.cs">
       <DependentUpon>AreaTap.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ItemsViews\ItemsTab\Body.xaml.cs">
-      <DependentUpon>Body.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ItemsViews\ItemsTab\ItemsListItemView.xaml.cs">
       <DependentUpon>ItemsListItemView.xaml</DependentUpon>
@@ -552,6 +559,9 @@
     </Compile>
     <Compile Include="View\MapViews\PortalView\Body.xaml.cs">
       <DependentUpon>Body.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapViews\PortalView\ControlMonsterView.xaml.cs">
+      <DependentUpon>ControlMonsterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MapViews\PortalView\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
@@ -1007,6 +1017,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ExchangeViews\CreateExchangeSelectMonsterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExchangeViews\CreateExchangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ExchangeViews\ExchangeItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1020,6 +1038,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExchangeViews\MonsterExchangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExchangeViews\SelectMonsterExchangeItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1044,10 +1066,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HomeView\Tap\AreaTap.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ItemsViews\ItemsTab\Body.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1120,6 +1138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MapViews\PortalView\Body.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapViews\PortalView\ControlMonsterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

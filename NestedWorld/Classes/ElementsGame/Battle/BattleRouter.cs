@@ -25,6 +25,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
                 {
                     WildBattle.view = _view.wildBattle;
                     OppBattle.view = _view.pvpBattle;
+                    TowerBattle.view = _view.portalBattle;
                 }
             }
         }
@@ -56,7 +57,7 @@ namespace NestedWorld.Classes.ElementsGame.Battle
         {
             WildBattle = new BattleList("PVE");
             OppBattle = new BattleList("PVP");
-            TowerBattle = new BattleList("Areas");
+            TowerBattle = new BattleList("Portals");
             view = null;
         }
 
@@ -97,12 +98,8 @@ namespace NestedWorld.Classes.ElementsGame.Battle
             }
             else
             {
-                toast = new NotificationToast(ToastInputType.none)
-                {
-                    title = "One of you portals is under attack",
-                    content = string.Format("your portal is attacked, protect it ?"),
-                    notificationId = av.id
-                };
+                TowerBattle.Add(new Battle() { OpponentImage = "", OpponentName = "Portal", BattleID = av.id, ContextBattle = Context.TOWER });
+                
             }
 
 

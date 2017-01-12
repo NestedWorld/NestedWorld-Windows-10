@@ -43,7 +43,7 @@ namespace NestedWorld.View
 
         private void Banner_OnPannelOpenClose()
         {
-            splitViewOption.IsPaneOpen = !splitViewOption.IsPaneOpen;
+            //splitViewOption.IsPaneOpen = !splitViewOption.IsPaneOpen;
         }
 
         private void Banner_OnSearch(string term)

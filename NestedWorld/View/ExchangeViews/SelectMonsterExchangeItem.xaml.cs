@@ -15,22 +15,13 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace NestedWorld.View.BattleViews.BattleList
+namespace NestedWorld.View.ExchangeViews
 {
-    public sealed partial class BattleListMainView : UserControl
+    public sealed partial class SelectMonsterExchangeItem : UserControl
     {
-        public BattleListMainView()
+        public SelectMonsterExchangeItem()
         {
             this.InitializeComponent();
-            App.core.battleRouter.view = this;
-        }
-
-        public void Init()
-        {
-//            this.DataContext = App.core.battleRouter;
-            this.wildBattle.DataContext = App.core.battleRouter.WildBattle;
-            this.pvpBattle.DataContext = App.core.battleRouter.OppBattle;
-            this.portalBattle.DataContext = App.core.battleRouter.TowerBattle;
         }
     }
 }

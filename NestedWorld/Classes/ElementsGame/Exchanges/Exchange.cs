@@ -26,10 +26,10 @@ namespace NestedWorld.Classes.ElementsGame.Exchanges
                 this._userMonsterSend = value;
             }
         }
-        public int MonsterIdAsk { get; private set; }
-        public int MonsterIdSend { get; private set; }
+        public int MonsterIdAsk { get;  set; }
+        public int MonsterIdSend { get;  set; }
 
-        public int Id { get; private set; }
+        public int Id { get;  set; }
 
         //monster ask by the user who make the exchange
         public Monsters.Monster MonsterAsk
@@ -47,7 +47,7 @@ namespace NestedWorld.Classes.ElementsGame.Exchanges
             set { }
         }
 
-        public Visibility isVisible
+        public Visibility Visible
         {
             get
             {
@@ -56,7 +56,7 @@ namespace NestedWorld.Classes.ElementsGame.Exchanges
             set { }
         }
 
-        public Monsters.Monster MonsterSend { get { return App.core.monsterList[MonsterIdSend]; } set { } }
+        public Monsters.Monster MonsterSend { get { return App.core.monsterList[MonsterIdSend]; } set { this.MonsterIdSend = value.ID; } }
 
         public static Exchange LoadJson(JObject obj)
         {

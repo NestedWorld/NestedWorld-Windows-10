@@ -39,7 +39,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Nested World"  FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Foreground="{StaticResource BackrgoundBrush}"/>
+                    <TextBlock Text="Nested World"  FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Foreground="{StaticResource BackrgoundBrush}" CharacterSpacing="-18"/>
 
                     <CommandBar Grid.Column="1" Background="{StaticResource DarkbackgroundBrush}" Foreground="{StaticResource BackrgoundBrush}" >
                         <CommandBar.PrimaryCommands>

@@ -22,6 +22,7 @@
             <StackPanel>
                 <local:BattleListView x:Name="wildBattle" x:FieldModifier="public"/>
                 <local:BattleListView x:Name="pvpBattle" x:FieldModifier="public"/>
+                <local:BattleListView x:Name="portalBattle" x:FieldModifier="public"/>
             </StackPanel>
         </ScrollViewer>
         

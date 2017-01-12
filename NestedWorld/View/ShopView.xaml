@@ -27,18 +27,18 @@
                 <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Exchange" Foreground="{StaticResource BackrgoundBrush}"/>
             </Grid>
 
-            <Grid Grid.Row="1" BorderBrush="{StaticResource DarkApplicationbackgroundBrush}" BorderThickness="1">
+            <Grid Tapped="Grid_Tapped_1" Grid.Row="1" BorderBrush="{StaticResource DarkApplicationbackgroundBrush}" BorderThickness="1">
                <Rectangle>
                     <Rectangle.Fill>
                         <SolidColorBrush Color="#804E656E"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Get credit" Foreground="{StaticResource BackrgoundBrush}"/>
+                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Create an exchange" Foreground="{StaticResource BackrgoundBrush}"/>
             </Grid>
         </Grid>
        
         <exchange:ExchangeView x:Name="exchangeView" Visibility="Collapsed"/>
-
+        <exchange:CreateExchangeView x:Name="createExchangeView" Visibility="Collapsed" />
     </Grid>
 
 </UserControl>

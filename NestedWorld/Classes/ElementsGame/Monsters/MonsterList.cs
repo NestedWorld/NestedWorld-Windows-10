@@ -225,5 +225,14 @@ namespace NestedWorld.Classes.ElementsGame.Monsters
 
             return ids;
         }
+
+        public Monster GetUM(int id)
+        {
+            var query = from monster in monsterList where monster.UserID == id select monster;
+
+            if (query.Count() != 1)
+                return null;
+            return query.ToList()[0];
+        }
     }
 }

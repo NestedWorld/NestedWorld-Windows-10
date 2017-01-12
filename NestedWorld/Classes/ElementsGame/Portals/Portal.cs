@@ -65,6 +65,19 @@ namespace NestedWorld.Classes.ElementsGame.Portals
         }
         public string Name { get; set; }
 
+
+        public string Title
+        {
+            get
+            {
+                if (state == PortalState.available)
+                    return "Place a soul on this portal to catch it";
+                if (state == PortalState.userMonster)
+                    return "You already catch this portal";
+                return "Another player has catch this portal";
+            }
+            set { }
+        }
         public PortalMapPoint pmp
         {
             get
@@ -78,6 +91,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 _pmp = value;
             }
         }
+
 
         public string distance
         {
@@ -115,7 +129,7 @@ namespace NestedWorld.Classes.ElementsGame.Portals
             set { }
         }
 
-        public static Portal NewPortal(int Id, double longitude, double latitude, TypeEnum type, string name, string distance, DateTime end)
+        public static Portal NewPortal(int Id, double longitude, double latitude, TypeEnum type, string name, string distance, DateTime end, PortalState state, Monster monster)
         {
             return new Portal()
             {
@@ -126,7 +140,9 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 pmp = new PortalMapPoint(),
                 Name = name,
                 distance = distance,
-                catchEnd = end
+                catchEnd = end,
+                state = state,
+                monster = monster
             };
         }
 
@@ -163,9 +179,28 @@ namespace NestedWorld.Classes.ElementsGame.Portals
                 DateTime catching_end = DEFFAULTDATETIME;
                 if (catching_endTmp != null)
                 {
-                    catching_end = DateTime.ParseExact(catching_endTmp, "", System.Globalization.CultureInfo.InvariantCulture);
+                    Utils.Rfc3339DateTime.TryParse(catching_endTmp, out catching_end);
                 }
-                return NewPortal(id, longitude, latitude, type, name, distance, catching_end);
+
+                int umonsterOn = Convert.ToInt32(obj["umonster_on"].ToObject<string>());
+                Monster m = null;
+                PortalState state = PortalState.available;
+                if (umonsterOn != 0)
+                {
+                    m = App.core.monsterUserList.GetUM(umonsterOn);
+                    if (m == null)
+                    {
+                        int monsterOne = obj["monster_on"].ToObject<int>();
+                        m = App.core.monsterList.Get(monsterOne);
+                        state = PortalState.otherMonster;
+                    }
+                    else
+                    {
+                        state = PortalState.userMonster;
+                    }
+                }
+
+                return NewPortal(id, longitude, latitude, type, name, distance, catching_end, state, m);
             }
             catch (Newtonsoft.Json.JsonException ex)
             {

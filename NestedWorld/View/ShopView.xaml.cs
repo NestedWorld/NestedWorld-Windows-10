@@ -21,5 +21,10 @@ namespace NestedWorld.View
         {
             this.exchangeView.Show();
         }
+
+        private void Grid_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            this.createExchangeView.Show();
+        }
     }
 }

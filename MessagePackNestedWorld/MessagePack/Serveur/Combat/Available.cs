@@ -24,11 +24,30 @@ namespace MessagePack.Serveur.Combat
             {
                 this.id = receiveMessage.GetMessageId();
                 //combat = Convert.ToInt32(receiveMessage.GetByte("combat"));
-                origin = receiveMessage.GetString("origin");
+                try
+                {
+                    origin = receiveMessage.GetString("origin");
+                }
+#pragma warning disable CS0168 // Variable is declared but never used
+                catch (System.Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+                {
+                    onCompled();
+                    return;
+                }
                 if (origin == WILD)
                     monster_id = Convert.ToInt32(receiveMessage.GetByte("monster_id"));
                 else if (origin == DUEL)
                     {
+                    var tmp = receiveMessage.GetStruct("user");
+                    user = new Struct.User()
+                    {
+                        Name = tmp.GetString("pseudo"),
+                        Id = Convert.ToInt32(tmp.GetByte("id"))
+                    };
+                }
+                else
+                {
                     var tmp = receiveMessage.GetStruct("user");
                     user = new Struct.User()
                     {
